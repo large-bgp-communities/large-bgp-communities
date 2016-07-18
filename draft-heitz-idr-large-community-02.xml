@@ -86,13 +86,13 @@
 
   <middle>
     <section title="Introduction">
-      <t>A BGP Community attribute is defined that encodes 12 byte communities, suitable for 4-Octet Autonomous System Numbers that require a 8-Octet Local Administrator field.</t>
+        <t>A BGP Community attribute is defined that encodes 12 byte communities, suitable for 4-Octet Autonomous System Numbers that require 8 octets of locally significant opaque data.</t>
       <t>To ensure rapid and smooth adoption of the new community attribute, it must be as similar to the  <xref target="RFC1997"/> community as possible, only bigger.</t>
     </section>
 
     <section title="Large BGP Community Attribute">
       <t>The Large Community Attribute is a transitive optional BGP attribute, with the Type Code (suggested 41) to be assigned by IANA. The attribute consists of a set of "Large Communities". All routes with the Large Community attribute belong to the communities listed in the attribute.</t>
-      <t>Each Large Community is encoded as a 14-octet quantity, as follows:
+      <t>Each Large Community is encoded as a 12-octet quantity, as follows:
 <figure align="center"><artwork><![CDATA[
  0                   1                   2                   3
  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
@@ -106,8 +106,7 @@
 ]]></artwork></figure></t>
 </section>
        <section title="Textual Representation">
-          <t>The textual representation of the 4-Octet AS Specific Large Community is A:B:C, where A is the Global Administrator, B is the Local Administrator 1 and C is the Local Administrator 2. A ranges from 0 to 4294967295. B ranges from 0 to 4294967295. C ranges from 0 to 4294967295. A, B and C are plain decimal non-negative integers without leading zeroes. Each number must appear, even if it is 0. For example, "0:1:2" cannot be written as ":1:2".</t>
-       </section>
+          <t>The textual representation of the Large BGP Community is A:B:C, where A is the Global Administrator, B is the Local Administrator 1 and C is the Local Administrator 2. A ranges from 0 to 4294967295. B ranges from 0 to 4294967295. C ranges from 0 to 4294967295. A, B and C are plain decimal non-negative integers without leading zeroes. Each number must appear, even if it is 0. For example, "0:1:2" cannot be written as ":1:2".</t>
 
     </section>
 
@@ -127,21 +126,8 @@
 
   <back>
     <references title="Normative References">
-      <?rfc include='reference.I-D.draft-ietf-idr-as4octet-extcomm-generic-subtype-08'?>
       <?rfc include="reference.RFC.1997"?>
       <?rfc include="reference.RFC.2119"?>
-      <?rfc include='reference.RFC.4360'?>
-      <?rfc include='reference.RFC.4684'?>
-      <?rfc include='reference.RFC.4893'?>
-      <?rfc include='reference.RFC.5668'?>
-    </references>
-    <references title="Informative References">
-      <?rfc include='reference.I-D.draft-ietf-idr-link-bandwidth-06'?>
-      <?rfc include='reference.I-D.draft-drao-bgp-l3vpn-virtual-network-overlays-03'?>
-      <?rfc include='reference.RFC.4384'?>
-      <?rfc include='reference.RFC.4577'?>
-      <?rfc include='reference.RFC.6514'?>
-      <?rfc include='reference.RFC.6074'?>
     </references>
 
   </back>
