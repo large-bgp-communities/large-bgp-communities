@@ -14,32 +14,32 @@
   <front>
     <title abbrev="Large BGP Community">Large BGP Community</title>
 
-    <author fullname="Jakob Heitz" initials="J. " surname="Heitz">
-      <organization>Cisco</organization>
-      <address>
-        <postal>
-          <street>170 West Tasman Drive</street>
-          <city>San Jose</city>
-          <region>CA</region>
-          <code>95054</code>
-          <country>USA</country>
-        </postal>
-        <email>jheitz@cisco.com</email>
-      </address>
+    <author fullname="Jakob Heitz" initials="J." surname="Heitz">
+        <organization>Cisco</organization>
+        <address>
+            <postal>
+                <street>170 West Tasman Drive</street>
+                <city>San Jose</city>
+                <region>CA</region>
+                <code>95054</code>
+                <country>USA</country>
+            </postal>
+            <email>jheitz@cisco.com</email>
+        </address>
     </author>
 
-    <author fullname="Keyur Patel" initials="K. " surname="Patel">
-      <organization>Cisco</organization>
-      <address>
-        <postal>
-          <street>170 West Tasman Drive</street>
-          <city>San Jose</city>
-          <region>CA</region>
-          <code>95054</code>
-          <country>USA</country>
-        </postal>
-        <email>keyupate@cisco.com</email>
-      </address>
+    <author fullname="Keyur Patel" initials="K." surname="Patel">
+        <organization>Cisco</organization>
+        <address>
+            <postal>
+                <street>170 West Tasman Drive</street>
+                <city>San Jose</city>
+                <region>CA</region>
+                <code>95054</code>
+                <country>USA</country>
+            </postal>
+            <email>keyupate@cisco.com</email>
+        </address>
     </author>
 
     <author fullname="Job Snijders" initials="J." surname="Snijders">
@@ -55,17 +55,30 @@
         </address>
     </author>
 
-    <author fullname="Ignas Bagdonas" initials="I. " surname="Bagdonas">
-      <organization>Equinix</organization>
-      <address>
-        <postal>
-          <street></street>
-          <city>London</city>
-          <country>UK</country>
-        </postal>
-        <email>ibagdona.ietf@gmail.com</email>
-      </address>
+    <author fullname="Ignas Bagdonas" initials="I." surname="Bagdonas">
+        <organization>Equinix</organization>
+        <address>
+            <postal>
+                <street></street>
+                <city>London</city>
+                <country>UK</country>
+            </postal>
+            <email>ibagdona.ietf@gmail.com</email>
+        </address>
     </author>
+
+	<author fullname="Adam Simpson" initials="A." surname="Simpson">
+		<organization>Nokia</organization>
+		<address>
+			<postal>
+				<street>600 March Road</street>
+				<city>Ottawa</city>
+				<code>Ontario K2K 2E6</code>
+				<country>Canada</country>
+			</postal>
+			<email>adam.1.simpson@nokia.com</email>
+		</address>
+	</author>
 
     <date/>
 
