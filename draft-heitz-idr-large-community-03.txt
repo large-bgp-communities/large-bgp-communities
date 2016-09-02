@@ -1,0 +1,224 @@
+
+
+
+
+IDR                                                             J. Heitz
+Internet-Draft                                                  K. Patel
+Intended status: Standards Track                                   Cisco
+Expires: March 6, 2017                                       J. Snijders
+                                                                     NTT
+                                                             I. Bagdonas
+                                                                 Equinix
+                                                              A. Simpson
+                                                                   Nokia
+                                                       September 2, 2016
+
+
+                          Large BGP Community
+                   draft-heitz-idr-large-community-02
+
+Abstract
+
+   A new type of BGP community attribute that contains communities that
+   each hold a 4-octet AS number and a 8-octet opaque field is defined.
+
+Requirements Language
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+   document are to be interpreted as described in [RFC2119].
+
+Status of This Memo
+
+   This Internet-Draft is submitted in full conformance with the
+   provisions of BCP 78 and BCP 79.
+
+   Internet-Drafts are working documents of the Internet Engineering
+   Task Force (IETF).  Note that other groups may also distribute
+   working documents as Internet-Drafts.  The list of current Internet-
+   Drafts is at http://datatracker.ietf.org/drafts/current/.
+
+   Internet-Drafts are draft documents valid for a maximum of six months
+   and may be updated, replaced, or obsoleted by other documents at any
+   time.  It is inappropriate to use Internet-Drafts as reference
+   material or to cite them other than as "work in progress."
+
+   This Internet-Draft will expire on March 6, 2017.
+
+Copyright Notice
+
+   Copyright (c) 2016 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
+
+
+
+
+Heitz, et al.             Expires March 6, 2017                 [Page 1]
+
+Internet-Draft             Large BGP Community            September 2016
+
+
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents
+   (http://trustee.ietf.org/license-info) in effect on the date of
+   publication of this document.  Please review these documents
+   carefully, as they describe your rights and restrictions with respect
+   to this document.  Code Components extracted from this document must
+   include Simplified BSD License text as described in Section 4.e of
+   the Trust Legal Provisions and are provided without warranty as
+   described in the Simplified BSD License.
+
+Table of Contents
+
+   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
+   2.  Large BGP Community Attribute . . . . . . . . . . . . . . . .   2
+   3.  Textual Representation  . . . . . . . . . . . . . . . . . . .   3
+   4.  Security Considerations . . . . . . . . . . . . . . . . . . .   3
+   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   3
+   6.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   3
+   7.  Normative References  . . . . . . . . . . . . . . . . . . . .   3
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   4
+
+1.  Introduction
+
+   A BGP Community attribute is defined that encodes 12 byte
+   communities, suitable for 4-Octet Autonomous System Numbers that
+   require 8 octets of locally significant opaque data.
+
+   To ensure rapid and smooth adoption of the new community attribute,
+   it must be as similar to the [RFC1997] community as possible, only
+   bigger.
+
+2.  Large BGP Community Attribute
+
+   The Large Community Attribute is a transitive optional BGP attribute,
+   with the Type Code (suggested 41) to be assigned by IANA.  The
+   attribute consists of a set of "Large Communities".  All routes with
+   the Large Community attribute belong to the communities listed in the
+   attribute.
+
+   Each Large Community is encoded as a 12-octet quantity, as follows:
+
+
+
+
+
+
+
+
+
+
+
+Heitz, et al.             Expires March 6, 2017                 [Page 2]
+
+Internet-Draft             Large BGP Community            September 2016
+
+
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                      Autonomous System number                 |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                          Local Data Part 1                    |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                          Local Data Part 2                    |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+3.  Textual Representation
+
+   The textual representation of the Large BGP Community is A:B:C, where
+   A is the Autonomous System number, B is the Local Data part 1 and C
+   is the Local Data part 2.  A ranges from 0 to 4294967295.  B ranges
+   from 0 to 4294967295.  C ranges from 0 to 4294967295.  A, B and C are
+   plain decimal non-negative integers without leading zeroes.  Each
+   number must appear, even if it is 0.  For example, "0:1:2" cannot be
+   written as ":1:2".  The string is expected to match the following
+   regular expression: ^[0-9]+:[0-9]+:[0-9]+$
+
+4.  Security Considerations
+
+   TBD
+
+5.  IANA Considerations
+
+   IANA is requested to assign a BGP path attribute value for the Large
+   community attribute.
+
+6.  Acknowledgements
+
+   Thanks to Russ White, Acee Lindem, Shyam Sethuram and Jared Mauch for
+   insightful review and comments.
+
+7.  Normative References
+
+   [RFC1997]  Chandra, R., Traina, P., and T. Li, "BGP Communities
+              Attribute", RFC 1997, DOI 10.17487/RFC1997, August 1996,
+              <http://www.rfc-editor.org/info/rfc1997>.
+
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119,
+              DOI 10.17487/RFC2119, March 1997,
+              <http://www.rfc-editor.org/info/rfc2119>.
+
+
+
+
+
+
+Heitz, et al.             Expires March 6, 2017                 [Page 3]
+
+Internet-Draft             Large BGP Community            September 2016
+
+
+Authors' Addresses
+
+   Jakob Heitz
+   Cisco
+   170 West Tasman Drive
+   San Jose, CA  95054
+   USA
+
+   Email: jheitz@cisco.com
+
+
+   Keyur Patel
+   Cisco
+   170 West Tasman Drive
+   San Jose, CA  95054
+   USA
+
+   Email: keyupate@cisco.com
+
+
+   Job Snijders
+   NTT Communications, Inc.
+   Theodorus Majofskistraat 100
+   Amsterdam  1065 SZ
+   NL
+
+   Email: job@ntt.net
+
+
+   Ignas Bagdonas
+   Equinix
+   London
+   UK
+
+   Email: ibagdona.ietf@gmail.com
+
+
+   Adam Simpson
+   Nokia
+   600 March Road
+   Ottawa  Ontario K2K 2E6
+   Canada
+
+   Email: adam.1.simpson@nokia.com
+
+
+
+
+
+
+
+Heitz, et al.             Expires March 6, 2017                 [Page 4]
