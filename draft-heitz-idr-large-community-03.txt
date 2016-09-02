@@ -3,9 +3,10 @@
 
 
 IDR                                                             J. Heitz
-Internet-Draft                                                  K. Patel
-Intended status: Standards Track                                   Cisco
-Expires: March 6, 2017                                       J. Snijders
+Internet-Draft                                                     Cisco
+Intended status: Standards Track                                K. Patel
+Expires: March 6, 2017                                            Arrcus
+                                                             J. Snijders
                                                                      NTT
                                                              I. Bagdonas
                                                                  Equinix
@@ -45,10 +46,9 @@ Status of This Memo
 
    This Internet-Draft will expire on March 6, 2017.
 
-Copyright Notice
 
-   Copyright (c) 2016 IETF Trust and the persons identified as the
-   document authors.  All rights reserved.
+
+
 
 
 
@@ -57,6 +57,11 @@ Heitz, et al.             Expires March 6, 2017                 [Page 1]
 
 Internet-Draft             Large BGP Community            September 2016
 
+
+Copyright Notice
+
+   Copyright (c) 2016 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
    Provisions Relating to IETF Documents
@@ -98,11 +103,6 @@ Table of Contents
    attribute.
 
    Each Large Community is encoded as a 12-octet quantity, as follows:
-
-
-
-
-
 
 
 
@@ -182,12 +182,9 @@ Authors' Addresses
 
 
    Keyur Patel
-   Cisco
-   170 West Tasman Drive
-   San Jose, CA  95054
-   USA
+   Arrcus, Inc
 
-   Email: keyupate@cisco.com
+   Email: keyur@arrcus.com
 
 
    Job Snijders
@@ -214,6 +211,9 @@ Authors' Addresses
    Canada
 
    Email: adam.1.simpson@nokia.com
+
+
+
 
 
 
