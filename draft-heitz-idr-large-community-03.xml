@@ -29,16 +29,9 @@
     </author>
 
     <author fullname="Keyur Patel" initials="K." surname="Patel">
-        <organization>Cisco</organization>
+        <organization abbrev="Arrcus">Arrcus, Inc</organization>
         <address>
-            <postal>
-                <street>170 West Tasman Drive</street>
-                <city>San Jose</city>
-                <region>CA</region>
-                <code>95054</code>
-                <country>USA</country>
-            </postal>
-            <email>keyupate@cisco.com</email>
+            <email>keyur@arrcus.com</email>
         </address>
     </author>
 
