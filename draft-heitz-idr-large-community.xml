@@ -102,7 +102,7 @@
   <middle>
     <section title="Introduction">
         <t>
-            A Large BGP Community attribute is defined that encodes 12 bytes
+            A Large BGP Community attribute is defined that encodes 16 bytes
             communities, suitable for 4-Octet Autonomous System Numbers that
             require 8 octets of locally significant opaque data.
         </t>
@@ -128,7 +128,7 @@
  0                   1                   2                   3
  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|T|    Flags    |    Subtype    |            Reserved           |
+|     Flags     |    Subtype    |          Reserved             |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 |                     Autonomous System number                  |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -140,14 +140,46 @@
 
 <t>
     <list style="hanging">
-        <t hangText="Transitive bit:">This bit is set to 0 transitive communities, to 1 for non-transitive. The Large BGP Community is transitive.</t>
-        <t hangText="Flags:">This field MUST be set to 0 on transmit and MUST be ignored on receipt.</t>
+        <t hangText="Flags:">All undefined flags MUST be set to 0 on transmit and MUST be ignored on receipt.</t>
         <t hangText="Subtype:">This field is set to 0 for the community type described in this document</t>
         <t hangText="Reserved:">This field MUST be set to 0 on transmit and MUST be ignored on receipt.</t>
         <t hangText="Autonomous System Number:">This field indicates the Autonomous System in which the Large Community has a meaning.</t>
         <t hangText="Local Data part 1:">data set by network operator</t>
         <t hangText="Local Data part 2:">data set by network operator</t>
+    </list>
 </t>
+       <section title="Flags">
+         <t>
+           The 'flags' field is an 8-bit field reserved for flags. Only
+           the transitivity flag is defined in this document.  All other bits
+           MUST be set to 0 on transmit and MUST be ignored on receipt.
+
+<figure align="center"><artwork><![CDATA[
+ 0 1 2 3 4 5 6 7
++-+-+-+-+-+-+-+-+
+|T|             |
++-+-+-+-+-+-+-+-+
+]]></artwork></figure>
+         </t>
+         <t>
+           The transitivity flag is defined as follows:
+
+           <list style="hanging">
+             <t hangText="T - transitivity flag">
+               <list>
+                 <t>Value 0: The community is transitive across ASes</t>
+                 <t>Value 1: The community is non-transitive across ASes</t>
+               </list>
+             </t>
+           </list>
+         </t>
+
+         <t>
+           This document describes a community which is transitive, so the
+           T-flag MUST be set to 0.
+         </t>
+       </section>
+
 </section>
        <section title="Textual Representation">
            <t>The textual representation of the Large BGP Community is A:B:C,
