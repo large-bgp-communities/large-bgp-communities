@@ -199,23 +199,26 @@
     <section title="IANA Considerations">
         <t>
             IANA is requested to assign a BGP path attribute value for the
-            Large community attribute.
+            Large BGP Community attribute.
         </t>
         <t>
-            This document also allows for a class of Large Community variants:
-            called the Large Community Variants, for which the IANA has created
-            and will maintain a registry entitled "Large Community Variants".
-            Future assignments are to be made using the "First Come First
-            Served" policy defined in [RFC5226].  Assignments consist of a name
-            and the value.
+            This document allows for a class of Large Community variants
+            through the Subtype field: called the Large Community Variants, for
+            which the IANA will create and maintain a registry entitled "Large
+            Community Variants".  Future assignments are to be made using the
+            "First Come First Served" policy defined in [RFC5226].  Assignments
+            consist of a name and the Subtype value.
 
             This document makes the following assignment for the Large
             Community Variants:
-            
-            Name                                     Subtype Value
-            ----                                     --------------
-            Large Community                          0x0000
         </t>
+        <texttable>
+            <ttcol align='left'>Variant Name</ttcol>
+            <ttcol align='left'>Subtype Value</ttcol>
+            <c>Large Community</c>
+            <c>0x00</c>
+            <postamble>Table 1: Large BGP Community Variants Initial Subtype Values</postamble>
+        </texttable>
     </section>
 
     <section title="Acknowledgements">

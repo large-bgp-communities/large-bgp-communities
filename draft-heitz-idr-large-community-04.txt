@@ -82,8 +82,8 @@ Table of Contents
    4.  Security Considerations . . . . . . . . . . . . . . . . . . .   4
    5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   4
    6.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   4
-   7.  Normative References  . . . . . . . . . . . . . . . . . . . .   4
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   4
+   7.  Normative References  . . . . . . . . . . . . . . . . . . . .   5
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   5
 
 1.  Introduction
 
@@ -191,14 +191,40 @@ Internet-Draft             Large BGP Community            September 2016
 5.  IANA Considerations
 
    IANA is requested to assign a BGP path attribute value for the Large
-   community attribute.
+   BGP Community attribute.
 
-   IANA opens and maintains a registry for Large Communities
+   This document allows for a class of Large Community variants through
+   the Subtype field: called the Large Community Variants, for which the
+   IANA will create and maintain a registry entitled "Large Community
+   Variants".  Future assignments are to be made using the "First Come
+   First Served" policy defined in [RFC5226].  Assignments consist of a
+   name and the Subtype value.  This document makes the following
+   assignment for the Large Community Variants:
+
+                    +-----------------+---------------+
+                    | Variant Name    | Subtype Value |
+                    +-----------------+---------------+
+                    | Large Community | 0x00          |
+                    +-----------------+---------------+
+
+       Table 1: Large BGP Community Variants Initial Subtype Values
 
 6.  Acknowledgements
 
    Thanks to Russ White, Acee Lindem, Shyam Sethuram, Jared Mauch, Joel
    M.  Halpern and Nick Hilliard for insightful review and comments.
+
+
+
+
+
+
+
+
+Heitz, et al.             Expires March 7, 2017                 [Page 4]
+
+Internet-Draft             Large BGP Community            September 2016
+
 
 7.  Normative References
 
@@ -212,19 +238,6 @@ Internet-Draft             Large BGP Community            September 2016
               <http://www.rfc-editor.org/info/rfc2119>.
 
 Authors' Addresses
-
-
-
-
-
-
-
-
-
-Heitz, et al.             Expires March 7, 2017                 [Page 4]
-
-Internet-Draft             Large BGP Community            September 2016
-
 
    Jakob Heitz
    Cisco
@@ -258,6 +271,17 @@ Internet-Draft             Large BGP Community            September 2016
    Email: ibagdona.ietf@gmail.com
 
 
+
+
+
+
+
+
+Heitz, et al.             Expires March 7, 2017                 [Page 5]
+
+Internet-Draft             Large BGP Community            September 2016
+
+
    Adam Simpson
    Nokia
    600 March Road
@@ -277,4 +301,36 @@ Internet-Draft             Large BGP Community            September 2016
 
 
 
-Heitz, et al.             Expires March 7, 2017                 [Page 5]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Heitz, et al.             Expires March 7, 2017                 [Page 6]
