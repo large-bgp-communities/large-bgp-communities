@@ -202,7 +202,19 @@
             Large community attribute.
         </t>
         <t>
-            IANA opens and maintains a registry for Large Communities
+            This document also allows for a class of Large Community variants:
+            called the Large Community Variants, for which the IANA has created
+            and will maintain a registry entitled "Large Community Variants".
+            Future assignments are to be made using the "First Come First
+            Served" policy defined in [RFC5226].  Assignments consist of a name
+            and the value.
+
+            This document makes the following assignment for the Large
+            Community Variants:
+            
+            Name                                     Subtype Value
+            ----                                     --------------
+            Large Community                          0x0000
         </t>
     </section>
 
