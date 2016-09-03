@@ -10,7 +10,7 @@
 <?rfc inline="yes"?>
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
-<rfc category="std" docName="draft-heitz-idr-large-community-03" ipr="trust200902">
+<rfc category="std" docName="draft-heitz-idr-large-community-04" ipr="trust200902">
   <front>
     <title abbrev="Large BGP Community">Large BGP Community</title>
 
@@ -60,18 +60,18 @@
         </address>
     </author>
 
-	<author fullname="Adam Simpson" initials="A." surname="Simpson">
-		<organization>Nokia</organization>
-		<address>
-			<postal>
-				<street>600 March Road</street>
-				<city>Ottawa</city>
-				<code>Ontario K2K 2E6</code>
-				<country>Canada</country>
-			</postal>
-			<email>adam.1.simpson@nokia.com</email>
-		</address>
-	</author>
+    <author fullname="Adam Simpson" initials="A." surname="Simpson">
+        <organization>Nokia</organization>
+        <address>
+            <postal>
+                <street>600 March Road</street>
+                <city>Ottawa</city>
+                <code>Ontario K2K 2E6</code>
+                <country>Canada</country>
+            </postal>
+            <email>adam.1.simpson@nokia.com</email>
+        </address>
+    </author>
 
     <date/>
 
@@ -81,35 +81,71 @@
     <keyword>communities</keyword>
 
     <abstract>
-      <t>A new type of BGP community attribute that contains communities that each hold a 4-octet AS number and a 8-octet opaque field is defined.</t>
+        <t>
+            A new type of BGP community attribute that contains communities
+            that each hold a 4-octet AS number and a 8-octet opaque field is
+            defined.
+        </t>
     </abstract>
 
     <note title="Requirements Language">
-      <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in <xref target="RFC2119"/>.</t>
+        <t>
+            The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+            "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in
+            this document are to be interpreted as described in
+            <xref target="RFC2119"/>.
+        </t>
     </note>
 
   </front>
 
   <middle>
     <section title="Introduction">
-        <t>A BGP Community attribute is defined that encodes 12 byte communities, suitable for 4-Octet Autonomous System Numbers that require 8 octets of locally significant opaque data.</t>
-      <t>To ensure rapid and smooth adoption of the new community attribute, it must be as similar to the  <xref target="RFC1997"/> community as possible, only bigger.</t>
+        <t>
+            A Large BGP Community attribute is defined that encodes 12 bytes
+            communities, suitable for 4-Octet Autonomous System Numbers that
+            require 8 octets of locally significant opaque data.
+        </t>
+        <t>
+            To ensure rapid and smooth adoption of the new community attribute,
+            it must be as similar to the  <xref target="RFC1997"/> community as
+            possible, only bigger.
+        </t>
+        <t>For future proofness a Subtype and Reserved field defined</t>
     </section>
 
     <section title="Large BGP Community Attribute">
-      <t>The Large Community Attribute is a transitive optional BGP attribute, with the Type Code (suggested 41) to be assigned by IANA. The attribute consists of a set of "Large Communities". All routes with the Large Community attribute belong to the communities listed in the attribute.</t>
-      <t>Each Large Community is encoded as a 12-octet quantity, as follows:
+        <t>
+            The Large Community Attribute is a transitive optional BGP
+            attribute, with the Type Code (suggested 41) to be assigned by
+            IANA. The attribute consists of a set of "Large Communities". All
+            routes with the Large Community attribute belong to the communities
+            listed in the attribute.
+        </t>
+        <t>
+            Each Large Community is encoded as a 16-octet quantity, as follows:
 <figure align="center"><artwork><![CDATA[
  0                   1                   2                   3
  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|                      Autonomous System number                 |
+|     Subtype     |                 Reserved                    |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|                          Local Data Part 1                    |
+|                     Autonomous System number                  |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|                          Local Data Part 2                    |
+|                         Local Data Part 1                     |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                         Local Data Part 2                     |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ]]></artwork></figure></t>
+
+<t>
+    <list style="hanging">
+        <t hangText="Subtype:">This field is set to 0 for the community type described in this document</t>
+        <t hangText="Reserved:">This field MUST be set to 0 on transmit and MUST be ignored on receipt.</t>
+        <t hangText="Autonomous System Number:">This field indicates the Autonomous System in which the Large Community has a meaning.</t>
+        <t hangText="Local Data part 1:">data set by network operator</t>
+        <t hangText="Local Data part 2:">data set by network operator</t>
+</t>
 </section>
        <section title="Textual Representation">
            <t>The textual representation of the Large BGP Community is A:B:C,
@@ -127,13 +163,20 @@
     </section>
 
     <section title="IANA Considerations">
-       <t>IANA is requested to assign a BGP path attribute value for the Large community attribute.</t>
+        <t>
+            IANA is requested to assign a BGP path attribute value for the
+            Large community attribute.
+        </t>
+        <t>
+            IANA opens and maintains a registry for Large Communities
+        </t>
     </section>
 
     <section title="Acknowledgements">
         <t>
-            Thanks to Russ White, Acee Lindem, Shyam Sethuram, Jared Mauch and
-            Joel M. Halpern for insightful review and comments.
+            Thanks to Russ White, Acee Lindem, Shyam Sethuram, Jared Mauch,
+            Joel M. Halpern and Nick Hilliard for insightful review and
+            comments.
         </t>
     </section>
 
