@@ -102,7 +102,7 @@
   <middle>
     <section title="Introduction">
         <t>
-            A Large BGP Community attribute is defined that encodes 12 bytes
+            A Large BGP Community attribute is defined that encodes 16 bytes
             communities, suitable for 4-Octet Autonomous System Numbers that
             require 8 octets of locally significant opaque data.
         </t>
