@@ -192,19 +192,38 @@
          </t>
        </section>
 
-</section>
-<section title="Textual Representation">
-    <t>
-        The textual representation of the Large Community is A:B:C, where A
-        is the Autonomous System number, B is the Local Data part 1 and C is
-        the Local Data part 2. A ranges from 0 to 4294967295. B ranges from 0
-        to 4294967295. C ranges from 0 to 4294967295. A, B and C are plain
-        decimal non-negative integers without leading zeroes. Each number must
-        appear, even if it is 0. For example, "0:1:2" cannot be written as
-        ":1:2". The string is expected to match the following regular
-        expression: ^[0-9]+:[0-9]+:[0-9]+$
-    </t>
-</section>
+    </section>
+    <section title="Textual Representation">
+        <t>
+            The textual representation of the Large Community is A:B:C, where A
+            is the Autonomous System number, B is the Local Data part 1 and C is
+            the Local Data part 2. A ranges from 0 to 4294967295. B ranges from 0
+            to 4294967295. C ranges from 0 to 4294967295. A, B and C are plain
+            decimal non-negative integers without leading zeroes. Each number must
+            appear, even if it is 0. For example, "0:1:2" cannot be written as
+            ":1:2". The string is expected to match the following regular
+            expression: ^[0-9]+:[0-9]+:[0-9]+$
+        </t>
+    </section>
+
+    <section title="Error Handling">
+        <t>
+            The error handling of Large Community is as follows:
+        </t>
+        <t>
+            <list style="symbols">
+                <t>
+                The Large Community attribute SHALL be considered malformed if
+                its length is not a non-zero multiple of 16 bytes.
+                </t>
+                <t>
+                An UPDATE message with a malformed Large Community attribute
+                SHALL be handled using the approach of "treat-as-withdraw" as
+                described in <xref target="RFC7606">section 2</xref>.
+              </t>
+            </list>
+        </t>
+    </section>
 
     <section title="Security Considerations">
        <t>TBD</t>
@@ -277,6 +296,7 @@
     <references title="Normative References">
       <?rfc include="reference.RFC.1997"?>
       <?rfc include="reference.RFC.2119"?>
+      <?rfc include="reference.RFC.7606"?>
     </references>
     <references title="Informative References">
       <?rfc include="reference.RFC.7942"?>

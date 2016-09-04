@@ -5,14 +5,14 @@
 IDR                                                             J. Heitz
 Internet-Draft                                                     Cisco
 Intended status: Standards Track                                K. Patel
-Expires: March 7, 2017                                            Arrcus
+Expires: March 8, 2017                                            Arrcus
                                                              J. Snijders
                                                                      NTT
                                                              I. Bagdonas
                                                                  Equinix
                                                               A. Simpson
                                                                    Nokia
-                                                       September 3, 2016
+                                                       September 4, 2016
 
 
                           Large BGP Community
@@ -44,7 +44,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on March 7, 2017.
+   This Internet-Draft will expire on March 8, 2017.
 
 
 
@@ -53,7 +53,7 @@ Status of This Memo
 
 
 
-Heitz, et al.             Expires March 7, 2017                 [Page 1]
+Heitz, et al.             Expires March 8, 2017                 [Page 1]
 
 Internet-Draft             Large BGP Community            September 2016
 
@@ -77,16 +77,17 @@ Table of Contents
 
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
    2.  Large BGP Community Attribute . . . . . . . . . . . . . . . .   3
-     2.1.  Flags . . . . . . . . . . . . . . . . . . . . . . . . . .   3
+     2.1.  Flags . . . . . . . . . . . . . . . . . . . . . . . . . .   4
    3.  Textual Representation  . . . . . . . . . . . . . . . . . . .   4
-   4.  Security Considerations . . . . . . . . . . . . . . . . . . .   4
-   5.  Implementation status - RFC EDITOR: REMOVE BEFORE PUBLICATION   4
-   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   5
-   7.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   5
-   8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   5
-     8.1.  Normative References  . . . . . . . . . . . . . . . . . .   5
-     8.2.  Informative References  . . . . . . . . . . . . . . . . .   6
-     8.3.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .   6
+   4.  Error Handling  . . . . . . . . . . . . . . . . . . . . . . .   4
+   5.  Security Considerations . . . . . . . . . . . . . . . . . . .   5
+   6.  Implementation status - RFC EDITOR: REMOVE BEFORE PUBLICATION   5
+   7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   5
+   8.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   6
+   9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   6
+     9.1.  Normative References  . . . . . . . . . . . . . . . . . .   6
+     9.2.  Informative References  . . . . . . . . . . . . . . . . .   6
+     9.3.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .   6
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   6
 
 1.  Introduction
@@ -103,16 +104,19 @@ Table of Contents
    publish a list of large communities and their associated actions.
    The Large Community is opaque.
 
-   To ensure rapid and smooth adoption of the new community attribute,
-   it must be as similar to the [RFC1997] community as possible, only
-   bigger.
 
 
 
-Heitz, et al.             Expires March 7, 2017                 [Page 2]
+
+
+Heitz, et al.             Expires March 8, 2017                 [Page 2]
 
 Internet-Draft             Large BGP Community            September 2016
 
+
+   To ensure rapid and smooth adoption of the new community attribute,
+   it must be as similar to the [RFC1997] community as possible, only
+   bigger.
 
    Future variants of the Large Community can be accomodated through the
    Subtype extension mechanism.
@@ -155,20 +159,22 @@ Internet-Draft             Large BGP Community            September 2016
 
    Local Data part 2:  data set by network operator
 
+
+
+
+
+
+
+Heitz, et al.             Expires March 8, 2017                 [Page 3]
+
+Internet-Draft             Large BGP Community            September 2016
+
+
 2.1.  Flags
 
    The 'flags' field is an 8-bit field reserved for flags.  Only the
    transitivity flag is defined in this document.  All other bits MUST
    be set to 0 on transmit and MUST be ignored on receipt.
-
-
-
-
-
-Heitz, et al.             Expires March 7, 2017                 [Page 3]
-
-Internet-Draft             Large BGP Community            September 2016
-
 
     0 1 2 3 4 5 6 7
    +-+-+-+-+-+-+-+-+
@@ -197,11 +203,34 @@ Internet-Draft             Large BGP Community            September 2016
    written as ":1:2".  The string is expected to match the following
    regular expression: ^[0-9]+:[0-9]+:[0-9]+$
 
-4.  Security Considerations
+4.  Error Handling
+
+   The error handling of Large Community is as follows:
+
+   o  The Large Community attribute SHALL be considered malformed if its
+      length is not a non-zero multiple of 16 bytes.
+
+   o  An UPDATE message with a malformed Large Community attribute SHALL
+      be handled using the approach of "treat-as-withdraw" as described
+      in section 2 [RFC7606].
+
+
+
+
+
+
+
+
+Heitz, et al.             Expires March 8, 2017                 [Page 4]
+
+Internet-Draft             Large BGP Community            September 2016
+
+
+5.  Security Considerations
 
    TBD
 
-5.  Implementation status - RFC EDITOR: REMOVE BEFORE PUBLICATION
+6.  Implementation status - RFC EDITOR: REMOVE BEFORE PUBLICATION
 
    This section records the status of known implementations of the
    protocol defined by this specification at the time of posting of this
@@ -219,13 +248,6 @@ Internet-Draft             Large BGP Community            September 2016
    As of today these vendors have produced an implementation of Large
    BGP Community:
 
-
-
-Heitz, et al.             Expires March 7, 2017                 [Page 4]
-
-Internet-Draft             Large BGP Community            September 2016
-
-
    o  Cisco IOS XR
 
    o  ExaBGP
@@ -233,7 +255,7 @@ Internet-Draft             Large BGP Community            September 2016
    The latest implementation news is tracked at largebgpcommunities.net
    [1].
 
-6.  IANA Considerations
+7.  IANA Considerations
 
    IANA is requested to assign a BGP path attribute value for the Large
    Community attribute (suggested 41).
@@ -246,6 +268,20 @@ Internet-Draft             Large BGP Community            September 2016
    name and the Subtype value.  This document makes the following
    assignment for the Large Community Variants:
 
+
+
+
+
+
+
+
+
+
+Heitz, et al.             Expires March 8, 2017                 [Page 5]
+
+Internet-Draft             Large BGP Community            September 2016
+
+
                     +-----------------+---------------+
                     | Variant Name    | Subtype Value |
                     +-----------------+---------------+
@@ -254,14 +290,14 @@ Internet-Draft             Large BGP Community            September 2016
 
          Table 1: Large Community Variants Initial Subtype Values
 
-7.  Acknowledgements
+8.  Acknowledgements
 
    Thanks to Russ White, Acee Lindem, Shyam Sethuram, Jared Mauch, Joel
    M.  Halpern and Nick Hilliard for insightful review and comments.
 
-8.  References
+9.  References
 
-8.1.  Normative References
+9.1.  Normative References
 
    [RFC1997]  Chandra, R., Traina, P., and T. Li, "BGP Communities
               Attribute", RFC 1997, DOI 10.17487/RFC1997, August 1996,
@@ -272,28 +308,35 @@ Internet-Draft             Large BGP Community            September 2016
               DOI 10.17487/RFC2119, March 1997,
               <http://www.rfc-editor.org/info/rfc2119>.
 
+   [RFC7606]  Chen, E., Ed., Scudder, J., Ed., Mohapatra, P., and K.
+              Patel, "Revised Error Handling for BGP UPDATE Messages",
+              RFC 7606, DOI 10.17487/RFC7606, August 2015,
+              <http://www.rfc-editor.org/info/rfc7606>.
 
-
-
-
-
-Heitz, et al.             Expires March 7, 2017                 [Page 5]
-
-Internet-Draft             Large BGP Community            September 2016
-
-
-8.2.  Informative References
+9.2.  Informative References
 
    [RFC7942]  Sheffer, Y. and A. Farrel, "Improving Awareness of Running
               Code: The Implementation Status Section", BCP 205,
               RFC 7942, DOI 10.17487/RFC7942, July 2016,
               <http://www.rfc-editor.org/info/rfc7942>.
 
-8.3.  URIs
+9.3.  URIs
 
    [1] https://largebgpcommunities.net
 
 Authors' Addresses
+
+
+
+
+
+
+
+
+Heitz, et al.             Expires March 8, 2017                 [Page 6]
+
+Internet-Draft             Large BGP Community            September 2016
+
 
    Jakob Heitz
    Cisco
@@ -327,17 +370,6 @@ Authors' Addresses
    Email: ibagdona.ietf@gmail.com
 
 
-
-
-
-
-
-
-Heitz, et al.             Expires March 7, 2017                 [Page 6]
-
-Internet-Draft             Large BGP Community            September 2016
-
-
    Adam Simpson
    Nokia
    600 March Road
@@ -357,36 +389,4 @@ Internet-Draft             Large BGP Community            September 2016
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Heitz, et al.             Expires March 7, 2017                 [Page 7]
+Heitz, et al.             Expires March 8, 2017                 [Page 7]
