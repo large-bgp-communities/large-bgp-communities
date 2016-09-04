@@ -311,7 +311,7 @@ Authors' Addresses
 
 
    Job Snijders
-   NTT Communications, Inc.
+   NTT Communications
    Theodorus Majofskistraat 100
    Amsterdam  1065 SZ
    NL
