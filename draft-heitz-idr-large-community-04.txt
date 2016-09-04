@@ -77,22 +77,21 @@ Table of Contents
 
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
    2.  Large BGP Community Attribute . . . . . . . . . . . . . . . .   3
-     2.1.  Flags . . . . . . . . . . . . . . . . . . . . . . . . . .   4
-   3.  Textual Representation  . . . . . . . . . . . . . . . . . . .   4
-   4.  Error Handling  . . . . . . . . . . . . . . . . . . . . . . .   4
-   5.  Security Considerations . . . . . . . . . . . . . . . . . . .   5
-   6.  Implementation status - RFC EDITOR: REMOVE BEFORE PUBLICATION   5
-   7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   5
-   8.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   6
-   9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   6
-     9.1.  Normative References  . . . . . . . . . . . . . . . . . .   6
-     9.2.  Informative References  . . . . . . . . . . . . . . . . .   6
-     9.3.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .   6
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   6
+   3.  Textual Representation  . . . . . . . . . . . . . . . . . . .   3
+   4.  Error Handling  . . . . . . . . . . . . . . . . . . . . . . .   3
+   5.  Security Considerations . . . . . . . . . . . . . . . . . . .   4
+   6.  Implementation status - RFC EDITOR: REMOVE BEFORE PUBLICATION   4
+   7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   4
+   8.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   4
+   9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   4
+     9.1.  Normative References  . . . . . . . . . . . . . . . . . .   4
+     9.2.  Informative References  . . . . . . . . . . . . . . . . .   5
+     9.3.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .   5
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   5
 
 1.  Introduction
 
-   A Large Community attribute is defined that encodes 16 bytes
+   A Large Community attribute is defined that encodes 12 bytes
    communities, suitable for 4-Octet Autonomous System Numbers that
    require 8 octets of locally significant opaque data.
 
@@ -104,8 +103,9 @@ Table of Contents
    65551:303:65536.  AS65551 would publish a list of large communities
    and their associated actions.  The Large Community is opaque.
 
-
-
+   To ensure rapid and smooth adoption of the new community attribute,
+   it must be as similar to the [RFC1997] community as possible, only
+   bigger.
 
 
 
@@ -113,13 +113,6 @@ Heitz, et al.             Expires March 8, 2017                 [Page 2]
 
 Internet-Draft             Large BGP Community            September 2016
 
-
-   To ensure rapid and smooth adoption of the new community attribute,
-   it must be as similar to the [RFC1997] community as possible, only
-   bigger.
-
-   Future variants of the Large Community can be accomodated through the
-   Subtype extension mechanism.
 
 2.  Large BGP Community Attribute
 
@@ -129,12 +122,10 @@ Internet-Draft             Large BGP Community            September 2016
    the Large Community attribute belong to the communities listed in the
    attribute.
 
-   Each Large Community is encoded as a 16-octet quantity, as follows:
+   Each Large Community is encoded as a 12-octet quantity, as follows:
 
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
-   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |     Flags     |    Subtype    |          Reserved             |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |                     Autonomous System number                  |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -143,54 +134,12 @@ Internet-Draft             Large BGP Community            September 2016
    |                         Local Data Part 2                     |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
-   Flags:  All undefined flags MUST be set to 0 on transmit and MUST be
-      ignored on receipt.
-
-   Subtype:  This field is set to 0 for the community type described in
-      this document
-
-   Reserved:  This field MUST be set to 0 on transmit and MUST be
-      ignored on receipt.
-
    Autonomous System Number:  This field indicates the Autonomous System
       in which the Large Community has a meaning.
 
    Local Data part 1:  data set by network operator
 
    Local Data part 2:  data set by network operator
-
-
-
-
-
-
-
-Heitz, et al.             Expires March 8, 2017                 [Page 3]
-
-Internet-Draft             Large BGP Community            September 2016
-
-
-2.1.  Flags
-
-   The 'flags' field is an 8-bit field reserved for flags.  Only the
-   transitivity flag is defined in this document.  All other bits MUST
-   be set to 0 on transmit and MUST be ignored on receipt.
-
-    0 1 2 3 4 5 6 7
-   +-+-+-+-+-+-+-+-+
-   |T|             |
-   +-+-+-+-+-+-+-+-+
-
-   The transitivity flag is defined as follows:
-
-   T - transitivity flag
-
-         Value 0: The community is transitive across ASes
-
-         Value 1: The community is non-transitive across ASes
-
-   This document describes a community which is transitive, so the
-   T-flag MUST be set to 0.
 
 3.  Textual Representation
 
@@ -208,7 +157,7 @@ Internet-Draft             Large BGP Community            September 2016
    The error handling of Large Community is as follows:
 
    o  The Large Community attribute SHALL be considered malformed if its
-      length is not a non-zero multiple of 16 bytes.
+      length is not a non-zero multiple of 12 bytes.
 
    o  An UPDATE message with a malformed Large Community attribute SHALL
       be handled using the approach of "treat-as-withdraw" as described
@@ -216,12 +165,7 @@ Internet-Draft             Large BGP Community            September 2016
 
 
 
-
-
-
-
-
-Heitz, et al.             Expires March 8, 2017                 [Page 4]
+Heitz, et al.             Expires March 8, 2017                 [Page 3]
 
 Internet-Draft             Large BGP Community            September 2016
 
@@ -260,36 +204,6 @@ Internet-Draft             Large BGP Community            September 2016
    IANA is requested to assign a BGP path attribute value for the Large
    Community attribute (suggested 41).
 
-   This document allows for a class of Large Community variants through
-   the Subtype field: called the Large Community Variants, for which the
-   IANA will create and maintain a registry entitled "Large Community
-   Variants".  Future assignments are to be made using the "First Come
-   First Served" policy defined in [RFC5226].  Assignments consist of a
-   name and the Subtype value.  This document makes the following
-   assignment for the Large Community Variants:
-
-
-
-
-
-
-
-
-
-
-Heitz, et al.             Expires March 8, 2017                 [Page 5]
-
-Internet-Draft             Large BGP Community            September 2016
-
-
-                    +-----------------+---------------+
-                    | Variant Name    | Subtype Value |
-                    +-----------------+---------------+
-                    | Large Community | 0x00          |
-                    +-----------------+---------------+
-
-         Table 1: Large Community Variants Initial Subtype Values
-
 8.  Acknowledgements
 
    Thanks to Ruediger Volk, Russ White, Acee Lindem, Shyam Sethuram,
@@ -303,6 +217,14 @@ Internet-Draft             Large BGP Community            September 2016
    [RFC1997]  Chandra, R., Traina, P., and T. Li, "BGP Communities
               Attribute", RFC 1997, DOI 10.17487/RFC1997, August 1996,
               <http://www.rfc-editor.org/info/rfc1997>.
+
+
+
+
+Heitz, et al.             Expires March 8, 2017                 [Page 4]
+
+Internet-Draft             Large BGP Community            September 2016
+
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -327,17 +249,6 @@ Internet-Draft             Large BGP Community            September 2016
 
 Authors' Addresses
 
-
-
-
-
-
-
-Heitz, et al.             Expires March 8, 2017                 [Page 6]
-
-Internet-Draft             Large BGP Community            September 2016
-
-
    Jakob Heitz
    Cisco
    170 West Tasman Drive
@@ -360,6 +271,15 @@ Internet-Draft             Large BGP Community            September 2016
    NL
 
    Email: job@ntt.net
+
+
+
+
+
+
+Heitz, et al.             Expires March 8, 2017                 [Page 5]
+
+Internet-Draft             Large BGP Community            September 2016
 
 
    Ignas Bagdonas
@@ -389,4 +309,28 @@ Internet-Draft             Large BGP Community            September 2016
 
 
 
-Heitz, et al.             Expires March 8, 2017                 [Page 7]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Heitz, et al.             Expires March 8, 2017                 [Page 6]
