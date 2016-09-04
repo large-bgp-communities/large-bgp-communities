@@ -102,7 +102,7 @@
   <middle>
     <section title="Introduction">
         <t>
-            A Large BGP Community attribute is defined that encodes 16 bytes
+            A Large Community attribute is defined that encodes 16 bytes
             communities, suitable for 4-Octet Autonomous System Numbers that
             require 8 octets of locally significant opaque data.
         </t>
@@ -111,16 +111,19 @@
             it must be as similar to the  <xref target="RFC1997"/> community as
             possible, only bigger.
         </t>
-        <t>For future proofness a Subtype and Reserved field defined</t>
+        <t>
+            Future variants of the Large Community can be accomodated through
+            the Subtype extension mechanism.
+        </t>
     </section>
 
     <section title="Large BGP Community Attribute">
         <t>
             The Large Community Attribute is a transitive optional BGP
             attribute, with the Type Code (suggested 41) to be assigned by
-            IANA. The attribute consists of a set of "Large Communities". All
-            routes with the Large Community attribute belong to the communities
-            listed in the attribute.
+            IANA. The attribute consists of a set of Large Communities. All
+            routes with the Large Community attribute belong to the
+            communities listed in the attribute.
         </t>
         <t>
             Each Large Community is encoded as a 16-octet quantity, as follows:
@@ -183,7 +186,7 @@
 </section>
 <section title="Textual Representation">
     <t>
-        The textual representation of the Large BGP Community is A:B:C, where A
+        The textual representation of the Large Community is A:B:C, where A
         is the Autonomous System number, B is the Local Data part 1 and C is
         the Local Data part 2. A ranges from 0 to 4294967295. B ranges from 0
         to 4294967295. C ranges from 0 to 4294967295. A, B and C are plain
@@ -229,7 +232,7 @@
     <section title="IANA Considerations">
         <t>
             IANA is requested to assign a BGP path attribute value for the
-            Large BGP Community attribute.
+            Large Community attribute (suggested 41).
         </t>
         <t>
             This document allows for a class of Large Community variants
@@ -247,7 +250,7 @@
             <ttcol align='left'>Subtype Value</ttcol>
             <c>Large Community</c>
             <c>0x00</c>
-            <postamble>Table 1: Large BGP Community Variants Initial Subtype Values</postamble>
+            <postamble>Table 1: Large Community Variants Initial Subtype Values</postamble>
         </texttable>
     </section>
 
