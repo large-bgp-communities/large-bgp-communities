@@ -252,8 +252,8 @@ Internet-Draft             Large BGP Community            September 2016
 
    o  ExaBGP
 
-   The latest implementation news is tracked at largebgpcommunities.net
-   [1].
+   The latest implementation news is tracked at
+   http://largebgpcommunities.net/ [1].
 
 7.  IANA Considerations
 
