@@ -181,20 +181,50 @@
        </section>
 
 </section>
-       <section title="Textual Representation">
-           <t>The textual representation of the Large BGP Community is A:B:C,
-               where A is the Autonomous System number, B is the Local Data
-               part 1 and C is the Local Data part 2. A ranges from 0 to
-               4294967295. B ranges from 0 to 4294967295. C ranges from 0 to
-               4294967295. A, B and C are plain decimal non-negative integers
-               without leading zeroes. Each number must appear, even if it is
-               0. For example, "0:1:2" cannot be written as ":1:2". The string
-               is expected to match the following regular expression:
-               ^[0-9]+:[0-9]+:[0-9]+$ </t> </section>
+<section title="Textual Representation">
+    <t>
+        The textual representation of the Large BGP Community is A:B:C, where A
+        is the Autonomous System number, B is the Local Data part 1 and C is
+        the Local Data part 2. A ranges from 0 to 4294967295. B ranges from 0
+        to 4294967295. C ranges from 0 to 4294967295. A, B and C are plain
+        decimal non-negative integers without leading zeroes. Each number must
+        appear, even if it is 0. For example, "0:1:2" cannot be written as
+        ":1:2". The string is expected to match the following regular
+        expression: ^[0-9]+:[0-9]+:[0-9]+$
+    </t>
+</section>
 
     <section title="Security Considerations">
        <t>TBD</t>
-    </section>
+   </section>
+   
+   <section title="Implementation status - RFC EDITOR: REMOVE BEFORE PUBLICATION">
+       <t>
+           This section records the status of known implementations of the
+           protocol defined by this specification at the time of posting of
+           this Internet-Draft, and is based on a proposal described in
+           <xref target="RFC7942" />. The description of implementations in this
+           section is intended to assist the IETF in its decision processes in
+           progressing drafts to RFCs.  Please note that the listing of any
+           individual implementation here does not imply endorsement by the
+           IETF.  Furthermore, no effort has been spent to verify the
+           information presented here that was supplied by IETF contributors.
+           This is not intended as, and must not be construed to be, a catalog
+           of available implementations or their features.  Readers are advised
+           to note that other implementations may exist.
+       </t>
+       <t>
+           As of today these vendors have produced an implementation of Large
+           BGP Community:
+           <list style="symbols">
+               <t>Cisco IOS XR</t>
+               <t>ExaBGP</t>
+            </list>
+       </t>
+       <t>
+           The latest implementation news is tracked at <eref target="https://largebgpcommunities.net">largebgpcommunities.net</eref>.
+       </t>
+   </section>
 
     <section title="IANA Considerations">
         <t>
@@ -236,6 +266,10 @@
       <?rfc include="reference.RFC.1997"?>
       <?rfc include="reference.RFC.2119"?>
     </references>
+    <references title="Informative References">
+      <?rfc include="reference.RFC.7942"?>
+    </references>
+
 
   </back>
 </rfc>

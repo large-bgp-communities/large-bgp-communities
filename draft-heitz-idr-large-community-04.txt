@@ -80,10 +80,14 @@ Table of Contents
      2.1.  Flags . . . . . . . . . . . . . . . . . . . . . . . . . .   3
    3.  Textual Representation  . . . . . . . . . . . . . . . . . . .   4
    4.  Security Considerations . . . . . . . . . . . . . . . . . . .   4
-   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   4
-   6.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   4
-   7.  Normative References  . . . . . . . . . . . . . . . . . . . .   5
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   5
+   5.  Implementation status - RFC EDITOR: REMOVE BEFORE PUBLICATION   4
+   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   5
+   7.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   5
+   8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   5
+     8.1.  Normative References  . . . . . . . . . . . . . . . . . .   5
+     8.2.  Informative References  . . . . . . . . . . . . . . . . .   5
+     8.3.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .   6
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   6
 
 1.  Introduction
 
@@ -102,10 +106,6 @@ Table of Contents
    The Large Community Attribute is a transitive optional BGP attribute,
    with the Type Code (suggested 41) to be assigned by IANA.  The
    attribute consists of a set of "Large Communities".  All routes with
-   the Large Community attribute belong to the communities listed in the
-   attribute.
-
-   Each Large Community is encoded as a 16-octet quantity, as follows:
 
 
 
@@ -113,6 +113,11 @@ Heitz, et al.             Expires March 7, 2017                 [Page 2]
 
 Internet-Draft             Large BGP Community            September 2016
 
+
+   the Large Community attribute belong to the communities listed in the
+   attribute.
+
+   Each Large Community is encoded as a 16-octet quantity, as follows:
 
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
@@ -157,11 +162,6 @@ Internet-Draft             Large BGP Community            September 2016
 
    T - transitivity flag
 
-         Value 0: The community is transitive across ASes
-
-         Value 1: The community is non-transitive across ASes
-
-
 
 
 
@@ -169,6 +169,10 @@ Heitz, et al.             Expires March 7, 2017                 [Page 3]
 
 Internet-Draft             Large BGP Community            September 2016
 
+
+         Value 0: The community is transitive across ASes
+
+         Value 1: The community is non-transitive across ASes
 
    This document describes a community which is transitive, so the
    T-flag MUST be set to 0.
@@ -188,7 +192,41 @@ Internet-Draft             Large BGP Community            September 2016
 
    TBD
 
-5.  IANA Considerations
+5.  Implementation status - RFC EDITOR: REMOVE BEFORE PUBLICATION
+
+   This section records the status of known implementations of the
+   protocol defined by this specification at the time of posting of this
+   Internet-Draft, and is based on a proposal described in [RFC7942].
+   The description of implementations in this section is intended to
+   assist the IETF in its decision processes in progressing drafts to
+   RFCs.  Please note that the listing of any individual implementation
+   here does not imply endorsement by the IETF.  Furthermore, no effort
+   has been spent to verify the information presented here that was
+   supplied by IETF contributors.  This is not intended as, and must not
+   be construed to be, a catalog of available implementations or their
+   features.  Readers are advised to note that other implementations may
+   exist.
+
+   As of today these vendors have produced an implementation of Large
+   BGP Community:
+
+   o  Cisco IOS XR
+
+   o  ExaBGP
+
+   The latest implementation news is tracked at largebgpcommunities.net
+   [1].
+
+
+
+
+
+Heitz, et al.             Expires March 7, 2017                 [Page 4]
+
+Internet-Draft             Large BGP Community            September 2016
+
+
+6.  IANA Considerations
 
    IANA is requested to assign a BGP path attribute value for the Large
    BGP Community attribute.
@@ -209,24 +247,14 @@ Internet-Draft             Large BGP Community            September 2016
 
        Table 1: Large BGP Community Variants Initial Subtype Values
 
-6.  Acknowledgements
+7.  Acknowledgements
 
    Thanks to Russ White, Acee Lindem, Shyam Sethuram, Jared Mauch, Joel
    M.  Halpern and Nick Hilliard for insightful review and comments.
 
+8.  References
 
-
-
-
-
-
-
-Heitz, et al.             Expires March 7, 2017                 [Page 4]
-
-Internet-Draft             Large BGP Community            September 2016
-
-
-7.  Normative References
+8.1.  Normative References
 
    [RFC1997]  Chandra, R., Traina, P., and T. Li, "BGP Communities
               Attribute", RFC 1997, DOI 10.17487/RFC1997, August 1996,
@@ -236,6 +264,27 @@ Internet-Draft             Large BGP Community            September 2016
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
               <http://www.rfc-editor.org/info/rfc2119>.
+
+8.2.  Informative References
+
+   [RFC7942]  Sheffer, Y. and A. Farrel, "Improving Awareness of Running
+              Code: The Implementation Status Section", BCP 205,
+              RFC 7942, DOI 10.17487/RFC7942, July 2016,
+              <http://www.rfc-editor.org/info/rfc7942>.
+
+
+
+
+
+
+Heitz, et al.             Expires March 7, 2017                 [Page 5]
+
+Internet-Draft             Large BGP Community            September 2016
+
+
+8.3.  URIs
+
+   [1] https://largebgpcommunities.net
 
 Authors' Addresses
 
@@ -271,17 +320,6 @@ Authors' Addresses
    Email: ibagdona.ietf@gmail.com
 
 
-
-
-
-
-
-
-Heitz, et al.             Expires March 7, 2017                 [Page 5]
-
-Internet-Draft             Large BGP Community            September 2016
-
-
    Adam Simpson
    Nokia
    600 March Road
@@ -289,44 +327,6 @@ Internet-Draft             Large BGP Community            September 2016
    Canada
 
    Email: adam.1.simpson@nokia.com
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
