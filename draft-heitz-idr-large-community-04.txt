@@ -76,7 +76,7 @@ Copyright Notice
 Table of Contents
 
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
-   2.  Large BGP Community Attribute . . . . . . . . . . . . . . . .   2
+   2.  Large BGP Community Attribute . . . . . . . . . . . . . . . .   3
      2.1.  Flags . . . . . . . . . . . . . . . . . . . . . . . . . .   3
    3.  Textual Representation  . . . . . . . . . . . . . . . . . . .   4
    4.  Security Considerations . . . . . . . . . . . . . . . . . . .   4
@@ -91,7 +91,7 @@ Table of Contents
 
 1.  Introduction
 
-   A Large BGP Community attribute is defined that encodes 16 bytes
+   A Large Community attribute is defined that encodes 16 bytes
    communities, suitable for 4-Octet Autonomous System Numbers that
    require 8 octets of locally significant opaque data.
 
@@ -99,13 +99,13 @@ Table of Contents
    it must be as similar to the [RFC1997] community as possible, only
    bigger.
 
-   For future proofness a Subtype and Reserved field defined
+   Future variants of the Large Community can be accomodated through the
+   Subtype extension mechanism.
 
-2.  Large BGP Community Attribute
 
-   The Large Community Attribute is a transitive optional BGP attribute,
-   with the Type Code (suggested 41) to be assigned by IANA.  The
-   attribute consists of a set of "Large Communities".  All routes with
+
+
+
 
 
 
@@ -114,6 +114,11 @@ Heitz, et al.             Expires March 7, 2017                 [Page 2]
 Internet-Draft             Large BGP Community            September 2016
 
 
+2.  Large BGP Community Attribute
+
+   The Large Community Attribute is a transitive optional BGP attribute,
+   with the Type Code (suggested 41) to be assigned by IANA.  The
+   attribute consists of a set of Large Communities.  All routes with
    the Large Community attribute belong to the communities listed in the
    attribute.
 
@@ -158,17 +163,16 @@ Internet-Draft             Large BGP Community            September 2016
    |T|             |
    +-+-+-+-+-+-+-+-+
 
-   The transitivity flag is defined as follows:
-
-   T - transitivity flag
-
-
 
 
 Heitz, et al.             Expires March 7, 2017                 [Page 3]
 
 Internet-Draft             Large BGP Community            September 2016
 
+
+   The transitivity flag is defined as follows:
+
+   T - transitivity flag
 
          Value 0: The community is transitive across ASes
 
@@ -179,10 +183,10 @@ Internet-Draft             Large BGP Community            September 2016
 
 3.  Textual Representation
 
-   The textual representation of the Large BGP Community is A:B:C, where
-   A is the Autonomous System number, B is the Local Data part 1 and C
-   is the Local Data part 2.  A ranges from 0 to 4294967295.  B ranges
-   from 0 to 4294967295.  C ranges from 0 to 4294967295.  A, B and C are
+   The textual representation of the Large Community is A:B:C, where A
+   is the Autonomous System number, B is the Local Data part 1 and C is
+   the Local Data part 2.  A ranges from 0 to 4294967295.  B ranges from
+   0 to 4294967295.  C ranges from 0 to 4294967295.  A, B and C are
    plain decimal non-negative integers without leading zeroes.  Each
    number must appear, even if it is 0.  For example, "0:1:2" cannot be
    written as ":1:2".  The string is expected to match the following
@@ -214,10 +218,6 @@ Internet-Draft             Large BGP Community            September 2016
 
    o  ExaBGP
 
-   The latest implementation news is tracked at largebgpcommunities.net
-   [1].
-
-
 
 
 
@@ -226,10 +226,13 @@ Heitz, et al.             Expires March 7, 2017                 [Page 4]
 Internet-Draft             Large BGP Community            September 2016
 
 
+   The latest implementation news is tracked at largebgpcommunities.net
+   [1].
+
 6.  IANA Considerations
 
    IANA is requested to assign a BGP path attribute value for the Large
-   BGP Community attribute.
+   Community attribute (suggested 41).
 
    This document allows for a class of Large Community variants through
    the Subtype field: called the Large Community Variants, for which the
@@ -245,7 +248,7 @@ Internet-Draft             Large BGP Community            September 2016
                     | Large Community | 0x00          |
                     +-----------------+---------------+
 
-       Table 1: Large BGP Community Variants Initial Subtype Values
+         Table 1: Large Community Variants Initial Subtype Values
 
 7.  Acknowledgements
 
@@ -271,9 +274,6 @@ Internet-Draft             Large BGP Community            September 2016
               Code: The Implementation Status Section", BCP 205,
               RFC 7942, DOI 10.17487/RFC7942, July 2016,
               <http://www.rfc-editor.org/info/rfc7942>.
-
-
-
 
 
 
