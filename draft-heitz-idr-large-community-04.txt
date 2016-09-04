@@ -98,11 +98,11 @@ Table of Contents
 
    The Large Community is specifically designed to accomodate routing
    policy related to 4-byte ASNs, as it allows operators to specify two
-   4-byte ASNs and 4-bytes for an action.  For example, to make a
-   request to AS65551 to add 3 prepends when sending a route to AS65536,
-   one might add the Large Community 65551:303:65536.  AS65551 would
-   publish a list of large communities and their associated actions.
-   The Large Community is opaque.
+   4-byte ASNs and still have room for 4 bytes for an action.  For
+   example, to make a request to AS65551 to add 3 prepends when sending
+   a route to AS65536, one might add the Large Community
+   65551:303:65536.  AS65551 would publish a list of large communities
+   and their associated actions.  The Large Community is opaque.
 
 
 
@@ -292,8 +292,9 @@ Internet-Draft             Large BGP Community            September 2016
 
 8.  Acknowledgements
 
-   Thanks to Russ White, Acee Lindem, Shyam Sethuram, Jared Mauch, Joel
-   M.  Halpern and Nick Hilliard for insightful review and comments.
+   Thanks to Ruediger Volk, Russ White, Acee Lindem, Shyam Sethuram,
+   Jared Mauch, Joel M.  Halpern and Nick Hilliard for insightful review
+   and comments.
 
 9.  References
 
@@ -325,7 +326,6 @@ Internet-Draft             Large BGP Community            September 2016
    [1] https://largebgpcommunities.net
 
 Authors' Addresses
-
 
 
 
