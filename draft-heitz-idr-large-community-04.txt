@@ -85,7 +85,7 @@ Table of Contents
    7.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   5
    8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   5
      8.1.  Normative References  . . . . . . . . . . . . . . . . . .   5
-     8.2.  Informative References  . . . . . . . . . . . . . . . . .   5
+     8.2.  Informative References  . . . . . . . . . . . . . . . . .   6
      8.3.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .   6
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   6
 
@@ -95,17 +95,17 @@ Table of Contents
    communities, suitable for 4-Octet Autonomous System Numbers that
    require 8 octets of locally significant opaque data.
 
+   The Large Community is specifically designed to accomodate routing
+   policy related to 4-byte ASNs, as it allows operators to specify two
+   4-byte ASNs and 4-bytes for an action.  For example, to make a
+   request to AS65551 to add 3 prepends when sending a route to AS65536,
+   one might add the Large Community 65551:303:65536.  AS65551 would
+   publish a list of large communities and their associated actions.
+   The Large Community is opaque.
+
    To ensure rapid and smooth adoption of the new community attribute,
    it must be as similar to the [RFC1997] community as possible, only
    bigger.
-
-   Future variants of the Large Community can be accomodated through the
-   Subtype extension mechanism.
-
-
-
-
-
 
 
 
@@ -113,6 +113,9 @@ Heitz, et al.             Expires March 7, 2017                 [Page 2]
 
 Internet-Draft             Large BGP Community            September 2016
 
+
+   Future variants of the Large Community can be accomodated through the
+   Subtype extension mechanism.
 
 2.  Large BGP Community Attribute
 
@@ -158,10 +161,7 @@ Internet-Draft             Large BGP Community            September 2016
    transitivity flag is defined in this document.  All other bits MUST
    be set to 0 on transmit and MUST be ignored on receipt.
 
-    0 1 2 3 4 5 6 7
-   +-+-+-+-+-+-+-+-+
-   |T|             |
-   +-+-+-+-+-+-+-+-+
+
 
 
 
@@ -169,6 +169,11 @@ Heitz, et al.             Expires March 7, 2017                 [Page 3]
 
 Internet-Draft             Large BGP Community            September 2016
 
+
+    0 1 2 3 4 5 6 7
+   +-+-+-+-+-+-+-+-+
+   |T|             |
+   +-+-+-+-+-+-+-+-+
 
    The transitivity flag is defined as follows:
 
@@ -214,17 +219,16 @@ Internet-Draft             Large BGP Community            September 2016
    As of today these vendors have produced an implementation of Large
    BGP Community:
 
-   o  Cisco IOS XR
-
-   o  ExaBGP
-
-
 
 
 Heitz, et al.             Expires March 7, 2017                 [Page 4]
 
 Internet-Draft             Large BGP Community            September 2016
 
+
+   o  Cisco IOS XR
+
+   o  ExaBGP
 
    The latest implementation news is tracked at largebgpcommunities.net
    [1].
@@ -268,12 +272,8 @@ Internet-Draft             Large BGP Community            September 2016
               DOI 10.17487/RFC2119, March 1997,
               <http://www.rfc-editor.org/info/rfc2119>.
 
-8.2.  Informative References
 
-   [RFC7942]  Sheffer, Y. and A. Farrel, "Improving Awareness of Running
-              Code: The Implementation Status Section", BCP 205,
-              RFC 7942, DOI 10.17487/RFC7942, July 2016,
-              <http://www.rfc-editor.org/info/rfc7942>.
+
 
 
 
@@ -281,6 +281,13 @@ Heitz, et al.             Expires March 7, 2017                 [Page 5]
 
 Internet-Draft             Large BGP Community            September 2016
 
+
+8.2.  Informative References
+
+   [RFC7942]  Sheffer, Y. and A. Farrel, "Improving Awareness of Running
+              Code: The Implementation Status Section", BCP 205,
+              RFC 7942, DOI 10.17487/RFC7942, July 2016,
+              <http://www.rfc-editor.org/info/rfc7942>.
 
 8.3.  URIs
 
@@ -320,6 +327,17 @@ Authors' Addresses
    Email: ibagdona.ietf@gmail.com
 
 
+
+
+
+
+
+
+Heitz, et al.             Expires March 7, 2017                 [Page 6]
+
+Internet-Draft             Large BGP Community            September 2016
+
+
    Adam Simpson
    Nokia
    600 March Road
@@ -333,4 +351,42 @@ Authors' Addresses
 
 
 
-Heitz, et al.             Expires March 7, 2017                 [Page 6]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Heitz, et al.             Expires March 7, 2017                 [Page 7]
