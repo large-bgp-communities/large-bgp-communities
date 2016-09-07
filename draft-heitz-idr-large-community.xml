@@ -12,7 +12,7 @@
 <?rfc subcompact="no"?>
 <rfc category="std" docName="draft-heitz-idr-large-community-04" ipr="trust200902">
   <front>
-    <title abbrev="Large BGP Community">Large BGP Community</title>
+    <title abbrev="Large BGP Communities">Large BGP Communities</title>
 
     <author fullname="Jakob Heitz" initials="J." surname="Heitz">
         <organization>Cisco</organization>
