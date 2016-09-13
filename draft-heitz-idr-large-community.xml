@@ -155,6 +155,12 @@
     </section>
     <section title="Textual Representation">
         <t>
+            To allow for smooth communication of community settings between
+            ISPs and their customers, support for the following textual
+            representation is RECOMMENDED. Equipment vendors MAY provide other
+            textual representations.
+        </t>
+        <t>
             The textual representation of the Large Community is A:B:C, where A
             is the Autonomous System number, B is the Local Data part 1 and C is
             the Local Data part 2. A ranges from 0 to 4294967295. B ranges from 0
@@ -228,8 +234,8 @@
     <section title="Acknowledgements">
         <t>
             Thanks to Ruediger Volk, Russ White, Acee Lindem, Shyam Sethuram,
-            Jared Mauch, Joel M. Halpern and Nick Hilliard for insightful
-            review and comments.
+            Jared Mauch, Joel M. Halpern, Nick Hilliard and Jeffrey Haas for
+            insightful review and comments.
         </t>
     </section>
 
