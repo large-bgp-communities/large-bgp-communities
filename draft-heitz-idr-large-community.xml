@@ -216,6 +216,7 @@
            <list style="symbols">
                <t>Cisco IOS XR</t>
                <t>ExaBGP</t>
+               <t>GoBGP</t>
             </list>
        </t>
        <t>
