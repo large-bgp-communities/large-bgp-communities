@@ -1,0 +1,392 @@
+
+
+
+
+IDR                                                             J. Heitz
+Internet-Draft                                                     Cisco
+Intended status: Standards Track                                K. Patel
+Expires: March 19, 2017                                           Arrcus
+                                                             J. Snijders
+                                                                     NTT
+                                                             I. Bagdonas
+                                                                 Equinix
+                                                              A. Simpson
+                                                                   Nokia
+                                                      September 15, 2016
+
+
+                         Large BGP Communities
+                   draft-heitz-idr-large-community-04
+
+Abstract
+
+   A new type of BGP community that contains communities that each
+   represent a 4-octet Global Administrator and a 8-octet opaque field
+   is defined.
+
+Requirements Language
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+   document are to be interpreted as described in [RFC2119].
+
+Status of This Memo
+
+   This Internet-Draft is submitted in full conformance with the
+   provisions of BCP 78 and BCP 79.
+
+   Internet-Drafts are working documents of the Internet Engineering
+   Task Force (IETF).  Note that other groups may also distribute
+   working documents as Internet-Drafts.  The list of current Internet-
+   Drafts is at http://datatracker.ietf.org/drafts/current/.
+
+   Internet-Drafts are draft documents valid for a maximum of six months
+   and may be updated, replaced, or obsoleted by other documents at any
+   time.  It is inappropriate to use Internet-Drafts as reference
+   material or to cite them other than as "work in progress."
+
+   This Internet-Draft will expire on March 19, 2017.
+
+
+
+
+
+
+
+Heitz, et al.            Expires March 19, 2017                 [Page 1]
+
+Internet-Draft            Large BGP Communities           September 2016
+
+
+Copyright Notice
+
+   Copyright (c) 2016 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
+
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents
+   (http://trustee.ietf.org/license-info) in effect on the date of
+   publication of this document.  Please review these documents
+   carefully, as they describe your rights and restrictions with respect
+   to this document.  Code Components extracted from this document must
+   include Simplified BSD License text as described in Section 4.e of
+   the Trust Legal Provisions and are provided without warranty as
+   described in the Simplified BSD License.
+
+Table of Contents
+
+   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
+   2.  Large BGP Community Attribute . . . . . . . . . . . . . . . .   3
+   3.  Textual Representation  . . . . . . . . . . . . . . . . . . .   4
+   4.  Error Handling  . . . . . . . . . . . . . . . . . . . . . . .   5
+   5.  Security Considerations . . . . . . . . . . . . . . . . . . .   5
+   6.  Implementation status - RFC EDITOR: REMOVE BEFORE PUBLICATION   5
+   7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   5
+   8.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   5
+   9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   6
+     9.1.  Normative References  . . . . . . . . . . . . . . . . . .   6
+     9.2.  Informative References  . . . . . . . . . . . . . . . . .   6
+     9.3.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .   6
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   6
+
+1.  Introduction
+
+   A Large Community typ is defined that encodes 8 bytes, suitable for
+   4-Octet Autonomous System Numbers that require 8 octets of locally
+   significant opaque data.  The Large Community is preceded by the with
+   Type code [To be assigned by IANA].
+
+   The Large Community is specifically designed to accomodate routing
+   policy related to 4-byte ASNs, as it allows operators to specify two
+   4-byte ASNs and still have room for 4 bytes for an action.  For
+   example, to make a request to AS65551 to add 3 prepends when sending
+   a route to AS65536, one might add the Large Community
+   65551:303:65536.  AS65551 would publish a list of large communities
+   and their associated actions.  The Large Community is opaque.
+
+
+
+
+
+
+Heitz, et al.            Expires March 19, 2017                 [Page 2]
+
+Internet-Draft            Large BGP Communities           September 2016
+
+
+   To ensure rapid and smooth adoption of the new community attribute,
+   it must be as similar to the [RFC1997] community as possible, only
+   bigger.
+
+2.  Large BGP Community Attribute
+
+   The Large Community is a transitive optional BGP attribute, with the
+   Type Code (suggested 41) to be assigned by IANA.  The attribute
+   consists of a set of Large Communities.  All routes with the Large
+   Community attribute belong to the communities listed in the
+   attribute.
+
+   A single Large Community is encoded as a 16-octet quantity, as
+   follows:
+
+        0                   1                   2                   3
+        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+     / |     Type = Large Community    |          Length = 8           |
+   CH  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+     \ |                       Global Administrator                    |
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+     / |                         Local Data Part 1                     |
+   LC  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+     \ |                         Local Data Part 2                     |
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+   Multiple Large Communities sharing the same Global Administrator can
+   be encoded as follows:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Heitz, et al.            Expires March 19, 2017                 [Page 3]
+
+Internet-Draft            Large BGP Communities           September 2016
+
+
+        0                   1                   2                   3
+        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+     / |     Type = Large Community    |          Length = n * 8       |
+   CH  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+     \ |                       Global Administrator                    |
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+     / |                     Local Data Part 1 (n = 1)                 |
+   LC  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+     \ |                     Local Data Part 2 (n = 1)                 |
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+     / |                     Local Data Part 1 (n = 2)                 |
+   LC  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+     \ |                     Local Data Part 2 (n = 2)                 |
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+     / |                     Local Data Part 1 (n = ... )              |
+   LC  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+     \ |                     Local Data Part 2 (n = ... )              |
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+
+
+   Common Header Type:  The Large Community Type
+
+   Common Header Global Administrator:  This sub-field contains an
+      Autonomous System number assigned by IANA
+
+   Large Community Local Data part 1:  data set by network operator
+
+   Large Communiy Local Data part 2:  data set by network operator
+
+3.  Textual Representation
+
+   To allow for smooth communication of community settings between ISPs
+   and their customers, support for the following textual representation
+   is RECOMMENDED.  Equipment vendors MAY provide other textual
+   representations.
+
+   The textual representation of the Large Community is A:B:C, where A
+   is the Global Administrator number, B is the Local Data part 1 and C
+   is the Local Data part 2.  A ranges from 0 to 4294967295.  B ranges
+   from 0 to 4294967295.  C ranges from 0 to 4294967295.  A, B and C are
+   plain decimal non-negative integers without leading zeroes.  Each
+   number must appear, even if it is 0.  For example, "0:1:2" cannot be
+   written as ":1:2".  The string is expected to match the following
+   regular expression: ^[0-9]+:[0-9]+:[0-9]+$
+
+
+
+
+
+Heitz, et al.            Expires March 19, 2017                 [Page 4]
+
+Internet-Draft            Large BGP Communities           September 2016
+
+
+4.  Error Handling
+
+   The error handling of Large Community is as follows:
+
+   o  The Large Community type SHALL be considered malformed if its
+      length is not a non-zero multiple of 8 bytes.
+
+   o  An UPDATE message with a malformed Large Community type SHALL be
+      handled using the approach of "treat-as-withdraw" as described in
+      section 2 [RFC7606].
+
+5.  Security Considerations
+
+   TBD
+
+6.  Implementation status - RFC EDITOR: REMOVE BEFORE PUBLICATION
+
+   This section records the status of known implementations of the
+   protocol defined by this specification at the time of posting of this
+   Internet-Draft, and is based on a proposal described in [RFC7942].
+   The description of implementations in this section is intended to
+   assist the IETF in its decision processes in progressing drafts to
+   RFCs.  Please note that the listing of any individual implementation
+   here does not imply endorsement by the IETF.  Furthermore, no effort
+   has been spent to verify the information presented here that was
+   supplied by IETF contributors.  This is not intended as, and must not
+   be construed to be, a catalog of available implementations or their
+   features.  Readers are advised to note that other implementations may
+   exist.
+
+   As of today these vendors have produced an implementation of Large
+   BGP Community:
+
+   o  no known implementations
+
+   The latest implementation news is tracked at
+   http://largebgpcommunities.net/ [1].
+
+7.  IANA Considerations
+
+   IANA is requested to assign a Community Type from the Community Type
+   Registry as defined in the BGP Community Common Header .
+
+8.  Acknowledgements
+
+   Thanks to Ruediger Volk, Russ White, Acee Lindem, Shyam Sethuram,
+   Jared Mauch, Joel M.  Halpern, Nick Hilliard and Jeffrey Haas for
+   insightful review and comments.
+
+
+
+Heitz, et al.            Expires March 19, 2017                 [Page 5]
+
+Internet-Draft            Large BGP Communities           September 2016
+
+
+9.  References
+
+9.1.  Normative References
+
+   [RFC1997]  Chandra, R., Traina, P., and T. Li, "BGP Communities
+              Attribute", RFC 1997, DOI 10.17487/RFC1997, August 1996,
+              <http://www.rfc-editor.org/info/rfc1997>.
+
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119,
+              DOI 10.17487/RFC2119, March 1997,
+              <http://www.rfc-editor.org/info/rfc2119>.
+
+   [RFC7606]  Chen, E., Ed., Scudder, J., Ed., Mohapatra, P., and K.
+              Patel, "Revised Error Handling for BGP UPDATE Messages",
+              RFC 7606, DOI 10.17487/RFC7606, August 2015,
+              <http://www.rfc-editor.org/info/rfc7606>.
+
+9.2.  Informative References
+
+   [RFC7942]  Sheffer, Y. and A. Farrel, "Improving Awareness of Running
+              Code: The Implementation Status Section", BCP 205,
+              RFC 7942, DOI 10.17487/RFC7942, July 2016,
+              <http://www.rfc-editor.org/info/rfc7942>.
+
+9.3.  URIs
+
+   [1] https://largebgpcommunities.net
+
+Authors' Addresses
+
+   Jakob Heitz
+   Cisco
+   170 West Tasman Drive
+   San Jose, CA  95054
+   USA
+
+   Email: jheitz@cisco.com
+
+
+   Keyur Patel
+   Arrcus, Inc
+
+   Email: keyur@arrcus.com
+
+
+
+
+
+
+
+Heitz, et al.            Expires March 19, 2017                 [Page 6]
+
+Internet-Draft            Large BGP Communities           September 2016
+
+
+   Job Snijders
+   NTT Communications
+   Theodorus Majofskistraat 100
+   Amsterdam  1065 SZ
+   NL
+
+   Email: job@ntt.net
+
+
+   Ignas Bagdonas
+   Equinix
+   London
+   UK
+
+   Email: ibagdona.ietf@gmail.com
+
+
+   Adam Simpson
+   Nokia
+   600 March Road
+   Ottawa  Ontario K2K 2E6
+   Canada
+
+   Email: adam.1.simpson@nokia.com
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Heitz, et al.            Expires March 19, 2017                 [Page 7]
