@@ -12,7 +12,7 @@
 <?rfc inline="yes"?>
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
-<rfc category="std" docName="draft-heitz-idr-large-community-04" ipr="trust200902">
+<rfc category="std" docName="draft-heitz-idr-large-community-05" ipr="trust200902">
   <front>
     <title abbrev="Large BGP Communities">Large BGP Communities</title>
 
