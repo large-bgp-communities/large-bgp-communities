@@ -208,7 +208,7 @@ Backus-Naur Form (ABNF) notation as specified in <xref target="RFC5234"/>.
 
         non-zero-int    = positive-digit *9digit
 
-        part            = "0" / non-zero-int
+        part            = "0" / non-zero-int ; max value is 4294967295
 
         large-community = part ":" part ":" part
 ]]></artwork>

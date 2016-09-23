@@ -173,7 +173,7 @@ Internet-Draft            Large BGP Communities           September 2016
 3.  Textual Representation
 
    The textual representation of BGP Communities [RFC1997] in RPLs and
-   the networking community is known well as two 2-octet unsigned
+   the networking community is known best as two 2-octet unsigned
    integers and is often represented as such, separated a colon.  For
    example, 65000:12345 (ASN:differentia).
 
