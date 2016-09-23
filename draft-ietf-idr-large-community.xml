@@ -84,10 +84,11 @@
         <t>
             The BGP Communities Attribute <xref target="RFC1997"/> is heavily
             used by operators, but is inadequate to represent large enough
-            values, particularly when referencing literal Four-octet Autonomous
-            System numbers <xref target="RFC6793"/> plus an additional value.
+            values, particularly Four-octet Autonomous System numbers
+	    <xref target="RFC6793"/> plus additional values.
             This document describes an extension to BGP <xref target="RFC4271"/>
-            to address this need with a new exteded form of BGP community.
+            to address this need with a new extended form of the BGP community
+	    Attribute.
         </t>
     </abstract>
 
@@ -114,8 +115,8 @@
               communities are optional transitive BGP attributes, these
               differentia and actions identified by the communities may be
               acted upon or otherwise utilized by the RPL in any Autonomous
-              System (AS) in Internet, often are and often the goal of a adding
-              the community is to signal an AS one or more AS-hops away.
+              System (AS) in the Internet, often are and often the goal of
+	      adding a community is to signal an AS one or more AS-hops away.
           </t>
           <t>
               BGP Communities Attributes are 4-octet values split into two
@@ -127,12 +128,12 @@
           </t>
           <t>
               Since the adoption of Four-octet ASNs <xref target="RFC6793"/>,
-              the BGP Communities Attribute can no longer accomodate this
+              the BGP Communities Attribute can no longer accommodate this
               encoding because it is only large enough to hold the ASN.  Some
               operators have also expressed a need for more than 2-octets of
               operator-defined values. This has led operators to create obtuse
               mappings to fit within 2-octets, the use of which are tedious and
-              error prone and still can not accomodate all use-cases.
+              error prone and still can not accommodate all use-cases.
           </t>
           <t>
               To address this, a Large Community BGP attribute is defined to
@@ -183,7 +184,7 @@
     <section title="Textual Representation">
         <t>
             The textual representation of BGP Communities <xref target="RFC1997"/>
-            in RPLs and the networking community is known best as two 2-octet
+            in RPLs and the networking community is known well as two 2-octet
             unsigned integers and is often represented as such, separated a
             colon. For example, 65000:12345 (ASN:differentia).
         </t>
@@ -228,7 +229,7 @@ Backus-Naur Form (ABNF) notation as specified in <xref target="RFC5234"/>.
             <list style="symbols">
                 <t>
                     A Large Community BGP Path Attribute with a length of zero
-                    MUST MUST be ignored upon receipt and removed when sending.
+                    MUST be ignored upon receipt and removed when sending.
                 </t>
                 <t>
                     A Large Community attribute SHALL be considered malformed
@@ -236,8 +237,9 @@ Backus-Naur Form (ABNF) notation as specified in <xref target="RFC5234"/>.
                 </t>
                 <t>
                     A BGP UPDATE message with a malformed Large Community
-                    attribute SHALL be handled using the approach of "treat-as-withdraw"
-                    as described in <xref target="RFC7606">section 2</xref>.
+                    attribute SHALL be handled using the approach of
+		    "treat-as-withdraw" as described in
+		    <xref target="RFC7606">section 2</xref>.
                 </t>
             </list>
         </t>
@@ -249,11 +251,12 @@ Backus-Naur Form (ABNF) notation as specified in <xref target="RFC5234"/>.
             Communities <xref target="RFC1997"/>.
         </t>
         <t>
-            underlying security issues. Specifically, an operator who is
-            relying on the information carried in BGP must have a transitive
-            trust relationship back to the source of the information.
-            Specifying the mechanism(s) to provide such a relationship is
-            beyond the scope of this document.
+            underlying security issues. Specifically, an AS relying on the
+	    BGP attributes carried in BGP must have trust in every AS in the
+	    path to the source of the route, as any AS in the path may have
+	    altered or deleted attributes or added false attributes.
+            Specifying the mechanism(s) to provide such trust is beyond the
+	    scope of this document.
         </t>
    </section>
    
