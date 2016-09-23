@@ -82,9 +82,12 @@
 
     <abstract>
         <t>
-            A new type of BGP community attribute that contains communities
-            that each hold a 4-octet AS number and a 8-octet opaque field is
-            defined.
+            The BGP Communities Attribute <xref target="RFC1997"/> is heavily
+            used by operators, but is inadequate to represent large enough
+            values, particularly when referencing literal Four-octet Autonomous
+            System numbers <xref target="RFC6793"/> plus an additional value.
+            This document describes an extension to BGP <xref target="RFC4271"/>
+            to address this need with a new exteded form of BGP community.
         </t>
     </abstract>
 
@@ -100,43 +103,66 @@
   </front>
 
   <middle>
-    <section title="Introduction">
-        <t>
-            A Large Community attribute is defined that encodes 12 bytes
-            communities, suitable for 4-Octet Autonomous System Numbers that
-            require 8 octets of locally significant opaque data.
-        </t>
-        <t>
-            The Large Community is specifically designed to accomodate routing
-            policy related to 4-byte ASNs, as it allows operators to specify
-            two 4-byte ASNs and still have room for 4 bytes for an action. For
-            example, to make a request to AS65551 to add 3 prepends when
-            sending a route to AS65536, one might add the Large Community
-            65551:303:65536. AS65551 would publish a list of large communities
-            and their associated actions. The Large Community is opaque.
-        </t>
-        <t>
-            To ensure rapid and smooth adoption of the new community attribute,
-            it must be as similar to the  <xref target="RFC1997"/> community as
-            possible, only bigger.
-        </t>
+      <section title="Introduction">
+          <t>
+              BGP implementations typically support a routing policy language
+              (RPL) to control the distribution of routing information.
+              Network operators add BGP communities to routes via the RPL to
+              identify intrinsic differentia of a route such as its origin
+              country or specify a RPL action to be taken, or one that has been
+              taken, on an individual route or group of routes. Because BGP
+              communities are optional transitive BGP attributes, these
+              differentia and actions identified by the communities may be
+              acted upon or otherwise utilized by the RPL in any Autonomous
+              System (AS) in Internet, often are and often the goal of a adding
+              the community is to signal an AS one or more AS-hops away.
+          </t>
+          <t>
+              BGP Communities Attributes are 4-octet values split into two
+              2-octet values where the most significant word is an Autonomous
+              System number (ASN) and the least significant word is a value
+              whose meaning is defined by operators of that Autonomous System.
+              This operator-defined value is the aforementioned differentia or
+              RPL action.
+          </t>
+          <t>
+              Since the adoption of Four-octet ASNs <xref target="RFC6793"/>,
+              the BGP Communities Attribute can no longer accomodate this
+              encoding because it is only large enough to hold the ASN.  Some
+              operators have also expressed a need for more than 2-octets of
+              operator-defined values. This has led operators to create obtuse
+              mappings to fit within 2-octets, the use of which are tedious and
+              error prone and still can not accomodate all use-cases.
+          </t>
+          <t>
+              To address this, a Large Community BGP attribute is defined to
+              encode one or more 12-octet values each consisting of a
+              Four-octet Autonomous System Number and two 4 octet
+              operator-defined values for differentia or actions defined by
+              that Autonomous System.
+          </t>
     </section>
 
     <section title="Large BGP Community Attribute">
         <t>
-            The Large Community Attribute is a transitive optional BGP
-            attribute, with the Type Code (suggested 41) to be assigned by
-            IANA. The attribute consists of a set of Large Communities. All
-            routes with the Large Community attribute belong to the
-            communities listed in the attribute.
+            This document creates the Large Communities BGP path attribute as
+            an optional transitive attribute of variable length.  All routes
+            with the Large Community attribute belong to the communities in the
+            attribute.
         </t>
         <t>
-            Each Large Community is encoded as a 12-octet quantity, as follows:
+            The Large COMMUNITIES attribute has Type Code TBD - RFC EDITOR
+            fill-in IANA assigned value.
+        </t>
+        <t>
+            The attribute consists of one or more 12-octet values. Each
+            12-octet Large Community value represents three 4-octet values, as
+            follows:
 <figure align="center"><artwork><![CDATA[
  0                   1                   2                   3
  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|                        Global Administrator                   |
+|                     Autonomous System Number                  |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 |                         Local Data Part 1                     |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -146,30 +172,52 @@
 
 <t>
     <list style="hanging">
-        <t hangText="Autonomous System Number:">This field indicates the Autonomous System in which the Large Community has a meaning.</t>
-        <t hangText="Local Data part 1:">data set by network operator</t>
-        <t hangText="Local Data part 2:">data set by network operator</t>
+        <t hangText="Autonomous System Number:">The Four-octet ASN of the operator with whom definition of the final two 4-octet values lies.</t>
+        <t hangText="Local Data part 1:">4-octet operator-defined value.</t>
+        <t hangText="Local Data part 2:">4-octet operator-defined value.</t>
     </list>
 </t>
 
     </section>
+
     <section title="Textual Representation">
         <t>
-            To allow for smooth communication of community settings between
-            ISPs and their customers, support for the following textual
-            representation is RECOMMENDED. Equipment vendors MAY provide other
-            textual representations.
+            The textual representation of BGP Communities <xref target="RFC1997"/>
+            in RPLs and the networking community is known well as two 2-octet
+            unsigned integers and is often represented as such, separated a
+            colon. For example, 65000:12345 (ASN:differentia).
         </t>
         <t>
-            The textual representation of the Large Community is A:B:C, where A
-            is the Autonomous System number, B is the Local Data part 1 and C is
-            the Local Data part 2. A ranges from 0 to 4294967295. B ranges from 0
-            to 4294967295. C ranges from 0 to 4294967295. A, B and C are plain
-            decimal non-negative integers without leading zeroes. Each number must
-            appear, even if it is 0. For example, "0:1:2" cannot be written as
-            ":1:2". The string is expected to match the following regular
-            expression: ^[0-9]+:[0-9]+:[0-9]+$
+            Large Communities MUST be represented similarly, as three 4-octet
+            unsigned integers with no leading zeros. An integer MUST NOT be
+            omitted, even when zero. Implementations MUST represent Large
+            Communities in RPL in a manner consistent with their representation
+            of BGP Communities <xref target="RFC1997"/>. For example, 65000:1:2
+            (ASN:Local Data Part 1:Local Data Part 2) or 65000:0:0.
         </t>
+        <t>
+The following Large BGP Communities textual specification uses the Augmented
+Backus-Naur Form (ABNF) notation as specified in <xref target="RFC5234"/>.
+<figure align="center">
+<artwork><![CDATA[
+        positive-digit  = "1" / "2" / "3" /
+                          "4" / "5" / "6" /
+                          "7" / "8" / "9"
+
+        digit           = "0" / positive-digit
+
+        non-zero-int    = positive-digit *9digit
+
+        part            = "0" / non-zero-int
+
+        large-community = part ":" part ":" part
+]]></artwork>
+</figure>
+</t>
+        <t>
+            Vendors MAY provide other textual representations.
+        </t>
+
     </section>
 
     <section title="Error Handling">
@@ -179,20 +227,34 @@
         <t>
             <list style="symbols">
                 <t>
-                The Large Community attribute SHALL be considered malformed if
-                its length is not a non-zero multiple of 12 bytes.
+                    A Large Community BGP Path Attribute with a length of zero
+                    MUST MUST be ignored upon receipt and removed when sending.
                 </t>
                 <t>
-                An UPDATE message with a malformed Large Community attribute
-                SHALL be handled using the approach of "treat-as-withdraw" as
-                described in <xref target="RFC7606">section 2</xref>.
-              </t>
+                    A Large Community attribute SHALL be considered malformed
+                    if its length is not a non-zero multiple of 12 bytes.
+                </t>
+                <t>
+                    A BGP UPDATE message with a malformed Large Community
+                    attribute SHALL be handled using the approach of "treat-as-withdraw"
+                    as described in <xref target="RFC7606">section 2</xref>.
+                </t>
             </list>
         </t>
     </section>
 
     <section title="Security Considerations">
-       <t>TBD</t>
+        <t>
+            This extension to BGP has similar security implications as BGP
+            Communities <xref target="RFC1997"/>.
+        </t>
+        <t>
+            underlying security issues. Specifically, an operator who is
+            relying on the information carried in BGP must have a transitive
+            trust relationship back to the source of the information.
+            Specifying the mechanism(s) to provide such a relationship is
+            beyond the scope of this document.
+        </t>
    </section>
    
    <section title="Implementation status - RFC EDITOR: REMOVE BEFORE PUBLICATION">
@@ -228,7 +290,7 @@
     <section title="IANA Considerations">
         <t>
             IANA is requested to assign a BGP path attribute value for the
-            Large Community attribute (suggested 41).
+            Large Community attribute.
         </t>
     </section>
 
@@ -240,7 +302,7 @@
         </t>
         <t>
             The authors would like to thank Gunter van de Velde, Marco
-            Marzetti, Eduardo Ascenço Reis, Mark Schouten, Paul Hoogsteder,
+            Marzetti, Eduardo Ascenco Reis, Mark Schouten, Paul Hoogsteder,
             Martijn Schmidt, Greg Hankins, Acee Lindem, Bertrand Duvivier,
             Barry O'Donovan, Grzegorz Janoszka, Linda Dunbar, Marco Davids,
             Gaurab Raj Upadhaya, Jeff Tantsura, Teun Vink, Adam Davenport,
@@ -250,8 +312,8 @@
             Gert Doering, Thomas King, Mikael Abrahamsson, Wesley Steehouwer,
             Sander Steffann, Brad Dreisbach, Martin Millnert, Christopher
             Morrow, Jay Borkenhagen, Arnold Nipper, Joe Provo, Niels Bakker,
-            Bill Fenner, Tom Daly, Ben Maddison, Alexander Azimov and Brian
-            Dickson for their support.
+            Bill Fenner, Tom Daly, Ben Maddison, Alexander Azimov, Brian
+            Dickson and Peter van Dijk for their support.
         </t>
     </section>
 
@@ -261,9 +323,12 @@
     <references title="Normative References">
       <?rfc include="reference.RFC.1997"?>
       <?rfc include="reference.RFC.2119"?>
+      <?rfc include="reference.RFC.4271"?>
+      <?rfc include="reference.RFC.6793"?>
       <?rfc include="reference.RFC.7606"?>
     </references>
     <references title="Informative References">
+      <?rfc include="reference.RFC.5234"?>
       <?rfc include="reference.RFC.7942"?>
     </references>
 
