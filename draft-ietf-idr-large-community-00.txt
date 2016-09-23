@@ -271,9 +271,9 @@ Internet-Draft            Large BGP Communities           September 2016
 
 8.  Acknowledgements
 
-   Thanks to Ruediger Volk, Russ White, Acee Lindem, Shyam Sethuram,
-   Jared Mauch, Joel M.  Halpern, Nick Hilliard, Jeffrey Haas and John
-   Heasley for insightful review and comments.
+   The authors would like to thank Ruediger Volk, Russ White, Acee
+   Lindem, Shyam Sethuram, Jared Mauch, Joel M.  Halpern, Nick Hilliard,
+   Jeffrey Haas, John Heasley, Gunter van de Velde, Marco Marzetti,
 
 
 
@@ -282,7 +282,6 @@ Heitz, et al.            Expires March 27, 2017                 [Page 5]
 Internet-Draft            Large BGP Communities           September 2016
 
 
-   The authors would like to thank Gunter van de Velde, Marco Marzetti,
    Eduardo Ascenco Reis, Mark Schouten, Paul Hoogsteder, Martijn
    Schmidt, Greg Hankins, Acee Lindem, Bertrand Duvivier, Barry
    O'Donovan, Grzegorz Janoszka, Linda Dunbar, Marco Davids, Gaurab Raj
@@ -294,7 +293,7 @@ Internet-Draft            Large BGP Communities           September 2016
    Dreisbach, Martin Millnert, Christopher Morrow, Jay Borkenhagen,
    Arnold Nipper, Joe Provo, Niels Bakker, Bill Fenner, Tom Daly, Ben
    Maddison, Alexander Azimov, Brian Dickson and Peter van Dijk for
-   their support.
+   their support, insightful review and comments.
 
 9.  References
 
@@ -330,6 +329,7 @@ Internet-Draft            Large BGP Communities           September 2016
               Specifications: ABNF", STD 68, RFC 5234,
               DOI 10.17487/RFC5234, January 2008,
               <http://www.rfc-editor.org/info/rfc5234>.
+
 
 
 

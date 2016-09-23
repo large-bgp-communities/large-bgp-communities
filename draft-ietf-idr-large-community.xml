@@ -296,12 +296,9 @@ Backus-Naur Form (ABNF) notation as specified in <xref target="RFC5234"/>.
 
     <section title="Acknowledgements">
         <t>
-            Thanks to Ruediger Volk, Russ White, Acee Lindem, Shyam Sethuram,
-            Jared Mauch, Joel M. Halpern, Nick Hilliard, Jeffrey Haas and John
-            Heasley for insightful review and comments.
-        </t>
-        <t>
-            The authors would like to thank Gunter van de Velde, Marco
+            The authors would like to thank Ruediger Volk, Russ White, Acee
+            Lindem, Shyam Sethuram, Jared Mauch, Joel M. Halpern, Nick
+            Hilliard, Jeffrey Haas, John Heasley, Gunter van de Velde, Marco
             Marzetti, Eduardo Ascenco Reis, Mark Schouten, Paul Hoogsteder,
             Martijn Schmidt, Greg Hankins, Acee Lindem, Bertrand Duvivier,
             Barry O'Donovan, Grzegorz Janoszka, Linda Dunbar, Marco Davids,
@@ -313,7 +310,8 @@ Backus-Naur Form (ABNF) notation as specified in <xref target="RFC5234"/>.
             Sander Steffann, Brad Dreisbach, Martin Millnert, Christopher
             Morrow, Jay Borkenhagen, Arnold Nipper, Joe Provo, Niels Bakker,
             Bill Fenner, Tom Daly, Ben Maddison, Alexander Azimov, Brian
-            Dickson and Peter van Dijk for their support.
+            Dickson and Peter van Dijk for their support, insightful review and
+            comments.
         </t>
     </section>
 
