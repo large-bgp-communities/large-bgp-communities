@@ -163,7 +163,7 @@
  0                   1                   2                   3
  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|                     Autonomous System Number                  |
+|                                 ASN                           |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 |                         Local Data Part 1                     |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -173,11 +173,43 @@
 
 <t>
     <list style="hanging">
-        <t hangText="Autonomous System Number:">The Four-octet ASN of the operator with whom definition of the final two 4-octet values lies.</t>
+        <t hangText="ASN:">The Four-octet Autonomous System Number of the operator with whom definition of the final two 4-octet values lies.</t>
         <t hangText="Local Data part 1:">4-octet operator-defined value.</t>
         <t hangText="Local Data part 2:">4-octet operator-defined value.</t>
     </list>
 </t>
+        <t>
+It is not a protocol error to put an invalid ASN into the ASN field.
+For example 0 or 23456 are allowed. It is up to the receiving BGP speaker to
+recognize (or not) any received large communities. There are no routing semantics
+implied by the ASN field. For example, this document does not require a receiver
+of a large community to know where the AS identified by the ASN of a large community is and
+to forward the route containing that large community towards that AS.
+The ASN field is simply a convenience that allows different ASes to define large communities
+without clashing with each other. If an AS wants to use invalid ASNs in the ASN
+field privately within its own AS or even by agreement with a neighboring AS, then
+this document does not prohibit it.
+        </t>
+        <t>
+The large communities are transmitted in the order: ASN, followed by part 1, followed by part 2.
+Each integer is in network byte order.
+That is, most significant bit first. The first large community immediately follows the BGP
+path attribute header. Each large community immediately follows the previous one. There is no
+significance to the order in which the large communities are transmitted. Duplicate
+large communities SHOULD NOT be transmitted. A receiving speaker MAY silently remove
+duplicate large communities and MAY retransmit them in an order different to which
+it received them.
+        </t>
+
+    </section>
+
+    <section title="Aggregatation">
+        <t>
+   If a range of routes is to be aggregated and the resultant aggregates
+   attribute section does not carry the ATOMIC_AGGREGATE attribute, then
+   the resulting aggregate should have a large communities path attribute
+   which contains all large communities from all of the aggregated routes.
+        </t>
 
     </section>
 
@@ -190,7 +222,7 @@
         </t>
         <t>
             Large Communities MUST be represented similarly, as three 4-octet
-            unsigned integers with no leading zeros. An integer MUST NOT be
+            unsigned decimal integers with no leading zeros. An integer MUST NOT be
             omitted, even when zero. Implementations MUST represent Large
             Communities in RPL in a manner consistent with their representation
             of BGP Communities <xref target="RFC1997"/>. For example, 65000:1:2
@@ -209,14 +241,20 @@ Backus-Naur Form (ABNF) notation as specified in <xref target="RFC5234"/>.
 
         non-zero-int    = positive-digit *9digit
 
-        part            = "0" / non-zero-int ; max value is 4294967295
+        part            = "0" / non-zero-int ; max value is
+                          4294967295
 
         large-community = part ":" part ":" part
 ]]></artwork>
 </figure>
 </t>
         <t>
-            Vendors MAY provide other textual representations.
+            Vendors MAY provide other textual representations. For example, some 
+vendor's RPL may use a separator other than a colon or may require keywords or
+characters prepending or postpending the large community. Such differences are
+permitted. However, each implementation MUST make a representation available
+that depicts the intergers in decimal and in the order 
+(ASN:Local Data Part 1:Local Data Part 2).
         </t>
 
     </section>
