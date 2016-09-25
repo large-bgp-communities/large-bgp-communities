@@ -385,7 +385,9 @@ it received them.
       <?rfc include="reference.RFC.7606"?>
     </references>
     <references title="Informative References">
+      <?rfc include="reference.RFC.4360"?>
       <?rfc include="reference.RFC.5234"?>
+      <?rfc include="reference.RFC.7454"?>
       <?rfc include="reference.RFC.7942"?>
     </references>
 
