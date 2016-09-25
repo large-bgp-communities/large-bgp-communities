@@ -87,7 +87,7 @@ Table of Contents
    10. References  . . . . . . . . . . . . . . . . . . . . . . . . .   7
      10.1.  Normative References . . . . . . . . . . . . . . . . . .   7
      10.2.  Informative References . . . . . . . . . . . . . . . . .   7
-     10.3.  URIs . . . . . . . . . . . . . . . . . . . . . . . . . .   7
+     10.3.  URIs . . . . . . . . . . . . . . . . . . . . . . . . . .   8
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   8
 
 1.  Introduction
@@ -104,7 +104,7 @@ Table of Contents
    in other Autonomous Systems (AS) on the Internet.
 
    [RFC1997] BGP Communities Attributes are four-octet values split into
-   two separate two-octet words.  The most significant word is usually
+   two individual two-octet words.  The most significant word is usually
    interpreted as an Autonomous System Number (ASN) and the least
 
 
@@ -144,24 +144,24 @@ Internet-Draft            Large BGP Communities           September 2016
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |                                 ASN                           |
+   |                      Global Administrator                     |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |                         Local Data Part 1                     |
+   |                       Local Data Part 1                       |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |                         Local Data Part 2                     |
+   |                       Local Data Part 2                       |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
-   ASN:  The Four-octet Autonomous System Number of the operator with
-      whom definition of the final two 4-octet values lies.
+   Global Administrator:  A four-octet namespace identifier.  This
+      SHOULD be an Autonomous System Number assigned by IANA.
 
-   Local Data Part 1:  4-octet operator-defined value.
+   Local Data Part 1:  A four-octet operator-defined value.
 
-   Local Data Part 2:  4-octet operator-defined value.
+   Local Data Part 2:  A four-octet operator-defined value.
 
-   It is not a protocol error to put an invalid ASN into the ASN field.
-   For example 0 or 23456 are allowed.  It is up to the receiving BGP
-   speaker to recognize (or not) any received large communities.  There
-   are no routing semantics implied by the ASN field.  For example, this
+   It is up to the receiving BGP speaker to recognize (or not) any
+   received large communities.  There are no routing semantics implied
+   by the Global Administrator field.  For example, this document does
+   not require a receiver of a Large Communities attribute to know where
 
 
 
@@ -170,50 +170,50 @@ Heitz, et al.            Expires March 29, 2017                 [Page 3]
 Internet-Draft            Large BGP Communities           September 2016
 
 
-   document does not require a receiver of a Large Communities attribute
-   to know where the AS identified by the ASN of a Large Communities
-   attribute is and to forward the route containing that large community
-   towards that AS.  The ASN field is simply a convenience that allows
+   the AS identified by the ASN of a Large Communities attribute is and
+   to forward the route containing that large community towards that AS.
+   The Global Administrator field is simply a convenience that allows
    different ASes to define large communities without clashing with each
-   other.  If an AS wants to use invalid ASNs in the ASN field privately
-   within its own AS or even by agreement with a neighboring AS, then
-   this document does not prohibit it.
+   other.  If an AS wants to use invalid ASNs in the Global
+   Administrator field privately within its own AS or even by agreement
+   with a neighboring AS, then this document does not prohibit it.
 
-   The large communities are transmitted in the order: ASN, followed by
-   part 1, followed by part 2.  Each integer is in network byte order.
-   That is, most significant bit first.  The first Large Communities
-   attribute immediately follows the BGP path attribute header.  Each
-   Large Communities attribute immediately follows the previous one.
-   There is no significance to the order in which the large communities
-   are transmitted.  Duplicate large communities SHOULD NOT be
-   transmitted.  A receiving speaker MAY silently remove duplicate large
-   communities and MAY retransmit them in an order different to which it
-   received them.
+   The large communities are transmitted in the order: Global
+   Administrator, followed by part 1, followed by part 2.  Each integer
+   is in network byte order.  That is, most significant bit first.  The
+   first Large Communities attribute immediately follows the BGP path
+   attribute header.  Each Large Communities attribute immediately
+   follows the previous one.  There is no significance to the order in
+   which the large communities are transmitted.  Duplicate large
+   communities SHOULD NOT be transmitted.  A receiving speaker MAY
+   silently remove duplicate large communities and MAY retransmit them
+   in an order different to which it received them.
 
 3.  Aggregation
 
-   If a range of routes is to be aggregated and the resultant aggregates
+   If a range of routes is aggregated and the resulting aggregates
    attribute section does not carry the ATOMIC_AGGREGATE attribute, then
-   the resulting aggregate should have a large communities path
+   the resulting aggregate should have a Large Communities path
    attribute which contains all large communities from all of the
    aggregated routes.
 
 4.  Textual Representation
 
-   The textual representation of BGP Communities [RFC1997] in routing
-   policy languages and the networking community is known well as two
-   2-octet unsigned integers and is often represented as such, separated
-   by a colon.  For example, 65000:12345 (ASN:differentia).
+   BGP Communities [RFC1997] are usually represented in routing policy
+   languages as two individual two-octet unsigned integers separated by
+   a colon; for example, 64496:12345.
 
-   Large Communities MUST be represented similarly, as three 4-octet
-   unsigned decimal integers with no leading zeros.  An integer MUST NOT
-   be omitted, even when zero.  Implementations MUST represent Large
-   Communities in a manner consistent with their representation of BGP
-   Communities [RFC1997].  For example, 65000:1:2 (ASN:Local Data Part
-   1:Local Data Part 2) or 65000:0:0.
+   BGP Large Communities implementations MUST represent Large
+   Communities in a manner similar to their representation of BGP
+   Communities [RFC1997].  Large Communities MUST be represented as
+   three separate four-octet unsigned integers in decimal format with no
+   leading zeros.  These integers MUST NOT be omitted, even when zero.
+   For example, 64496:4294967295:2 or 64496:0:0.
 
    The following Large BGP Communities textual specification uses the
    Augmented Backus-Naur Form (ABNF) notation as specified in [RFC5234].
+
+
 
 
 
@@ -239,13 +239,13 @@ Internet-Draft            Large BGP Communities           September 2016
 
            large-community = part ":" part ":" part
 
-   Vendors MAY provide other textual representations.  For example, some
+   Vendors MAY provide other textual representations.  For example, a
    vendor's routing policy language may use a separator other than a
    colon or may require keywords or characters prepending or postpending
    the Large Communities attribute.  Such differences are permitted.
    However, each implementation MUST make a representation available
-   that depicts the intergers in decimal and in the order (ASN:Local
-   Data Part 1:Local Data Part 2).
+   that depicts the intergers in decimal and in the following order:
+   Global Administrator, Local Data Part 1, Local Data Part 2.
 
 5.  Error Handling
 
@@ -261,19 +261,19 @@ Internet-Draft            Large BGP Communities           September 2016
       SHALL be handled using the approach of "treat-as-withdraw" as
       described in section 2 [RFC7606].
 
+   The BGP Large Communities Global Administrator field may contain any
+   value, and it is not an error to use an invalid or reserved ASN in
+   this field.
+
 6.  Security Considerations
 
    This extension to BGP has similar security implications as BGP
-   Communities [RFC1997].
+   Communities [RFC1997] and BGP Extended Communities [RFC4360].
 
-   underlying security issues.  Specifically, an AS relying on the BGP
-   attributes carried in BGP must have trust in every AS in the path to
-   the source of the route, as any AS in the path may have altered or
-   deleted attributes or added false attributes.  Specifying the
-   mechanism(s) to provide such trust is beyond the scope of this
-   document.
-
-
+   This document does not change any underlying security issues
+   associated with any other BGP Communities mechanism.  Specifically,
+   an AS relying on the BGP attributes carried in BGP must have trust in
+   every other AS in the path, as any intermediate Autonomous System in
 
 
 
@@ -281,6 +281,13 @@ Heitz, et al.            Expires March 29, 2017                 [Page 5]
 
 Internet-Draft            Large BGP Communities           September 2016
 
+
+   the path may have added, deleted or altered attributes.  Specifying
+   the mechanism to provide such trust is beyond the scope of this
+   document.
+
+   Network administrators should note the recommendations in Section 11
+   of BGP Operations and Security [RFC7454].
 
 7.  Implementation status - RFC EDITOR: REMOVE BEFORE PUBLICATION
 
@@ -323,13 +330,6 @@ Internet-Draft            Large BGP Communities           September 2016
    Schmidt, Greg Hankins, Acee Lindem, Bertrand Duvivier, Barry
    O'Donovan, Grzegorz Janoszka, Linda Dunbar, Marco Davids, Gaurab Raj
    Upadhaya, Jeff Tantsura, Teun Vink, Adam Davenport, Theodore Baschak,
-   Pier Carlo Chiodi, Nabeel Cocker, Ian Dickinson, Jan Baggen, Duncan
-   Lockwood, David Farmer, Randy Bush, Wim Henderickx, Stefan Plug, Kay
-   Rechthien, Rob Shakir, Warren Kumari, Gert Doering, Thomas King,
-   Mikael Abrahamsson, Wesley Steehouwer, Sander Steffann, Brad
-   Dreisbach, Martin Millnert, Christopher Morrow, Jay Borkenhagen,
-   Arnold Nipper, Joe Provo, Niels Bakker, Bill Fenner, Tom Daly, Ben
-
 
 
 
@@ -338,6 +338,12 @@ Heitz, et al.            Expires March 29, 2017                 [Page 6]
 Internet-Draft            Large BGP Communities           September 2016
 
 
+   Pier Carlo Chiodi, Nabeel Cocker, Ian Dickinson, Jan Baggen, Duncan
+   Lockwood, David Farmer, Randy Bush, Wim Henderickx, Stefan Plug, Kay
+   Rechthien, Rob Shakir, Warren Kumari, Gert Doering, Thomas King,
+   Mikael Abrahamsson, Wesley Steehouwer, Sander Steffann, Brad
+   Dreisbach, Martin Millnert, Christopher Morrow, Jay Borkenhagen,
+   Arnold Nipper, Joe Provo, Niels Bakker, Bill Fenner, Tom Daly, Ben
    Maddison, Alexander Azimov, Brian Dickson, Peter van Dijk and Julian
    Seifert for their support, insightful review and comments.
 
@@ -371,10 +377,26 @@ Internet-Draft            Large BGP Communities           September 2016
 
 10.2.  Informative References
 
+   [RFC4360]  Sangli, S., Tappan, D., and Y. Rekhter, "BGP Extended
+              Communities Attribute", RFC 4360, DOI 10.17487/RFC4360,
+              February 2006, <http://www.rfc-editor.org/info/rfc4360>.
+
    [RFC5234]  Crocker, D., Ed. and P. Overell, "Augmented BNF for Syntax
               Specifications: ABNF", STD 68, RFC 5234,
               DOI 10.17487/RFC5234, January 2008,
               <http://www.rfc-editor.org/info/rfc5234>.
+
+
+
+
+Heitz, et al.            Expires March 29, 2017                 [Page 7]
+
+Internet-Draft            Large BGP Communities           September 2016
+
+
+   [RFC7454]  Durand, J., Pepelnjak, I., and G. Doering, "BGP Operations
+              and Security", BCP 194, RFC 7454, DOI 10.17487/RFC7454,
+              February 2015, <http://www.rfc-editor.org/info/rfc7454>.
 
    [RFC7942]  Sheffer, Y. and A. Farrel, "Improving Awareness of Running
               Code: The Implementation Status Section", BCP 205,
@@ -384,15 +406,6 @@ Internet-Draft            Large BGP Communities           September 2016
 10.3.  URIs
 
    [1] https://largebgpcommunities.net
-
-
-
-
-
-Heitz, et al.            Expires March 29, 2017                 [Page 7]
-
-Internet-Draft            Large BGP Communities           September 2016
-
 
 Authors' Addresses
 
@@ -428,6 +441,15 @@ Authors' Addresses
    Email: ibagdona.ietf@gmail.com
 
 
+
+
+
+
+Heitz, et al.            Expires March 29, 2017                 [Page 8]
+
+Internet-Draft            Large BGP Communities           September 2016
+
+
    Adam Simpson
    Nokia
    600 March Road
@@ -445,4 +467,38 @@ Authors' Addresses
 
 
 
-Heitz, et al.            Expires March 29, 2017                 [Page 8]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Heitz, et al.            Expires March 29, 2017                 [Page 9]
