@@ -24,7 +24,7 @@ Abstract
    but is inadequate to represent large enough values, particularly
    Four-octet Autonomous System numbers [RFC6793] plus additional
    values.  This document describes an extension to BGP [RFC4271] to
-   address this need with a new extended form of the BGP community
+   address this need with a new extended form of the BGP Communities
    Attribute.
 
 Requirements Language
@@ -76,8 +76,8 @@ Copyright Notice
 Table of Contents
 
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
-   2.  Large BGP Community Attribute . . . . . . . . . . . . . . . .   3
-   3.  Aggregatation . . . . . . . . . . . . . . . . . . . . . . . .   4
+   2.  Large BGP Communities Attribute . . . . . . . . . . . . . . .   3
+   3.  Aggregation . . . . . . . . . . . . . . . . . . . . . . . . .   4
    4.  Textual Representation  . . . . . . . . . . . . . . . . . . .   4
    5.  Error Handling  . . . . . . . . . . . . . . . . . . . . . . .   5
    6.  Security Considerations . . . . . . . . . . . . . . . . . . .   5
@@ -94,18 +94,18 @@ Table of Contents
 
    BGP implementations typically support a routing policy language to
    control the distribution of routing information.  Network operators
-   add BGP communities to routes via their routing policy to identify
-   intrinsic differentia of a route such as its origin country or
-   specify a routing policy action to be taken, or one that has been
-   taken, on an individual route or group of routes.  Because BGP
-   communities are optional transitive BGP attributes, these differentia
-   and actions identified by the communities may be acted upon or
-   otherwise utilized by the routing policy in any Autonomous System
-   (AS) in the Internet, often are and often the goal of adding a
-   community is to signal an AS one or more AS-hops away.
+   attach BGP communities to routes according to their routing policy to
+   identify intrinsic properties of these routes.  These properties may
+   include information such as the route origin location, or
+   specification of a routing policy action to be taken, or one that has
+   been taken, and may apply to an individual route or group of routes.
+   Because BGP communities are optional transitive BGP attributes, BGP
+   communities may be acted upon or otherwise used by routing policies
+   in other Autonomous Systems (AS) on the Internet.
 
-   BGP Communities Attributes are 4-octet values split into two 2-octet
-   values where the most significant word is an Autonomous System number
+   [RFC1997] BGP Communities Attributes are four-octet values split into
+   two separate two-octet words.  The most significant word is usually
+   interpreted as an Autonomous System Number (ASN) and the least
 
 
 
@@ -114,36 +114,32 @@ Heitz, et al.            Expires March 29, 2017                 [Page 2]
 Internet-Draft            Large BGP Communities           September 2016
 
 
-   (ASN) and the least significant word is a value whose meaning is
-   defined by operators of that Autonomous System.  This operator-
-   defined value is the aforementioned differentia or routing policy
-   action.
+   significant word is a locally defined value whose meaning is assigned
+   by the operator of the Autonomous System to which it applies.
 
-   Since the adoption of Four-octet ASNs [RFC6793], the BGP Communities
-   Attribute can no longer accommodate this encoding because it is only
-   large enough to hold the ASN.  Some operators have also expressed a
-   need for more than 2-octets of operator-defined values.  This has led
-   operators to create obtuse mappings to fit within 2-octets, the use
-   of which are tedious and error prone and still can not accommodate
-   all use-cases.
+   Since the adoption of four-octet ASNs [RFC6793], the BGP Communities
+   Attribute can no longer accommodate this encoding, as the
+   specification in [RFC1997] contains only four octets.  This does not
+   allow operators to specify any locally significant values.
 
-   To address this, a Large Community BGP attribute is defined to encode
-   one or more 12-octet values each consisting of a Four-octet
-   Autonomous System Number and two 4 octet operator-defined values for
-   differentia or actions defined by that Autonomous System.
+   To address these shortcomings, this document defines a Large
+   Community BGP Attribute to encode one or more 12-octet values, each
+   consisting of a four-octet ASN and two four-octet operator-defined
+   values, each of which can be used to denote properties or actions
+   significant to that ASN.
 
-2.  Large BGP Community Attribute
+2.  Large BGP Communities Attribute
 
    This document creates the Large Communities BGP path attribute as an
    optional transitive attribute of variable length.  All routes with
-   the Large Community attribute belong to the communities in the
-   attribute.
+   the Large Communities attribute belong to the community specified in
+   the attribute.
 
-   The Large COMMUNITIES attribute has Type Code TBD - RFC EDITOR fill-
-   in IANA assigned value.
+   The Large Communities attribute has Type Code [TBD - RFC EDITOR to
+   fill-in IANA assigned value].
 
    The attribute consists of one or more 12-octet values.  Each 12-octet
-   Large Community value represents three 4-octet values, as follows:
+   Large Communities value represents three 4-octet values, as follows:
 
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
@@ -162,6 +158,10 @@ Internet-Draft            Large BGP Communities           September 2016
 
    Local Data part 2:  4-octet operator-defined value.
 
+   It is not a protocol error to put an invalid ASN into the ASN field.
+   For example 0 or 23456 are allowed.  It is up to the receiving BGP
+   speaker to recognize (or not) any received large communities.  There
+   are no routing semantics implied by the ASN field.  For example, this
 
 
 
@@ -170,31 +170,27 @@ Heitz, et al.            Expires March 29, 2017                 [Page 3]
 Internet-Draft            Large BGP Communities           September 2016
 
 
-   It is not a protocol error to put an invalid ASN into the ASN field.
-   For example 0 or 23456 are allowed.  It is up to the receiving BGP
-   speaker to recognize (or not) any received large communities.  There
-   are no routing semantics implied by the ASN field.  For example, this
-   document does not require a receiver of a large community to know
-   where the AS identified by the ASN of a large community is and to
-   forward the route containing that large community towards that AS.
-   The ASN field is simply a convenience that allows different ASes to
-   define large communities without clashing with each other.  If an AS
-   wants to use invalid ASNs in the ASN field privately within its own
-   AS or even by agreement with a neighboring AS, then this document
-   does not prohibit it.
+   document does not require a receiver of a Large Communities attribute
+   to know where the AS identified by the ASN of a Large Communities
+   attribute is and to forward the route containing that large community
+   towards that AS.  The ASN field is simply a convenience that allows
+   different ASes to define large communities without clashing with each
+   other.  If an AS wants to use invalid ASNs in the ASN field privately
+   within its own AS or even by agreement with a neighboring AS, then
+   this document does not prohibit it.
 
    The large communities are transmitted in the order: ASN, followed by
    part 1, followed by part 2.  Each integer is in network byte order.
-   That is, most significant bit first.  The first large community
-   immediately follows the BGP path attribute header.  Each large
-   community immediately follows the previous one.  There is no
-   significance to the order in which the large communities are
-   transmitted.  Duplicate large communities SHOULD NOT be transmitted.
-   A receiving speaker MAY silently remove duplicate large communities
-   and MAY retransmit them in an order different to which it received
-   them.
+   That is, most significant bit first.  The first Large Communities
+   attribute immediately follows the BGP path attribute header.  Each
+   Large Communities attribute immediately follows the previous one.
+   There is no significance to the order in which the large communities
+   are transmitted.  Duplicate large communities SHOULD NOT be
+   transmitted.  A receiving speaker MAY silently remove duplicate large
+   communities and MAY retransmit them in an order different to which it
+   received them.
 
-3.  Aggregatation
+3.  Aggregation
 
    If a range of routes is to be aggregated and the resultant aggregates
    attribute section does not carry the ATOMIC_AGGREGATE attribute, then
@@ -221,6 +217,10 @@ Internet-Draft            Large BGP Communities           September 2016
 
 
 
+
+
+
+
 Heitz, et al.            Expires March 29, 2017                 [Page 4]
 
 Internet-Draft            Large BGP Communities           September 2016
@@ -242,22 +242,22 @@ Internet-Draft            Large BGP Communities           September 2016
    Vendors MAY provide other textual representations.  For example, some
    vendor's routing policy language may use a separator other than a
    colon or may require keywords or characters prepending or postpending
-   the large community.  Such differences are permitted.  However, each
-   implementation MUST make a representation available that depicts the
-   intergers in decimal and in the order (ASN:Local Data Part 1:Local
-   Data Part 2).
+   the Large Communities attribute.  Such differences are permitted.
+   However, each implementation MUST make a representation available
+   that depicts the intergers in decimal and in the order (ASN:Local
+   Data Part 1:Local Data Part 2).
 
 5.  Error Handling
 
-   The error handling of Large Community is as follows:
+   The error handling of Large Communities is as follows:
 
-   o  A Large Community BGP Path Attribute with a length of zero MUST be
-      ignored upon receipt and removed when sending.
+   o  A Large Communities BGP Path Attribute with a length of zero MUST
+      be ignored upon receipt and removed when sending.
 
-   o  A Large Community attribute SHALL be considered malformed if its
+   o  A Large Communities attribute SHALL be considered malformed if its
       length is not a non-zero multiple of 12 bytes.
 
-   o  A BGP UPDATE message with a malformed Large Community attribute
+   o  A BGP UPDATE message with a malformed Large Communities attribute
       SHALL be handled using the approach of "treat-as-withdraw" as
       described in section 2 [RFC7606].
 
@@ -312,7 +312,7 @@ Internet-Draft            Large BGP Communities           September 2016
 8.  IANA Considerations
 
    IANA is requested to assign a BGP path attribute value for the Large
-   Community attribute.
+   Communities attribute.
 
 9.  Acknowledgements
 
