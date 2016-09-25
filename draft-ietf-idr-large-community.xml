@@ -168,38 +168,39 @@
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 |                       Local Data Part 2                       |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-]]></artwork></figure></t>
-
-<t>
-    <list style="hanging">
-        <t hangText="Global Administrator:">
-            A four-octet namespace identifier.  This SHOULD be an Autonomous
-            System Number assigned by IANA.
-        </t>
-        <t hangText="Local Data Part 1:">A four-octet operator-defined value.</t>
-        <t hangText="Local Data Part 2:">A four-octet operator-defined value.</t>
-    </list>
-</t>
-        <t>
-It is up to the receiving BGP speaker to
-recognize (or not) any received large communities. There are no routing semantics
-implied by the Global Administrator field. For example, this document does not require a receiver
-of a Large Communities attribute  to know where the AS identified by the ASN of a Large Communities attribute is and
-to forward the route containing that large community towards that AS.
-The Global Administrator field is simply a convenience that allows different ASes to define large communities
-without clashing with each other. If an AS wants to use invalid ASNs in the Global Administrator
-field privately within its own AS or even by agreement with a neighboring AS, then
-this document does not prohibit it.
+]]></artwork></figure>
         </t>
         <t>
-The large communities are transmitted in the order: Global Administrator, followed by part 1, followed by part 2.
-Each integer is in network byte order.
-That is, most significant bit first. The first Large Communities attribute immediately follows the BGP
-path attribute header. Each Large Communities attribute immediately follows the previous one. There is no
-significance to the order in which the large communities are transmitted. Duplicate
-large communities SHOULD NOT be transmitted. A receiving speaker MAY silently remove
-duplicate large communities and MAY retransmit them in an order different to which
-it received them.
+            <list style="hanging">
+                <t hangText="Global Administrator:">
+                    A four-octet namespace identifier.  This SHOULD be an Autonomous
+                    System Number assigned by IANA.
+                </t>
+                <t hangText="Local Data Part 1:">A four-octet operator-defined value.</t>
+                <t hangText="Local Data Part 2:">A four-octet operator-defined value.</t>
+            </list>
+        </t>
+        <t>
+            The Global Administrator field is intended to allow different
+            Autonomous Systems to define Large Communities without clashing
+            with each other.  Implementations MUST allow the operator to
+            specify any value for the Global Administrator field, but the
+            operator SHOULD set this to be the ASN of the transmitting
+            BGP speaker.
+        </t>
+        <t>
+            There is no significance to the order in which Large Communities
+            path attributes are transmitted and a receiving speaker MAY
+            retransmit them in an order different to which it received them.
+        </t>
+        <t>
+            Duplicate Large Communities SHOULD NOT be transmitted.  A
+            receiving speaker SHOULD silently remove duplicate Large
+            Communities attributes from a BGP UPDATE message.
+        </t>
+        <t>
+            There are no routing semantics implied by the Global
+            Administrator field.
         </t>
 
     </section>
@@ -289,8 +290,13 @@ it received them.
         </t>
         <t>
             The BGP Large Communities Global Administrator field may contain
-            any value, and it is not an error to use an invalid or reserved
-            ASN in this field.
+            any value, and a Large Communities attribute MUST NOT be
+            considered malformed if the Global Administrator field contains
+            an invalid or reserved ASN.
+        </t>
+        <t>
+            A receiving speaker MUST NOT consider duplicate Large
+            Communities attributes in a BGP UPDATE message to be malformed.
         </t>
     </section>
 
