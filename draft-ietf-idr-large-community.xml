@@ -297,15 +297,22 @@ it received them.
     <section title="Security Considerations">
         <t>
             This extension to BGP has similar security implications as BGP
-            Communities <xref target="RFC1997"/>.
+            Communities <xref target="RFC1997"/> and BGP Extended
+            Communities <xref target="RFC4360"/>.
         </t>
         <t>
-            underlying security issues. Specifically, an AS relying on the
-	    BGP attributes carried in BGP must have trust in every AS in the
-	    path to the source of the route, as any AS in the path may have
-	    altered or deleted attributes or added false attributes.
-            Specifying the mechanism(s) to provide such trust is beyond the
-	    scope of this document.
+            This document does not change any underlying security issues
+            associated with any other BGP Communities mechanism.
+            Specifically, an AS relying on the BGP attributes carried in BGP
+            must have trust in every other AS in the path, as any
+            intermediate Autonomous System in the path may have added,
+            deleted or altered attributes.  Specifying the mechanism to
+            provide such trust is beyond the scope of this document.
+        </t>
+        <t>
+            Network administrators should note the recommendations in
+            Section 11 of BGP Operations and Security <xref
+            target="RFC7454"/>.
         </t>
    </section>
    
