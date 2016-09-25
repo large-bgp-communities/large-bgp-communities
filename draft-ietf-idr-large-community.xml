@@ -120,7 +120,7 @@
           </t>
           <t>
               <xref target="RFC1997"/> BGP Communities Attributes are
-              four-octet values split into two separate two-octet words.
+              four-octet values split into two individual two-octet words.
               The most significant word is usually interpreted as an
               Autonomous System Number (ASN) and the least significant word
               is a locally defined value whose meaning is assigned by
@@ -181,8 +181,7 @@
     </list>
 </t>
         <t>
-It is not a protocol error to put an invalid ASN into the Global Administrator field.
-For example 0 or 23456 are allowed. It is up to the receiving BGP speaker to
+It is up to the receiving BGP speaker to
 recognize (or not) any received large communities. There are no routing semantics
 implied by the Global Administrator field. For example, this document does not require a receiver
 of a Large Communities attribute  to know where the AS identified by the ASN of a Large Communities attribute is and
@@ -207,33 +206,35 @@ it received them.
 
     <section title="Aggregation">
         <t>
-   If a range of routes is to be aggregated and the resultant aggregates
-   attribute section does not carry the ATOMIC_AGGREGATE attribute, then
-   the resulting aggregate should have a large communities path attribute
-   which contains all large communities from all of the aggregated routes.
+            If a range of routes is aggregated and the resulting aggregates
+            attribute section does not carry the ATOMIC_AGGREGATE attribute,
+            then the resulting aggregate should have a Large Communities
+            path attribute which contains all large communities from all of
+            the aggregated routes.
         </t>
 
     </section>
 
     <section title="Textual Representation">
         <t>
-            The textual representation of BGP Communities <xref target="RFC1997"/>
-            in routing policy languages and the networking community is known
-            well as two 2-octet unsigned integers and is often represented as
-            such, separated by a colon. For example, 65000:12345
-            (ASN:differentia).
+            BGP Communities <xref target="RFC1997"/> are usually represented
+            in routing policy languages as two individual two-octet unsigned
+            integers separated by a colon; for example, 64496:12345.
         </t>
         <t>
-            Large Communities MUST be represented similarly, as three 4-octet
-            unsigned decimal integers with no leading zeros. An integer MUST NOT be
-            omitted, even when zero. Implementations MUST represent Large
-            Communities in a manner consistent with their representation
-            of BGP Communities <xref target="RFC1997"/>. For example, 65000:1:2
-            (Global Administrator:Local Data Part 1:Local Data Part 2) or 65000:0:0.
+            BGP Large Communities implementations MUST represent Large
+            Communities in a manner similar to their representation of BGP
+            Communities <xref target="RFC1997"/>.  Large Communities MUST be
+            represented as three separate four-octet unsigned integers in
+            decimal format with no leading zeros.  These integers MUST NOT
+            be omitted, even when zero.  For example, 64496:4294967295:2 or
+            64496:0:0.
         </t>
         <t>
-The following Large BGP Communities textual specification uses the Augmented
-Backus-Naur Form (ABNF) notation as specified in <xref target="RFC5234"/>.
+            The following Large BGP Communities textual specification uses
+            the Augmented Backus-Naur Form (ABNF) notation as specified in
+            <xref target="RFC5234"/>.
+
 <figure align="center">
 <artwork><![CDATA[
         positive-digit  = "1" / "2" / "3" /
@@ -252,13 +253,14 @@ Backus-Naur Form (ABNF) notation as specified in <xref target="RFC5234"/>.
 </figure>
 </t>
         <t>
-            Vendors MAY provide other textual representations. For example,
-            some vendor's routing policy language may use a separator other
+            Vendors MAY provide other textual representations.  For example,
+            a vendor's routing policy language may use a separator other
             than a colon or may require keywords or characters prepending or
-            postpending the Large Communities attribute. Such differences are permitted.
-            However, each implementation MUST make a representation available
-            that depicts the intergers in decimal and in the order (Global Administrator:Local
-            Data Part 1:Local Data Part 2).
+            postpending the Large Communities attribute.  Such differences
+            are permitted.  However, each implementation MUST make a
+            representation available that depicts the intergers in decimal
+            and in the following order: Global Administrator, Local Data
+            Part 1, Local Data Part 2.
         </t>
 
     </section>
@@ -284,6 +286,11 @@ Backus-Naur Form (ABNF) notation as specified in <xref target="RFC5234"/>.
 		    <xref target="RFC7606">section 2</xref>.
                 </t>
             </list>
+        </t>
+        <t>
+            The BGP Large Communities Global Administrator field may contain
+            any value, and it is not an error to use an invalid or reserved
+            ASN in this field.
         </t>
     </section>
 
