@@ -173,8 +173,8 @@
 <t>
     <list style="hanging">
         <t hangText="ASN:">The Four-octet Autonomous System Number of the operator with whom definition of the final two 4-octet values lies.</t>
-        <t hangText="Local Data part 1:">4-octet operator-defined value.</t>
-        <t hangText="Local Data part 2:">4-octet operator-defined value.</t>
+        <t hangText="Local Data Part 1:">4-octet operator-defined value.</t>
+        <t hangText="Local Data Part 2:">4-octet operator-defined value.</t>
     </list>
 </t>
         <t>
@@ -217,7 +217,7 @@ it received them.
             The textual representation of BGP Communities <xref target="RFC1997"/>
             in routing policy languages and the networking community is known
             well as two 2-octet unsigned integers and is often represented as
-            such, separated a colon. For example, 65000:12345
+            such, separated by a colon. For example, 65000:12345
             (ASN:differentia).
         </t>
         <t>
