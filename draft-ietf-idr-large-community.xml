@@ -162,35 +162,38 @@
  0                   1                   2                   3
  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|                                 ASN                           |
+|                      Global Administrator                     |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|                         Local Data Part 1                     |
+|                       Local Data Part 1                       |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|                         Local Data Part 2                     |
+|                       Local Data Part 2                       |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ]]></artwork></figure></t>
 
 <t>
     <list style="hanging">
-        <t hangText="ASN:">The Four-octet Autonomous System Number of the operator with whom definition of the final two 4-octet values lies.</t>
-        <t hangText="Local Data Part 1:">4-octet operator-defined value.</t>
-        <t hangText="Local Data Part 2:">4-octet operator-defined value.</t>
+        <t hangText="Global Administrator:">
+            A four-octet namespace identifier.  This SHOULD be an Autonomous
+            System Number assigned by IANA.
+        </t>
+        <t hangText="Local Data Part 1:">A four-octet operator-defined value.</t>
+        <t hangText="Local Data Part 2:">A four-octet operator-defined value.</t>
     </list>
 </t>
         <t>
-It is not a protocol error to put an invalid ASN into the ASN field.
+It is not a protocol error to put an invalid ASN into the Global Administrator field.
 For example 0 or 23456 are allowed. It is up to the receiving BGP speaker to
 recognize (or not) any received large communities. There are no routing semantics
-implied by the ASN field. For example, this document does not require a receiver
+implied by the Global Administrator field. For example, this document does not require a receiver
 of a Large Communities attribute  to know where the AS identified by the ASN of a Large Communities attribute is and
 to forward the route containing that large community towards that AS.
-The ASN field is simply a convenience that allows different ASes to define large communities
-without clashing with each other. If an AS wants to use invalid ASNs in the ASN
+The Global Administrator field is simply a convenience that allows different ASes to define large communities
+without clashing with each other. If an AS wants to use invalid ASNs in the Global Administrator
 field privately within its own AS or even by agreement with a neighboring AS, then
 this document does not prohibit it.
         </t>
         <t>
-The large communities are transmitted in the order: ASN, followed by part 1, followed by part 2.
+The large communities are transmitted in the order: Global Administrator, followed by part 1, followed by part 2.
 Each integer is in network byte order.
 That is, most significant bit first. The first Large Communities attribute immediately follows the BGP
 path attribute header. Each Large Communities attribute immediately follows the previous one. There is no
@@ -226,7 +229,7 @@ it received them.
             omitted, even when zero. Implementations MUST represent Large
             Communities in a manner consistent with their representation
             of BGP Communities <xref target="RFC1997"/>. For example, 65000:1:2
-            (ASN:Local Data Part 1:Local Data Part 2) or 65000:0:0.
+            (Global Administrator:Local Data Part 1:Local Data Part 2) or 65000:0:0.
         </t>
         <t>
 The following Large BGP Communities textual specification uses the Augmented
@@ -254,7 +257,7 @@ Backus-Naur Form (ABNF) notation as specified in <xref target="RFC5234"/>.
             than a colon or may require keywords or characters prepending or
             postpending the Large Communities attribute. Such differences are permitted.
             However, each implementation MUST make a representation available
-            that depicts the intergers in decimal and in the order (ASN:Local
+            that depicts the intergers in decimal and in the order (Global Administrator:Local
             Data Part 1:Local Data Part 2).
         </t>
 
