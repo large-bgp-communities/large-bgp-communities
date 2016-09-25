@@ -154,9 +154,9 @@ Internet-Draft            Large BGP Communities           September 2016
    ASN:  The Four-octet Autonomous System Number of the operator with
       whom definition of the final two 4-octet values lies.
 
-   Local Data part 1:  4-octet operator-defined value.
+   Local Data Part 1:  4-octet operator-defined value.
 
-   Local Data part 2:  4-octet operator-defined value.
+   Local Data Part 2:  4-octet operator-defined value.
 
    It is not a protocol error to put an invalid ASN into the ASN field.
    For example 0 or 23456 are allowed.  It is up to the receiving BGP
@@ -203,7 +203,7 @@ Internet-Draft            Large BGP Communities           September 2016
    The textual representation of BGP Communities [RFC1997] in routing
    policy languages and the networking community is known well as two
    2-octet unsigned integers and is often represented as such, separated
-   a colon.  For example, 65000:12345 (ASN:differentia).
+   by a colon.  For example, 65000:12345 (ASN:differentia).
 
    Large Communities MUST be represented similarly, as three 4-octet
    unsigned decimal integers with no leading zeros.  An integer MUST NOT
@@ -338,8 +338,8 @@ Heitz, et al.            Expires March 29, 2017                 [Page 6]
 Internet-Draft            Large BGP Communities           September 2016
 
 
-   Maddison, Alexander Azimov, Brian Dickson and Peter van Dijk for
-   their support, insightful review and comments.
+   Maddison, Alexander Azimov, Brian Dickson, Peter van Dijk and Julian
+   Seifert for their support, insightful review and comments.
 
 10.  References
 
