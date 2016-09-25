@@ -92,17 +92,17 @@ Table of Contents
 
 1.  Introduction
 
-   BGP implementations typically support a routing policy language (RPL)
-   to control the distribution of routing information.  Network
-   operators add BGP communities to routes via the RPL to identify
+   BGP implementations typically support a routing policy language to
+   control the distribution of routing information.  Network operators
+   add BGP communities to routes via their routing policy to identify
    intrinsic differentia of a route such as its origin country or
-   specify a RPL action to be taken, or one that has been taken, on an
-   individual route or group of routes.  Because BGP communities are
-   optional transitive BGP attributes, these differentia and actions
-   identified by the communities may be acted upon or otherwise utilized
-   by the RPL in any Autonomous System (AS) in the Internet, often are
-   and often the goal of adding a community is to signal an AS one or
-   more AS-hops away.
+   specify a routing policy action to be taken, or one that has been
+   taken, on an individual route or group of routes.  Because BGP
+   communities are optional transitive BGP attributes, these differentia
+   and actions identified by the communities may be acted upon or
+   otherwise utilized by the routing policy in any Autonomous System
+   (AS) in the Internet, often are and often the goal of adding a
+   community is to signal an AS one or more AS-hops away.
 
    BGP Communities Attributes are 4-octet values split into two 2-octet
    values where the most significant word is an Autonomous System number
@@ -116,7 +116,8 @@ Internet-Draft            Large BGP Communities           September 2016
 
    (ASN) and the least significant word is a value whose meaning is
    defined by operators of that Autonomous System.  This operator-
-   defined value is the aforementioned differentia or RPL action.
+   defined value is the aforementioned differentia or routing policy
+   action.
 
    Since the adoption of Four-octet ASNs [RFC6793], the BGP Communities
    Attribute can no longer accommodate this encoding because it is only
@@ -164,7 +165,6 @@ Internet-Draft            Large BGP Communities           September 2016
 
 
 
-
 Heitz, et al.            Expires March 29, 2017                 [Page 3]
 
 Internet-Draft            Large BGP Communities           September 2016
@@ -204,17 +204,17 @@ Internet-Draft            Large BGP Communities           September 2016
 
 4.  Textual Representation
 
-   The textual representation of BGP Communities [RFC1997] in RPLs and
-   the networking community is known well as two 2-octet unsigned
-   integers and is often represented as such, separated a colon.  For
-   example, 65000:12345 (ASN:differentia).
+   The textual representation of BGP Communities [RFC1997] in routing
+   policy languages and the networking community is known well as two
+   2-octet unsigned integers and is often represented as such, separated
+   a colon.  For example, 65000:12345 (ASN:differentia).
 
    Large Communities MUST be represented similarly, as three 4-octet
    unsigned decimal integers with no leading zeros.  An integer MUST NOT
    be omitted, even when zero.  Implementations MUST represent Large
-   Communities in RPL in a manner consistent with their representation
-   of BGP Communities [RFC1997].  For example, 65000:1:2 (ASN:Local Data
-   Part 1:Local Data Part 2) or 65000:0:0.
+   Communities in a manner consistent with their representation of BGP
+   Communities [RFC1997].  For example, 65000:1:2 (ASN:Local Data Part
+   1:Local Data Part 2) or 65000:0:0.
 
    The following Large BGP Communities textual specification uses the
    Augmented Backus-Naur Form (ABNF) notation as specified in [RFC5234].
@@ -240,11 +240,12 @@ Internet-Draft            Large BGP Communities           September 2016
            large-community = part ":" part ":" part
 
    Vendors MAY provide other textual representations.  For example, some
-   vendor's RPL may use a separator other than a colon or may require
-   keywords or characters prepending or postpending the large community.
-   Such differences are permitted.  However, each implementation MUST
-   make a representation available that depicts the intergers in decimal
-   and in the order (ASN:Local Data Part 1:Local Data Part 2).
+   vendor's routing policy language may use a separator other than a
+   colon or may require keywords or characters prepending or postpending
+   the large community.  Such differences are permitted.  However, each
+   implementation MUST make a representation available that depicts the
+   intergers in decimal and in the order (ASN:Local Data Part 1:Local
+   Data Part 2).
 
 5.  Error Handling
 
@@ -271,7 +272,6 @@ Internet-Draft            Large BGP Communities           September 2016
    deleted attributes or added false attributes.  Specifying the
    mechanism(s) to provide such trust is beyond the scope of this
    document.
-
 
 
 

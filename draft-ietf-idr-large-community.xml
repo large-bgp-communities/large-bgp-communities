@@ -107,16 +107,17 @@
       <section title="Introduction">
           <t>
               BGP implementations typically support a routing policy language
-              (RPL) to control the distribution of routing information.
-              Network operators add BGP communities to routes via the RPL to
-              identify intrinsic differentia of a route such as its origin
-              country or specify a RPL action to be taken, or one that has been
-              taken, on an individual route or group of routes. Because BGP
-              communities are optional transitive BGP attributes, these
-              differentia and actions identified by the communities may be
-              acted upon or otherwise utilized by the RPL in any Autonomous
-              System (AS) in the Internet, often are and often the goal of
-	      adding a community is to signal an AS one or more AS-hops away.
+              to control the distribution of routing information.
+              Network operators add BGP communities to routes via their routing
+              policy to identify intrinsic differentia of a route such as its
+              origin country or specify a routing policy action to be taken, or
+              one that has been taken, on an individual route or group of
+              routes. Because BGP communities are optional transitive BGP
+              attributes, these differentia and actions identified by the
+              communities may be acted upon or otherwise utilized by the
+              routing policy in any Autonomous System (AS) in the Internet,
+              often are and often the goal of adding a community is to signal
+              an AS one or more AS-hops away.
           </t>
           <t>
               BGP Communities Attributes are 4-octet values split into two
@@ -124,7 +125,7 @@
               System number (ASN) and the least significant word is a value
               whose meaning is defined by operators of that Autonomous System.
               This operator-defined value is the aforementioned differentia or
-              RPL action.
+              routing policy action.
           </t>
           <t>
               Since the adoption of Four-octet ASNs <xref target="RFC6793"/>,
@@ -216,15 +217,16 @@ it received them.
     <section title="Textual Representation">
         <t>
             The textual representation of BGP Communities <xref target="RFC1997"/>
-            in RPLs and the networking community is known well as two 2-octet
-            unsigned integers and is often represented as such, separated a
-            colon. For example, 65000:12345 (ASN:differentia).
+            in routing policy languages and the networking community is known
+            well as two 2-octet unsigned integers and is often represented as
+            such, separated a colon. For example, 65000:12345
+            (ASN:differentia).
         </t>
         <t>
             Large Communities MUST be represented similarly, as three 4-octet
             unsigned decimal integers with no leading zeros. An integer MUST NOT be
             omitted, even when zero. Implementations MUST represent Large
-            Communities in RPL in a manner consistent with their representation
+            Communities in a manner consistent with their representation
             of BGP Communities <xref target="RFC1997"/>. For example, 65000:1:2
             (ASN:Local Data Part 1:Local Data Part 2) or 65000:0:0.
         </t>
@@ -249,12 +251,13 @@ Backus-Naur Form (ABNF) notation as specified in <xref target="RFC5234"/>.
 </figure>
 </t>
         <t>
-            Vendors MAY provide other textual representations. For example, some 
-vendor's RPL may use a separator other than a colon or may require keywords or
-characters prepending or postpending the large community. Such differences are
-permitted. However, each implementation MUST make a representation available
-that depicts the intergers in decimal and in the order 
-(ASN:Local Data Part 1:Local Data Part 2).
+            Vendors MAY provide other textual representations. For example,
+            some vendor's routing policy language may use a separator other
+            than a colon or may require keywords or characters prepending or
+            postpending the large community. Such differences are permitted.
+            However, each implementation MUST make a representation available
+            that depicts the intergers in decimal and in the order (ASN:Local
+            Data Part 1:Local Data Part 2).
         </t>
 
     </section>
