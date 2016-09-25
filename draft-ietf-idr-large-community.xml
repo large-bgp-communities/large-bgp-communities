@@ -352,8 +352,8 @@ Backus-Naur Form (ABNF) notation as specified in <xref target="RFC5234"/>.
             Sander Steffann, Brad Dreisbach, Martin Millnert, Christopher
             Morrow, Jay Borkenhagen, Arnold Nipper, Joe Provo, Niels Bakker,
             Bill Fenner, Tom Daly, Ben Maddison, Alexander Azimov, Brian
-            Dickson and Peter van Dijk for their support, insightful review and
-            comments.
+            Dickson, Peter van Dijk and Julian Seifert for their support,
+            insightful review and comments.
         </t>
     </section>
 
