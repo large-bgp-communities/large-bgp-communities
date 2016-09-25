@@ -10,7 +10,7 @@
 <?rfc inline="yes"?>
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
-<rfc category="std" docName="draft-ietf-idr-large-community-00" ipr="trust200902">
+<rfc category="std" docName="draft-ietf-idr-large-community-01" ipr="trust200902">
   <front>
     <title abbrev="Large BGP Communities">Large BGP Communities</title>
 
