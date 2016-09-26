@@ -183,7 +183,10 @@
         <t>
             The Global Administrator field is intended to allow different
             Autonomous Systems to define Large Communities without clashing
-            with each other.
+            with each other.  Implementations MUST allow the operator to
+            specify any value for the Global Administrator field, but the
+            operator SHOULD set this to be the ASN of the transmitting
+            BGP speaker.
         </t>
         <t>
             There is no significance to the order in which Large Communities
