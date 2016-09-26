@@ -184,19 +184,18 @@
             The Global Administrator field is intended to allow different
             Autonomous Systems to define Large Communities without clashing
             with each other.  Implementations MUST allow the operator to
-            specify any value for the Global Administrator field, but the
-            operator SHOULD set this to be the ASN of the transmitting
-            BGP speaker.
+            specify any value for the Global Administrator field.
         </t>
         <t>
             There is no significance to the order in which Large Communities
-            path attributes are transmitted and a receiving speaker MAY
-            retransmit them in an order different to which it received them.
+            are encoded in a path attributes field and a receiving speaker
+            MAY retransmit them in an order different to which it received
+            them.
         </t>
         <t>
             Duplicate Large Communities SHOULD NOT be transmitted.  A
             receiving speaker SHOULD silently remove duplicate Large
-            Communities attributes from a BGP UPDATE message.
+            Communities from a BGP UPDATE message.
         </t>
         <t>
             There are no routing semantics implied by the Global
