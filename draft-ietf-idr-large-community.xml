@@ -232,28 +232,6 @@
             64496:0:0.
         </t>
         <t>
-            The following Large BGP Communities textual specification uses
-            the Augmented Backus-Naur Form (ABNF) notation as specified in
-            <xref target="RFC5234"/>.
-
-<figure align="center">
-<artwork><![CDATA[
-        positive-digit  = "1" / "2" / "3" /
-                          "4" / "5" / "6" /
-                          "7" / "8" / "9"
-
-        digit           = "0" / positive-digit
-
-        non-zero-int    = positive-digit *9digit
-
-        part            = "0" / non-zero-int ; max value is
-                          4294967295
-
-        large-community = part ":" part ":" part
-]]></artwork>
-</figure>
-</t>
-        <t>
             Vendors MAY provide other textual representations.  For example,
             a vendor's routing policy language may use a separator other
             than a colon or may require keywords or characters prepending or
@@ -392,7 +370,6 @@
     </references>
     <references title="Informative References">
       <?rfc include="reference.RFC.4360"?>
-      <?rfc include="reference.RFC.5234"?>
       <?rfc include="reference.RFC.7454"?>
       <?rfc include="reference.RFC.7942"?>
     </references>
