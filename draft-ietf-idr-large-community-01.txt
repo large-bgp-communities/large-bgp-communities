@@ -161,7 +161,7 @@ Internet-Draft            Large BGP Communities           September 2016
    The Global Administrator field is intended to allow different
    Autonomous Systems to define Large Communities without clashing with
    each other.  Implementations MUST allow the operator to specify any
-
+   value for the Global Administrator field.
 
 
 
@@ -170,16 +170,13 @@ Heitz, et al.            Expires March 30, 2017                 [Page 3]
 Internet-Draft            Large BGP Communities           September 2016
 
 
-   value for the Global Administrator field, but the operator SHOULD set
-   this to be the ASN of the transmitting BGP speaker.
-
-   There is no significance to the order in which Large Communities path
-   attributes are transmitted and a receiving speaker MAY retransmit
-   them in an order different to which it received them.
+   There is no significance to the order in which Large Communities are
+   encoded in a path attributes field and a receiving speaker MAY
+   retransmit them in an order different to which it received them.
 
    Duplicate Large Communities SHOULD NOT be transmitted.  A receiving
-   speaker SHOULD silently remove duplicate Large Communities attributes
-   from a BGP UPDATE message.
+   speaker SHOULD silently remove duplicate Large Communities from a BGP
+   UPDATE message.
 
    There are no routing semantics implied by the Global Administrator
    field.
@@ -217,6 +214,9 @@ Internet-Draft            Large BGP Communities           September 2016
 
    The error handling of Large Communities is as follows:
 
+   o  A Large Communities BGP Path Attribute with a length of zero MUST
+      be ignored upon receipt and removed when sending.
+
 
 
 
@@ -225,9 +225,6 @@ Heitz, et al.            Expires March 30, 2017                 [Page 4]
 
 Internet-Draft            Large BGP Communities           September 2016
 
-
-   o  A Large Communities BGP Path Attribute with a length of zero MUST
-      be ignored upon receipt and removed when sending.
 
    o  A Large Communities attribute SHALL be considered malformed if its
       length is not a non-zero multiple of 12 bytes.
@@ -275,15 +272,15 @@ Internet-Draft            Large BGP Communities           September 2016
    features.  Readers are advised to note that other implementations may
    exist.
 
+   As of today these vendors have produced an implementation of Large
+   BGP Community:
+
 
 
 Heitz, et al.            Expires March 30, 2017                 [Page 5]
 
 Internet-Draft            Large BGP Communities           September 2016
 
-
-   As of today these vendors have produced an implementation of Large
-   BGP Community:
 
    o  Cisco IOS XR
 
@@ -329,6 +326,9 @@ Internet-Draft            Large BGP Communities           September 2016
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
               <http://www.rfc-editor.org/info/rfc2119>.
+
+
+
 
 
 
