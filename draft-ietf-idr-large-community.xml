@@ -188,13 +188,14 @@
         </t>
         <t>
             There is no significance to the order in which Large Communities
-            path attributes are transmitted and a receiving speaker MAY
-            retransmit them in an order different to which it received them.
+            are encoded in a path attributes field and a receiving speaker
+            MAY retransmit them in an order different to which it received
+            them.
         </t>
         <t>
             Duplicate Large Communities SHOULD NOT be transmitted.  A
             receiving speaker SHOULD silently remove duplicate Large
-            Communities attributes from a BGP UPDATE message.
+            Communities from a BGP UPDATE message.
         </t>
         <t>
             There are no routing semantics implied by the Global
