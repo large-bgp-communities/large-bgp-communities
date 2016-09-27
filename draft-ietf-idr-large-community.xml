@@ -243,6 +243,14 @@
 
     </section>
 
+    <setion title="Reserved ranges">
+        <t>
+            0:0:0          -          0:4294967295:4294967295
+            65535:0:0      -      65535:4294967295:4294967295
+            4294967295:0:0 - 4294967295:4294967295:4294967295
+        </t>
+    </section>
+
     <section title="Error Handling">
         <t>
             The error handling of Large Communities is as follows:
