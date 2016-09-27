@@ -321,6 +321,7 @@
                <t>Cisco IOS XR</t>
                <t>ExaBGP</t>
                <t>GoBGP</t>
+               <t>BIRD</t>
             </list>
        </t>
        <t>
