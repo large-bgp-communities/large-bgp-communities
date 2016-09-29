@@ -82,10 +82,11 @@
 
     <abstract>
         <t>
-            This document describes the Large BGP Community attribute. This
-            attribute provides network operators whom use a two or four octet
-            Autonomous System Number a mechanism to signal opaque route
-            labeling information in separate namespaces.
+            This document describes the Large BGP Community attribute, an
+            extension to BGP (RFC 4271). This attribute provides a mechanism to
+            signal opaque information within separate namespaces to aid in
+            routing management. The attribute is suitable for use in 4-byte
+            ASNs (RFC 6793).
         </t>
     </abstract>
 

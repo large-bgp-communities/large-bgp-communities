@@ -20,10 +20,11 @@ Expires: April 2, 2017                                            Arrcus
 
 Abstract
 
-   This document describes the Large BGP Community attribute.  This
-   attribute provides network operators whom use a two or four octet
-   Autonomous System Number a mechanism to signal opaque route labeling
-   information in separate namespaces.
+   This document describes the Large BGP Community attribute, an
+   extension to BGP (RFC 4271).  This attribute provides a mechanism to
+   signal opaque information within separate namespaces to aid in
+   routing management.  The attribute is suitable for use in 4-byte ASNs
+   (RFC 6793).
 
 Requirements Language
 
@@ -47,7 +48,6 @@ Status of This Memo
    material or to cite them other than as "work in progress."
 
    This Internet-Draft will expire on April 2, 2017.
-
 
 
 
