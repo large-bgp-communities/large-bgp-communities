@@ -243,11 +243,15 @@
 
     </section>
 
-    <setion title="Reserved ranges">
+    <section title="Reserved Large BGP Community values">
         <t>
-            0:0:0          -          0:4294967295:4294967295
-            65535:0:0      -      65535:4294967295:4294967295
-            4294967295:0:0 - 4294967295:4294967295:4294967295
+            The Large BGP Community attribute values in the following ranges
+            are reserved:
+<figure align="center"><artwork><![CDATA[
+         0:0:0 -          0:4294967295:4294967295
+     65535:0:0 -      65535:4294967295:4294967295
+4294967295:0:0 - 4294967295:4294967295:4294967295
+]]></artwork></figure>
         </t>
     </section>
 
