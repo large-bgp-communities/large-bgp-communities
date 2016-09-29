@@ -148,10 +148,6 @@
             community specified in the attribute.
         </t>
         <t>
-            The Large Communities BGP Path Attribute has been assigned value 30
-            by the IANA.
-        </t>
-        <t>
             The attribute consists of one or more 12-octet values. Each
             12-octet Large Communities value represents three 4-octet values, as
             follows:
@@ -341,8 +337,9 @@
 
     <section title="IANA Considerations">
         <t>
-            IANA is requested to assign a BGP path attribute value for the
-            Large Communities attribute.
+            IANA has assigned value 30 (LARGE_COMMUNITY Attribute) in the "BGP
+            Path Attributes" sub-registry under the "Border Gateway Protocol
+            (BGP) Parameters" registry.
         </t>
     </section>
 
