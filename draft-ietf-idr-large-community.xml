@@ -82,13 +82,10 @@
 
     <abstract>
         <t>
-            The BGP Communities Attribute <xref target="RFC1997"/> is heavily
-            used by operators, but is inadequate to represent large enough
-            values, particularly Four-octet Autonomous System numbers
-	    <xref target="RFC6793"/> plus additional values.
-            This document describes an extension to BGP <xref target="RFC4271"/>
-            to address this need with a new extended form of the BGP Communities
-	    Attribute.
+            This document describes the Large BGP Community attribute. This
+            attribute provides network operators whom use a two or four octet
+            Autonomous System Number a mechanism to signal opaque route
+            labeling information in separate namespaces.
         </t>
     </abstract>
 
@@ -365,8 +362,8 @@
             Sander Steffann, Brad Dreisbach, Martin Millnert, Christopher
             Morrow, Jay Borkenhagen, Arnold Nipper, Joe Provo, Niels Bakker,
             Bill Fenner, Tom Daly, Ben Maddison, Alexander Azimov, Brian
-            Dickson, Peter van Dijk, Julian Seifert and Tom Petch for their
-            support, insightful review and comments.
+            Dickson, Peter van Dijk, Julian Seifert, Tom Petch and Tom Scholl
+            for their support, insightful review and comments.
         </t>
     </section>
 
@@ -376,7 +373,6 @@
     <references title="Normative References">
       <?rfc include="reference.RFC.1997"?>
       <?rfc include="reference.RFC.2119"?>
-      <?rfc include="reference.RFC.4271"?>
       <?rfc include="reference.RFC.6793"?>
       <?rfc include="reference.RFC.7606"?>
     </references>
