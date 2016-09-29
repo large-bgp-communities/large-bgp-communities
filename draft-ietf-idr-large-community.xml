@@ -277,7 +277,7 @@
             The BGP Large Communities Global Administrator field may contain
             any value, and a Large Communities attribute MUST NOT be
             considered malformed if the Global Administrator field contains
-            an invalid or reserved ASN.
+            an unallocated, unassigned or reserved ASN.
         </t>
         <t>
             A receiving speaker MUST NOT consider duplicate Large
