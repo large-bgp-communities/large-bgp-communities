@@ -151,8 +151,8 @@
             community specified in the attribute.
         </t>
         <t>
-            The Large Communities attribute has Type Code [TBD - RFC EDITOR
-            to fill-in IANA assigned value].
+            The Large Communities BGP Path Attribute has been assigned value 30
+            by the IANA.
         </t>
         <t>
             The attribute consists of one or more 12-octet values. Each
