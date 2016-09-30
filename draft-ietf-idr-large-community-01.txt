@@ -207,7 +207,7 @@ Internet-Draft            Large BGP Communities           September 2016
    colon or may require keywords or characters prepending or postpending
    the Large Communities attribute.  Such differences are permitted.
    However, each implementation MUST make a representation available
-   that depicts the intergers in decimal and in the following order:
+   that depicts the integers in decimal and in the following order:
    Global Administrator, Local Data Part 1, Local Data Part 2.
 
 5.  Reserved Large BGP Community values
