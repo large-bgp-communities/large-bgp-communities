@@ -243,7 +243,8 @@ Internet-Draft            Large BGP Communities           September 2016
    The BGP Large Communities Global Administrator field may contain any
    value, and a Large Communities attribute MUST NOT be considered
    malformed if the Global Administrator field contains an unallocated,
-   unassigned or reserved ASN.
+   unassigned or reserved ASN or is set to one of the reserved Large BGP
+   Community values defined in Section 5.
 
    A receiving speaker MUST NOT consider duplicate Large Communities
    attributes in a BGP UPDATE message to be malformed.
@@ -273,7 +274,6 @@ Internet-Draft            Large BGP Communities           September 2016
    assist the IETF in its decision processes in progressing drafts to
    RFCs.  Please note that the listing of any individual implementation
    here does not imply endorsement by the IETF.  Furthermore, no effort
-   has been spent to verify the information presented here that was
 
 
 
@@ -282,6 +282,7 @@ Heitz, et al.             Expires April 3, 2017                 [Page 5]
 Internet-Draft            Large BGP Communities           September 2016
 
 
+   has been spent to verify the information presented here that was
    supplied by IETF contributors.  This is not intended as, and must not
    be construed to be, a catalog of available implementations or their
    features.  Readers are advised to note that other implementations may
@@ -325,7 +326,6 @@ Internet-Draft            Large BGP Communities           September 2016
    Maddison, Alexander Azimov, Brian Dickson, Peter van Dijk, Julian
    Seifert, Tom Petch and Tom Scholl for their support, insightful
    review and comments.
-
 
 
 
