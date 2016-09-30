@@ -121,7 +121,8 @@
               The most significant word is usually interpreted as an
               Autonomous System Number (ASN) and the least significant word
               is a locally defined value whose meaning is assigned by
-              the operator of the Autonomous System to which it applies.
+              the operator of the Autonomous System in the most significant
+              word.
           </t>
           <t>
               Since the adoption of four-octet ASNs <xref
