@@ -231,7 +231,7 @@
             than a colon or may require keywords or characters prepending or
             postpending the Large Communities attribute.  Such differences
             are permitted.  However, each implementation MUST make a
-            representation available that depicts the intergers in decimal
+            representation available that depicts the integers in decimal
             and in the following order: Global Administrator, Local Data
             Part 1, Local Data Part 2.
         </t>
