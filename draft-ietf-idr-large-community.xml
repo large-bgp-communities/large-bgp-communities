@@ -110,10 +110,11 @@
               properties of these routes.  These properties may include
               information such as the route origin location, or specification
               of a routing policy action to be taken, or one that has been
-              taken, and may apply to an individual route or group of routes.
-              Because BGP communities are optional transitive BGP attributes,
-              BGP communities may be acted upon or otherwise used by routing
-              policies in other Autonomous Systems (AS) on the Internet.
+              taken, and may apply to an individual route or to a group of
+              routes. Because BGP communities are optional transitive BGP
+              attributes, BGP communities may be acted upon or otherwise used
+              by routing policies in other Autonomous Systems (AS) on the
+              Internet.
           </t>
           <t>
               <xref target="RFC1997"/> BGP Communities Attributes are
