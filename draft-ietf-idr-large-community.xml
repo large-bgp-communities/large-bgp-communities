@@ -104,16 +104,15 @@
   <middle>
       <section title="Introduction">
           <t>
-              BGP implementations typically support a routing policy
-              language to control the distribution of routing information.
-              Network operators attach BGP communities to routes according
-              to their routing policy to identify intrinsic properties of
-              these routes.  These properties may include information such
-              as the route origin location, or specification of a routing
-              policy action to be taken, or one that has been taken, and may
-              apply to an individual route or group of routes.  Because BGP
-              communities are optional transitive BGP attributes, BGP
-              communities may be acted upon or otherwise used by routing
+              BGP implementations typically support a routing policy language
+              to control the distribution of routing information.  Network
+              operators attach BGP communities to routes to identify intrinsic
+              properties of these routes.  These properties may include
+              information such as the route origin location, or specification
+              of a routing policy action to be taken, or one that has been
+              taken, and may apply to an individual route or group of routes.
+              Because BGP communities are optional transitive BGP attributes,
+              BGP communities may be acted upon or otherwise used by routing
               policies in other Autonomous Systems (AS) on the Internet.
           </t>
           <t>
@@ -134,7 +133,7 @@
           </t>
           <t>
               To address these shortcomings, this document defines a Large
-              Community BGP Attribute to encode one or more 12-octet values,
+              Community BGP Attribute encoded as one or more 12-octet values,
               each consisting of a four-octet ASN and two four-octet
               operator-defined values, each of which can be used to denote
               properties or actions significant to that ASN.
@@ -176,14 +175,14 @@
         </t>
         <t>
             The Global Administrator field is intended to allow different
-            Autonomous Systems to define Large Communities without clashing
-            with each other.  Implementations MUST allow the operator to
-            specify any value for the Global Administrator field.
+            Autonomous Systems to define Large Communities without collision.
+            Implementations MUST allow the operator to specify any value for
+            the Global Administrator field.
         </t>
         <t>
             There is no significance to the order in which Large Communities
             are encoded in a path attributes field and a receiving speaker
-            MAY retransmit them in an order different to which it received
+            MAY retransmit them in an order different from which it received
             them.
         </t>
         <t>
@@ -202,9 +201,9 @@
         <t>
             If a range of routes is aggregated and the resulting aggregates
             attribute section does not carry the ATOMIC_AGGREGATE attribute,
-            then the resulting aggregate should have a Large Communities
-            path attribute which contains all large communities from all of
-            the aggregated routes.
+            then the resulting aggregate should have a Large Communities path
+            attribute which contains the intersection of all of the large
+            communities from all of the aggregated routes.
         </t>
 
     </section>
@@ -291,11 +290,11 @@
         </t>
         <t>
             This document does not change any underlying security issues
-            associated with any other BGP Communities mechanism.
-            Specifically, an AS relying on the BGP attributes carried in BGP
-            must have trust in every other AS in the path, as any
-            intermediate Autonomous System in the path may have added,
-            deleted or altered attributes.  Specifying the mechanism to
+            associated with any other BGP Communities mechanism.  Specifically,
+            an AS relying on the Large BGP Community attribute carried in BGP
+            must have trust in every other AS in the path, as any intermediate
+            Autonomous System in the path may have added, deleted or altered
+            the Large BGP Community attribute. Specifying the mechanism to
             provide such trust is beyond the scope of this document.
         </t>
         <t>
