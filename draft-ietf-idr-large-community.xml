@@ -238,7 +238,7 @@
 
     </section>
 
-    <section title="Reserved Large BGP Community values">
+    <section title="Reserved Large BGP Community values" anchor="reserved_vals">
         <t>
             The Large BGP Community attribute values in the following ranges
             are reserved:
@@ -276,7 +276,9 @@
             The BGP Large Communities Global Administrator field may contain
             any value, and a Large Communities attribute MUST NOT be
             considered malformed if the Global Administrator field contains
-            an unallocated, unassigned or reserved ASN.
+            an unallocated, unassigned or reserved ASN or is set to one of
+            the reserved Large BGP Community values defined in <xref
+            target="reserved_vals" />.
         </t>
         <t>
             A receiving speaker MUST NOT consider duplicate Large
