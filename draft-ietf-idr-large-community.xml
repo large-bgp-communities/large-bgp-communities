@@ -113,7 +113,7 @@
               taken, and may apply to an individual route or to a group of
               routes. Because BGP communities are optional transitive BGP
               attributes, BGP communities may be acted upon or otherwise used
-              by routing policies in other Autonomous Systems (AS) on the
+              by routing policies in other Autonomous Systems (ASes) on the
               Internet.
           </t>
           <t>
