@@ -331,6 +331,7 @@
                <t>ExaBGP</t>
                <t>GoBGP</t>
                <t>BIRD</t>
+               <t>OpenBGPD</t>
             </list>
        </t>
        <t>
