@@ -192,11 +192,6 @@
             receiving speaker SHOULD silently remove duplicate Large
             Communities from a BGP UPDATE message.
         </t>
-        <t>
-            There are no routing semantics implied by the Global
-            Administrator field.
-        </t>
-
     </section>
 
     <section title="Aggregation">
