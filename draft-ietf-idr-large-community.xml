@@ -245,6 +245,19 @@
         </t>
     </section>
 
+    <section title="Operations">
+        <t>
+            A route may carry both the BGP Communities attribute, as defined in
+            <xref target="RFC1997"/>, and the Extended BGP Communities
+            attribute, as defined in <xref target="RFC4360"/>, and the Large
+            BGP Community attribute. In this case, the BGP Communities
+            attribute is handled as specified in <xref target="RFC1997"/>, and
+            the Extended BGP Communities attribute is handled as specified in
+            <xref target="RFC4360"/>, and the Large BGP Community is handed as
+            specified in this document.
+        </t>
+    </section>
+
     <section title="Error Handling">
         <t>
             The error handling of Large Communities is as follows:
@@ -261,9 +274,8 @@
                 </t>
                 <t>
                     A BGP UPDATE message with a malformed Large Communities
-                    attribute SHALL be handled using the approach of
-		    "treat-as-withdraw" as described in
-		    <xref target="RFC7606">section 2</xref>.
+                    attribute SHALL be handled using the approach of "treat-as-withdraw"
+                    as described in <xref target="RFC7606">section 2</xref>.
                 </t>
             </list>
         </t>
