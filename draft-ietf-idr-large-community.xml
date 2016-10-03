@@ -10,7 +10,7 @@
 <?rfc inline="yes"?>
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
-<rfc category="std" docName="draft-ietf-idr-large-community-01" ipr="trust200902">
+<rfc category="std" docName="draft-ietf-idr-large-community-02" ipr="trust200902">
   <front>
     <title abbrev="Large BGP Communities">Large BGP Communities</title>
 
@@ -83,10 +83,10 @@
     <abstract>
         <t>
             This document describes the Large BGP Community attribute, an
-            extension to BGP (RFC 4271). This attribute provides a mechanism to
+            extension to BGP-4. This attribute provides a mechanism to
             signal opaque information within separate namespaces to aid in
             routing management. The attribute is suitable for use in 4-octet
-            ASNs (RFC 6793).
+            ASNs.
         </t>
     </abstract>
 
