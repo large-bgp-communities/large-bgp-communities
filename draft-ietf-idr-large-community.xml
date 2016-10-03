@@ -342,9 +342,10 @@
 
     <section title="IANA Considerations">
         <t>
-            IANA has assigned value 30 (LARGE_COMMUNITY Attribute) in the "BGP
-            Path Attributes" sub-registry under the "Border Gateway Protocol
-            (BGP) Parameters" registry.
+            IANA has made an Early Allocation of the value 30 (LARGE_COMMUNITY)
+            in the "BGP Path Attributes" registry under the "Border Gateway
+            Protocol (BGP) Parameters" group and is now asked to make that
+            Permanent.
         </t>
     </section>
 
