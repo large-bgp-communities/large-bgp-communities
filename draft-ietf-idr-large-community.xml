@@ -205,32 +205,15 @@
 
     </section>
 
-    <section title="Textual Representation">
+    <section title="Canonical Representation">
         <t>
-            BGP Communities <xref target="RFC1997"/> are usually represented
-            in routing policy languages as two individual two-octet unsigned
-            integers separated by a colon; for example, 64496:12345.
+            For documentation purposes, it is RECOMMENDED that Large BGP
+            Communities are represented as three unsigned decimal numbers,
+            without leading zeros, separated by the colon character, in the
+            following order: Global Administrator, Local Data 1, Local Data 2.
+            Numbers SHOULD not be omitted, even when zero. For example,
+            64496:4294967295:2 or 64496:0:0.
         </t>
-        <t>
-            BGP Large Communities implementations MUST represent Large
-            Communities in a manner similar to their representation of BGP
-            Communities <xref target="RFC1997"/>.  Large Communities MUST be
-            represented as three separate four-octet unsigned integers in
-            decimal format with no leading zeros.  These integers MUST NOT
-            be omitted, even when zero.  For example, 64496:4294967295:2 or
-            64496:0:0.
-        </t>
-        <t>
-            Vendors MAY provide other textual representations.  For example,
-            a vendor's routing policy language may use a separator other
-            than a colon or may require keywords or characters prepending or
-            postpending the Large Communities attribute.  Such differences
-            are permitted.  However, each implementation MUST make a
-            representation available that depicts the integers in decimal
-            and in the following order: Global Administrator, Local Data
-            Part 1, Local Data Part 2.
-        </t>
-
     </section>
 
     <section title="Reserved Large BGP Community values" anchor="reserved_vals">
@@ -263,10 +246,6 @@
                     A BGP UPDATE message with a malformed Large Communities
                     attribute SHALL be handled using the approach of "treat-as-withdraw"
                     as described in <xref target="RFC7606">section 2</xref>.
-                </t>
-                <t>
-                    A BGP UPDATE message carrying multiple Large BGP Community
-                    Path Attributes should be handled according to <xref target="RFC7606">section 3.g</xref>.
                 </t>
             </list>
         </t>
@@ -379,7 +358,6 @@
       <?rfc include="reference.RFC.7606"?>
     </references>
     <references title="Informative References">
-      <?rfc include="reference.RFC.4360"?>
       <?rfc include="reference.RFC.7454"?>
       <?rfc include="reference.RFC.7942"?>
     </references>
