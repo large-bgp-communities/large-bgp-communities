@@ -80,16 +80,15 @@ Table of Contents
    3.  Aggregation . . . . . . . . . . . . . . . . . . . . . . . . .   4
    4.  Textual Representation  . . . . . . . . . . . . . . . . . . .   4
    5.  Reserved Large BGP Community values . . . . . . . . . . . . .   4
-   6.  Operations  . . . . . . . . . . . . . . . . . . . . . . . . .   5
-   7.  Error Handling  . . . . . . . . . . . . . . . . . . . . . . .   5
-   8.  Security Considerations . . . . . . . . . . . . . . . . . . .   5
-   9.  Implementation status - RFC EDITOR: REMOVE BEFORE PUBLICATION   6
-   10. IANA Considerations . . . . . . . . . . . . . . . . . . . . .   6
-   11. Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .   7
-   12. References  . . . . . . . . . . . . . . . . . . . . . . . . .   7
-     12.1.  Normative References . . . . . . . . . . . . . . . . . .   7
-     12.2.  Informative References . . . . . . . . . . . . . . . . .   7
-     12.3.  URIs . . . . . . . . . . . . . . . . . . . . . . . . . .   8
+   6.  Error Handling  . . . . . . . . . . . . . . . . . . . . . . .   5
+   7.  Security Considerations . . . . . . . . . . . . . . . . . . .   5
+   8.  Implementation status - RFC EDITOR: REMOVE BEFORE PUBLICATION   6
+   9.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   6
+   10. Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .   6
+   11. References  . . . . . . . . . . . . . . . . . . . . . . . . .   7
+     11.1.  Normative References . . . . . . . . . . . . . . . . . .   7
+     11.2.  Informative References . . . . . . . . . . . . . . . . .   7
+     11.3.  URIs . . . . . . . . . . . . . . . . . . . . . . . . . .   8
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   8
 
 1.  Introduction
@@ -105,7 +104,8 @@ Table of Contents
    otherwise used by routing policies in other Autonomous Systems (ASes)
    on the Internet.
 
-
+   [RFC1997] BGP Communities Attributes are four-octet values split into
+   two individual two-octet words.  The most significant word is usually
 
 
 
@@ -114,8 +114,6 @@ Heitz, et al.             Expires April 8, 2017                 [Page 2]
 Internet-Draft            Large BGP Communities             October 2016
 
 
-   [RFC1997] BGP Communities Attributes are four-octet values split into
-   two individual two-octet words.  The most significant word is usually
    interpreted as an Autonomous System Number (ASN) and the least
    significant word is a locally defined value whose meaning is assigned
    by the operator of the Autonomous System in the most significant
@@ -161,6 +159,8 @@ Internet-Draft            Large BGP Communities             October 2016
 
    The Global Administrator field is intended to allow different
    Autonomous Systems to define Large Communities without collision.
+   Implementations MUST allow the operator to specify any value for the
+   Global Administrator field.
 
 
 
@@ -169,9 +169,6 @@ Heitz, et al.             Expires April 8, 2017                 [Page 3]
 
 Internet-Draft            Large BGP Communities             October 2016
 
-
-   Implementations MUST allow the operator to specify any value for the
-   Global Administrator field.
 
    There is no significance to the order in which Large Communities are
    encoded in a path attributes field and a receiving speaker MAY
@@ -221,22 +218,15 @@ Internet-Draft            Large BGP Communities             October 2016
 
 
 
+
+
+
 Heitz, et al.             Expires April 8, 2017                 [Page 4]
 
 Internet-Draft            Large BGP Communities             October 2016
 
 
-6.  Operations
-
-   A route may carry both the BGP Communities attribute, as defined in
-   [RFC1997], and the Extended BGP Communities attribute, as defined in
-   [RFC4360], and the Large BGP Community attribute.  In this case, the
-   BGP Communities attribute is handled as specified in [RFC1997], and
-   the Extended BGP Communities attribute is handled as specified in
-   [RFC4360], and the Large BGP Community is handed as specified in this
-   document.
-
-7.  Error Handling
+6.  Error Handling
 
    The error handling of Large Communities is as follows:
 
@@ -264,7 +254,7 @@ Internet-Draft            Large BGP Communities             October 2016
    should be discarded.  Implementation MUST NOT send multiple equal
    Large BGP Community values.
 
-8.  Security Considerations
+7.  Security Considerations
 
    This extension to BGP has similar security implications as BGP
    Communities [RFC1997] and BGP Extended Communities [RFC4360].
@@ -274,6 +264,16 @@ Internet-Draft            Large BGP Communities             October 2016
    an AS relying on the Large BGP Community attribute carried in BGP
    must have trust in every other AS in the path, as any intermediate
    Autonomous System in the path may have added, deleted or altered the
+   Large BGP Community attribute.  Specifying the mechanism to provide
+   such trust is beyond the scope of this document.
+
+   Network administrators should note the recommendations in Section 11
+   of BGP Operations and Security [RFC7454].
+
+
+
+
+
 
 
 
@@ -282,13 +282,7 @@ Heitz, et al.             Expires April 8, 2017                 [Page 5]
 Internet-Draft            Large BGP Communities             October 2016
 
 
-   Large BGP Community attribute.  Specifying the mechanism to provide
-   such trust is beyond the scope of this document.
-
-   Network administrators should note the recommendations in Section 11
-   of BGP Operations and Security [RFC7454].
-
-9.  Implementation status - RFC EDITOR: REMOVE BEFORE PUBLICATION
+8.  Implementation status - RFC EDITOR: REMOVE BEFORE PUBLICATION
 
    This section records the status of known implementations of the
    protocol defined by this specification at the time of posting of this
@@ -319,26 +313,14 @@ Internet-Draft            Large BGP Communities             October 2016
    The latest implementation news is tracked at
    http://largebgpcommunities.net/ [1].
 
-10.  IANA Considerations
+9.  IANA Considerations
 
    IANA has made an Early Allocation of the value 30 (LARGE_COMMUNITY)
    in the "BGP Path Attributes" registry under the "Border Gateway
    Protocol (BGP) Parameters" group and is now asked to make that
    Permanent.
 
-
-
-
-
-
-
-
-Heitz, et al.             Expires April 8, 2017                 [Page 6]
-
-Internet-Draft            Large BGP Communities             October 2016
-
-
-11.  Acknowledgments
+10.  Acknowledgments
 
    The authors would like to thank Ruediger Volk, Russ White, Acee
    Lindem, Shyam Sethuram, Jared Mauch, Joel M.  Halpern, Nick Hilliard,
@@ -348,6 +330,14 @@ Internet-Draft            Large BGP Communities             October 2016
    O'Donovan, Grzegorz Janoszka, Linda Dunbar, Marco Davids, Gaurab Raj
    Upadhaya, Jeff Tantsura, Teun Vink, Adam Davenport, Theodore Baschak,
    Pier Carlo Chiodi, Nabeel Cocker, Ian Dickinson, Jan Baggen, Duncan
+
+
+
+Heitz, et al.             Expires April 8, 2017                 [Page 6]
+
+Internet-Draft            Large BGP Communities             October 2016
+
+
    Lockwood, David Farmer, Randy Bush, Wim Henderickx, Stefan Plug, Kay
    Rechthien, Rob Shakir, Warren Kumari, Gert Doering, Thomas King,
    Mikael Abrahamsson, Wesley Steehouwer, Sander Steffann, Brad
@@ -357,9 +347,9 @@ Internet-Draft            Large BGP Communities             October 2016
    Seifert, Tom Petch and Tom Scholl for their support, insightful
    review and comments.
 
-12.  References
+11.  References
 
-12.1.  Normative References
+11.1.  Normative References
 
    [RFC1997]  Chandra, R., Traina, P., and T. Li, "BGP Communities
               Attribute", RFC 1997, DOI 10.17487/RFC1997, August 1996,
@@ -380,19 +370,11 @@ Internet-Draft            Large BGP Communities             October 2016
               RFC 7606, DOI 10.17487/RFC7606, August 2015,
               <http://www.rfc-editor.org/info/rfc7606>.
 
-12.2.  Informative References
+11.2.  Informative References
 
    [RFC4360]  Sangli, S., Tappan, D., and Y. Rekhter, "BGP Extended
               Communities Attribute", RFC 4360, DOI 10.17487/RFC4360,
               February 2006, <http://www.rfc-editor.org/info/rfc4360>.
-
-
-
-
-Heitz, et al.             Expires April 8, 2017                 [Page 7]
-
-Internet-Draft            Large BGP Communities             October 2016
-
 
    [RFC7454]  Durand, J., Pepelnjak, I., and G. Doering, "BGP Operations
               and Security", BCP 194, RFC 7454, DOI 10.17487/RFC7454,
@@ -403,7 +385,16 @@ Internet-Draft            Large BGP Communities             October 2016
               RFC 7942, DOI 10.17487/RFC7942, July 2016,
               <http://www.rfc-editor.org/info/rfc7942>.
 
-12.3.  URIs
+
+
+
+
+Heitz, et al.             Expires April 8, 2017                 [Page 7]
+
+Internet-Draft            Large BGP Communities             October 2016
+
+
+11.3.  URIs
 
    [1] https://largebgpcommunities.net
 
@@ -441,15 +432,6 @@ Authors' Addresses
    Email: ibagdona.ietf@gmail.com
 
 
-
-
-
-
-Heitz, et al.             Expires April 8, 2017                 [Page 8]
-
-Internet-Draft            Large BGP Communities             October 2016
-
-
    Adam Simpson
    Nokia
    600 March Road
@@ -463,42 +445,4 @@ Internet-Draft            Large BGP Communities             October 2016
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Heitz, et al.             Expires April 8, 2017                 [Page 9]
+Heitz, et al.             Expires April 8, 2017                 [Page 8]
