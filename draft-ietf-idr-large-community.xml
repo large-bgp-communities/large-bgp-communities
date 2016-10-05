@@ -277,6 +277,14 @@
                     attribute SHALL be handled using the approach of "treat-as-withdraw"
                     as described in <xref target="RFC7606">section 2</xref>.
                 </t>
+                <t>
+                    Multiple Large BGP Community Path Attributes should be
+                    handled according to <xref target="RFC7606"section 3.g</a>.
+                    If a Large BGP Community value appears more than once in
+                    the BGP Path Attribute, all subsequent occurences should be
+                    discarded. Implementation MUST NOT send multiple equal
+                    large community values.
+                </t>
             </list>
         </t>
         <t>
