@@ -232,11 +232,6 @@ Internet-Draft            Large BGP Communities             October 2016
    unassigned or reserved ASN or is set to one of the reserved Large BGP
    Community values defined in Section 5.
 
-   If a Large BGP Community value appears more than once in the Large
-   BGP Community Path Attribute, all subsequent occurences of that value
-   should be discarded.  Implementation MUST NOT send multiple equal
-   Large BGP Community values.
-
 7.  Security Considerations
 
    This extension to BGP has similar security implications as BGP
@@ -275,16 +270,17 @@ Internet-Draft            Large BGP Communities             October 2016
 
    o  ExaBGP
 
+   o  GoBGP
+
+   o  BIRD
+
+
 
 
 Heitz, et al.             Expires April 8, 2017                 [Page 5]
 
 Internet-Draft            Large BGP Communities             October 2016
 
-
-   o  GoBGP
-
-   o  BIRD
 
    o  OpenBGPD
 
@@ -330,6 +326,10 @@ Internet-Draft            Large BGP Communities             October 2016
               DOI 10.17487/RFC2119, March 1997,
               <http://www.rfc-editor.org/info/rfc2119>.
 
+   [RFC6793]  Vohra, Q. and E. Chen, "BGP Support for Four-Octet
+              Autonomous System (AS) Number Space", RFC 6793,
+              DOI 10.17487/RFC6793, December 2012,
+              <http://www.rfc-editor.org/info/rfc6793>.
 
 
 
@@ -337,11 +337,6 @@ Heitz, et al.             Expires April 8, 2017                 [Page 6]
 
 Internet-Draft            Large BGP Communities             October 2016
 
-
-   [RFC6793]  Vohra, Q. and E. Chen, "BGP Support for Four-Octet
-              Autonomous System (AS) Number Space", RFC 6793,
-              DOI 10.17487/RFC6793, December 2012,
-              <http://www.rfc-editor.org/info/rfc6793>.
 
    [RFC7606]  Chen, E., Ed., Scudder, J., Ed., Mohapatra, P., and K.
               Patel, "Revised Error Handling for BGP UPDATE Messages",
@@ -380,8 +375,13 @@ Authors' Addresses
    Email: keyur@arrcus.com
 
 
+   Job Snijders
+   NTT Communications
+   Theodorus Majofskistraat 100
+   Amsterdam  1065 SZ
+   NL
 
-
+   Email: job@ntt.net
 
 
 
@@ -392,15 +392,6 @@ Authors' Addresses
 Heitz, et al.             Expires April 8, 2017                 [Page 7]
 
 Internet-Draft            Large BGP Communities             October 2016
-
-
-   Job Snijders
-   NTT Communications
-   Theodorus Majofskistraat 100
-   Amsterdam  1065 SZ
-   NL
-
-   Email: job@ntt.net
 
 
    Ignas Bagdonas
@@ -418,6 +409,15 @@ Internet-Draft            Large BGP Communities             October 2016
    Canada
 
    Email: adam.1.simpson@nokia.com
+
+
+
+
+
+
+
+
+
 
 
 
