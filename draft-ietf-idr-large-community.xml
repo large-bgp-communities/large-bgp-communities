@@ -257,12 +257,6 @@
             the reserved Large BGP Community values defined in <xref
             target="reserved_vals" />.
         </t>
-        <t>
-            If a Large BGP Community value appears more than once in the Large
-            BGP Community Path Attribute, all subsequent occurences of that
-            value should be discarded.  Implementation MUST NOT send multiple
-            equal Large BGP Community values.
-        </t>
     </section>
 
     <section title="Security Considerations">
