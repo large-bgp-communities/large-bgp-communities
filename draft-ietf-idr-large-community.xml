@@ -169,7 +169,7 @@
             <list style="hanging">
                 <t hangText="Global Administrator:">
                     A four-octet namespace identifier.  This SHOULD be an Autonomous
-                    System Number assigned by IANA.
+                    System Number.
                 </t>
                 <t hangText="Local Data Part 1:">A four-octet operator-defined value.</t>
                 <t hangText="Local Data Part 2:">A four-octet operator-defined value.</t>
@@ -289,8 +289,7 @@
     <section title="Security Considerations">
         <t>
             This extension to BGP has similar security implications as BGP
-            Communities <xref target="RFC1997"/> and BGP Extended
-            Communities <xref target="RFC4360"/>.
+            Communities <xref target="RFC1997"/>.
         </t>
         <t>
             This document does not change any underlying security issues
