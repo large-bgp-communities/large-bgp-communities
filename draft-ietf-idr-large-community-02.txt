@@ -85,7 +85,7 @@ Table of Contents
    8.  Security Considerations . . . . . . . . . . . . . . . . . . .   5
    9.  Implementation status - RFC EDITOR: REMOVE BEFORE PUBLICATION   6
    10. IANA Considerations . . . . . . . . . . . . . . . . . . . . .   6
-   11. Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .   6
+   11. Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .   7
    12. References  . . . . . . . . . . . . . . . . . . . . . . . . .   7
      12.1.  Normative References . . . . . . . . . . . . . . . . . .   7
      12.2.  Informative References . . . . . . . . . . . . . . . . .   7
@@ -250,14 +250,19 @@ Internet-Draft            Large BGP Communities             October 2016
       SHALL be handled using the approach of "treat-as-withdraw" as
       described in section 2 [RFC7606].
 
+   o  A BGP UPDATE message carrying multiple Large BGP Community Path
+      Attributes should be handled according to section 3.g [RFC7606].
+
    The BGP Large Communities Global Administrator field may contain any
    value, and a Large Communities attribute MUST NOT be considered
    malformed if the Global Administrator field contains an unallocated,
    unassigned or reserved ASN or is set to one of the reserved Large BGP
    Community values defined in Section 5.
 
-   A receiving speaker MUST NOT consider duplicate Large Communities
-   attributes in a BGP UPDATE message to be malformed.
+   If a Large BGP Community value appears more than once in the Large
+   BGP Community Path Attribute, all subsequent occurences of that value
+   should be discarded.  Implementation MUST NOT send multiple equal
+   Large BGP Community values.
 
 8.  Security Considerations
 
@@ -269,11 +274,6 @@ Internet-Draft            Large BGP Communities             October 2016
    an AS relying on the Large BGP Community attribute carried in BGP
    must have trust in every other AS in the path, as any intermediate
    Autonomous System in the path may have added, deleted or altered the
-   Large BGP Community attribute.  Specifying the mechanism to provide
-   such trust is beyond the scope of this document.
-
-   Network administrators should note the recommendations in Section 11
-   of BGP Operations and Security [RFC7454].
 
 
 
@@ -281,6 +281,12 @@ Heitz, et al.             Expires April 8, 2017                 [Page 5]
 
 Internet-Draft            Large BGP Communities             October 2016
 
+
+   Large BGP Community attribute.  Specifying the mechanism to provide
+   such trust is beyond the scope of this document.
+
+   Network administrators should note the recommendations in Section 11
+   of BGP Operations and Security [RFC7454].
 
 9.  Implementation status - RFC EDITOR: REMOVE BEFORE PUBLICATION
 
@@ -320,6 +326,18 @@ Internet-Draft            Large BGP Communities             October 2016
    Protocol (BGP) Parameters" group and is now asked to make that
    Permanent.
 
+
+
+
+
+
+
+
+Heitz, et al.             Expires April 8, 2017                 [Page 6]
+
+Internet-Draft            Large BGP Communities             October 2016
+
+
 11.  Acknowledgments
 
    The authors would like to thank Ruediger Volk, Russ White, Acee
@@ -330,14 +348,6 @@ Internet-Draft            Large BGP Communities             October 2016
    O'Donovan, Grzegorz Janoszka, Linda Dunbar, Marco Davids, Gaurab Raj
    Upadhaya, Jeff Tantsura, Teun Vink, Adam Davenport, Theodore Baschak,
    Pier Carlo Chiodi, Nabeel Cocker, Ian Dickinson, Jan Baggen, Duncan
-
-
-
-Heitz, et al.             Expires April 8, 2017                 [Page 6]
-
-Internet-Draft            Large BGP Communities             October 2016
-
-
    Lockwood, David Farmer, Randy Bush, Wim Henderickx, Stefan Plug, Kay
    Rechthien, Rob Shakir, Warren Kumari, Gert Doering, Thomas King,
    Mikael Abrahamsson, Wesley Steehouwer, Sander Steffann, Brad
@@ -376,6 +386,14 @@ Internet-Draft            Large BGP Communities             October 2016
               Communities Attribute", RFC 4360, DOI 10.17487/RFC4360,
               February 2006, <http://www.rfc-editor.org/info/rfc4360>.
 
+
+
+
+Heitz, et al.             Expires April 8, 2017                 [Page 7]
+
+Internet-Draft            Large BGP Communities             October 2016
+
+
    [RFC7454]  Durand, J., Pepelnjak, I., and G. Doering, "BGP Operations
               and Security", BCP 194, RFC 7454, DOI 10.17487/RFC7454,
               February 2015, <http://www.rfc-editor.org/info/rfc7454>.
@@ -384,15 +402,6 @@ Internet-Draft            Large BGP Communities             October 2016
               Code: The Implementation Status Section", BCP 205,
               RFC 7942, DOI 10.17487/RFC7942, July 2016,
               <http://www.rfc-editor.org/info/rfc7942>.
-
-
-
-
-
-Heitz, et al.             Expires April 8, 2017                 [Page 7]
-
-Internet-Draft            Large BGP Communities             October 2016
-
 
 12.3.  URIs
 
@@ -432,6 +441,15 @@ Authors' Addresses
    Email: ibagdona.ietf@gmail.com
 
 
+
+
+
+
+Heitz, et al.             Expires April 8, 2017                 [Page 8]
+
+Internet-Draft            Large BGP Communities             October 2016
+
+
    Adam Simpson
    Nokia
    600 March Road
@@ -445,4 +463,42 @@ Authors' Addresses
 
 
 
-Heitz, et al.             Expires April 8, 2017                 [Page 8]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Heitz, et al.             Expires April 8, 2017                 [Page 9]
