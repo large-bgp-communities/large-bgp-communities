@@ -207,14 +207,14 @@
 
 	<section title="Textual Representation">
         <t>
-            BGP Communities <xref target="RFC1997"/> are usually represented in
+            BGP Communities <xref target="RFC1998"/> are usually represented in
             routing policy languages as two individual two-octet unsigned
             integers separated by a colon; for example, 64496:12345.
         </t>
         <t>
             BGP Large Communities implementations MUST represent Large
             Communities in a manner similar to their representation of BGP
-            Communities <xref target="RFC1997"/>. Large Communities MUST be
+            Communities <xref target="RFC1998"/>. Large Communities MUST be
             represented as three separate four-octet unsigned integers in
             decimal format with no leading zeros. These integers MUST NOT be
             omitted, even when zero. For example, 64496:4294967295:2 or
@@ -367,6 +367,7 @@
       <?rfc include="reference.RFC.7606"?>
     </references>
     <references title="Informative References">
+      <?rfc include="reference.RFC.1998"?>
       <?rfc include="reference.RFC.7454"?>
       <?rfc include="reference.RFC.7942"?>
     </references>
