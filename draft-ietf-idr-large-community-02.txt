@@ -188,13 +188,13 @@ Internet-Draft            Large BGP Communities             October 2016
 
 4.  Textual Representation
 
-   BGP Communities [RFC1997] are usually represented in routing policy
+   BGP Communities [RFC1998] are usually represented in routing policy
    languages as two individual two-octet unsigned integers separated by
    a colon; for example, 64496:12345.
 
    BGP Large Communities implementations MUST represent Large
    Communities in a manner similar to their representation of BGP
-   Communities [RFC1997].  Large Communities MUST be represented as
+   Communities [RFC1998].  Large Communities MUST be represented as
    three separate four-octet unsigned integers in decimal format with no
    leading zeros.  These integers MUST NOT be omitted, even when zero.
    For example, 64496:4294967295:2 or 64496:0:0.
@@ -363,6 +363,11 @@ Internet-Draft            Large BGP Communities             October 2016
 
 11.2.  Informative References
 
+   [RFC1998]  Chen, E. and T. Bates, "An Application of the BGP
+              Community Attribute in Multi-home Routing", RFC 1998,
+              DOI 10.17487/RFC1998, August 1996,
+              <http://www.rfc-editor.org/info/rfc1998>.
+
    [RFC7454]  Durand, J., Pepelnjak, I., and G. Doering, "BGP Operations
               and Security", BCP 194, RFC 7454, DOI 10.17487/RFC7454,
               February 2015, <http://www.rfc-editor.org/info/rfc7454>.
@@ -378,13 +383,8 @@ Internet-Draft            Large BGP Communities             October 2016
 
 Authors' Addresses
 
-   Jakob Heitz
-   Cisco
-   170 West Tasman Drive
-   San Jose, CA  95054
-   USA
 
-   Email: jheitz@cisco.com
+
 
 
 
@@ -392,6 +392,15 @@ Authors' Addresses
 Heitz, et al.            Expires April 11, 2017                 [Page 7]
 
 Internet-Draft            Large BGP Communities             October 2016
+
+
+   Jakob Heitz
+   Cisco
+   170 West Tasman Drive
+   San Jose, CA  95054
+   USA
+
+   Email: jheitz@cisco.com
 
 
    Keyur Patel
@@ -424,15 +433,6 @@ Internet-Draft            Large BGP Communities             October 2016
    Canada
 
    Email: adam.1.simpson@nokia.com
-
-
-
-
-
-
-
-
-
 
 
 
