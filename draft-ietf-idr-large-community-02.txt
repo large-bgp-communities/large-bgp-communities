@@ -5,14 +5,14 @@
 IDR                                                             J. Heitz
 Internet-Draft                                                     Cisco
 Intended status: Standards Track                                K. Patel
-Expires: April 8, 2017                                            Arrcus
+Expires: April 11, 2017                                           Arrcus
                                                              J. Snijders
                                                                      NTT
                                                              I. Bagdonas
                                                                  Equinix
                                                               A. Simpson
                                                                    Nokia
-                                                         October 5, 2016
+                                                         October 8, 2016
 
 
                          Large BGP Communities
@@ -46,14 +46,14 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on April 8, 2017.
+   This Internet-Draft will expire on April 11, 2017.
 
 
 
 
 
 
-Heitz, et al.             Expires April 8, 2017                 [Page 1]
+Heitz, et al.            Expires April 11, 2017                 [Page 1]
 
 Internet-Draft            Large BGP Communities             October 2016
 
@@ -78,15 +78,15 @@ Table of Contents
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
    2.  Large BGP Communities Attribute . . . . . . . . . . . . . . .   3
    3.  Aggregation . . . . . . . . . . . . . . . . . . . . . . . . .   4
-   4.  Canonical Representation  . . . . . . . . . . . . . . . . . .   4
+   4.  Textual Representation  . . . . . . . . . . . . . . . . . . .   4
    5.  Reserved Large BGP Community values . . . . . . . . . . . . .   4
-   6.  Error Handling  . . . . . . . . . . . . . . . . . . . . . . .   4
+   6.  Error Handling  . . . . . . . . . . . . . . . . . . . . . . .   5
    7.  Security Considerations . . . . . . . . . . . . . . . . . . .   5
    8.  Implementation status - RFC EDITOR: REMOVE BEFORE PUBLICATION   5
    9.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   6
    10. Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .   6
-   11. References  . . . . . . . . . . . . . . . . . . . . . . . . .   6
-     11.1.  Normative References . . . . . . . . . . . . . . . . . .   6
+   11. References  . . . . . . . . . . . . . . . . . . . . . . . . .   7
+     11.1.  Normative References . . . . . . . . . . . . . . . . . .   7
      11.2.  Informative References . . . . . . . . . . . . . . . . .   7
      11.3.  URIs . . . . . . . . . . . . . . . . . . . . . . . . . .   7
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   7
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Heitz, et al.             Expires April 8, 2017                 [Page 2]
+Heitz, et al.            Expires April 11, 2017                 [Page 2]
 
 Internet-Draft            Large BGP Communities             October 2016
 
@@ -165,7 +165,7 @@ Internet-Draft            Large BGP Communities             October 2016
 
 
 
-Heitz, et al.             Expires April 8, 2017                 [Page 3]
+Heitz, et al.            Expires April 11, 2017                 [Page 3]
 
 Internet-Draft            Large BGP Communities             October 2016
 
@@ -186,14 +186,26 @@ Internet-Draft            Large BGP Communities             October 2016
    attribute which contains all of the large communities from all of the
    aggregated routes.
 
-4.  Canonical Representation
+4.  Textual Representation
 
-   For documentation purposes, it is RECOMMENDED that Large BGP
-   Communities are represented as three unsigned decimal numbers,
-   without leading zeros, separated by the colon character, in the
-   following order: Global Administrator, Local Data 1, Local Data 2.
-   Numbers SHOULD not be omitted, even when zero.  For example,
-   64496:4294967295:2 or 64496:0:0.
+   BGP Communities [RFC1997] are usually represented in routing policy
+   languages as two individual two-octet unsigned integers separated by
+   a colon; for example, 64496:12345.
+
+   BGP Large Communities implementations MUST represent Large
+   Communities in a manner similar to their representation of BGP
+   Communities [RFC1997].  Large Communities MUST be represented as
+   three separate four-octet unsigned integers in decimal format with no
+   leading zeros.  These integers MUST NOT be omitted, even when zero.
+   For example, 64496:4294967295:2 or 64496:0:0.
+
+   Vendors MAY provide other textual representations.  For example, a
+   vendor's routing policy language may use a separator other than a
+   colon or may require keywords or characters prepending or postpending
+   the Large Communities attribute.  Such differences are permitted.
+   However, each implementation MUST make a representation available
+   that depicts the integers in decimal and in the following order:
+   Global Administrator, Local Data Part 1, Local Data Part 2.
 
 5.  Reserved Large BGP Community values
 
@@ -203,6 +215,16 @@ Internet-Draft            Large BGP Communities             October 2016
             0:0:0 -          0:4294967295:4294967295
         65535:0:0 -      65535:4294967295:4294967295
    4294967295:0:0 - 4294967295:4294967295:4294967295
+
+
+
+
+
+
+Heitz, et al.            Expires April 11, 2017                 [Page 4]
+
+Internet-Draft            Large BGP Communities             October 2016
+
 
 6.  Error Handling
 
@@ -217,14 +239,6 @@ Internet-Draft            Large BGP Communities             October 2016
    o  A BGP UPDATE message with a malformed Large Communities attribute
       SHALL be handled using the approach of "treat-as-withdraw" as
       described in section 2 [RFC7606].
-
-
-
-
-Heitz, et al.             Expires April 8, 2017                 [Page 4]
-
-Internet-Draft            Large BGP Communities             October 2016
-
 
    The BGP Large Communities Global Administrator field may contain any
    value, and a Large Communities attribute MUST NOT be considered
@@ -260,6 +274,14 @@ Internet-Draft            Large BGP Communities             October 2016
    has been spent to verify the information presented here that was
    supplied by IETF contributors.  This is not intended as, and must not
    be construed to be, a catalog of available implementations or their
+
+
+
+Heitz, et al.            Expires April 11, 2017                 [Page 5]
+
+Internet-Draft            Large BGP Communities             October 2016
+
+
    features.  Readers are advised to note that other implementations may
    exist.
 
@@ -273,14 +295,6 @@ Internet-Draft            Large BGP Communities             October 2016
    o  GoBGP
 
    o  BIRD
-
-
-
-
-Heitz, et al.             Expires April 8, 2017                 [Page 5]
-
-Internet-Draft            Large BGP Communities             October 2016
-
 
    o  OpenBGPD
 
@@ -313,6 +327,17 @@ Internet-Draft            Large BGP Communities             October 2016
    Seifert, Tom Petch and Tom Scholl for their support, insightful
    review and comments.
 
+
+
+
+
+
+
+Heitz, et al.            Expires April 11, 2017                 [Page 6]
+
+Internet-Draft            Large BGP Communities             October 2016
+
+
 11.  References
 
 11.1.  Normative References
@@ -330,13 +355,6 @@ Internet-Draft            Large BGP Communities             October 2016
               Autonomous System (AS) Number Space", RFC 6793,
               DOI 10.17487/RFC6793, December 2012,
               <http://www.rfc-editor.org/info/rfc6793>.
-
-
-
-Heitz, et al.             Expires April 8, 2017                 [Page 6]
-
-Internet-Draft            Large BGP Communities             October 2016
-
 
    [RFC7606]  Chen, E., Ed., Scudder, J., Ed., Mohapatra, P., and K.
               Patel, "Revised Error Handling for BGP UPDATE Messages",
@@ -369,6 +387,13 @@ Authors' Addresses
    Email: jheitz@cisco.com
 
 
+
+
+Heitz, et al.            Expires April 11, 2017                 [Page 7]
+
+Internet-Draft            Large BGP Communities             October 2016
+
+
    Keyur Patel
    Arrcus, Inc
 
@@ -382,16 +407,6 @@ Authors' Addresses
    NL
 
    Email: job@ntt.net
-
-
-
-
-
-
-
-Heitz, et al.             Expires April 8, 2017                 [Page 7]
-
-Internet-Draft            Large BGP Communities             October 2016
 
 
    Ignas Bagdonas
@@ -430,19 +445,4 @@ Internet-Draft            Large BGP Communities             October 2016
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Heitz, et al.             Expires April 8, 2017                 [Page 8]
+Heitz, et al.            Expires April 11, 2017                 [Page 8]
