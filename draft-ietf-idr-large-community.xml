@@ -207,9 +207,10 @@
 
 	<section title="Textual Representation">
         <t>
-            BGP Communities <xref target="RFC1998"/> are usually represented in
+            BGP Communities <xref target="RFC1997"/> are usually represented in
             routing policy languages as two individual two-octet unsigned
-            integers separated by a colon; for example, 64496:12345.
+            integers separated by a colon; for example, 64496:12345
+            <xref target="RFC1998"/>.
         </t>
         <t>
             BGP Large Communities implementations MUST represent Large
