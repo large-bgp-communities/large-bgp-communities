@@ -5,14 +5,14 @@
 IDR                                                             J. Heitz
 Internet-Draft                                                     Cisco
 Intended status: Standards Track                                K. Patel
-Expires: April 14, 2017                                           Arrcus
+Expires: April 15, 2017                                           Arrcus
                                                              J. Snijders
                                                                      NTT
                                                              I. Bagdonas
                                                                  Equinix
                                                               A. Simpson
                                                                    Nokia
-                                                        October 11, 2016
+                                                        October 12, 2016
 
 
                          Large BGP Communities
@@ -46,14 +46,14 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on April 14, 2017.
+   This Internet-Draft will expire on April 15, 2017.
 
 
 
 
 
 
-Heitz, et al.            Expires April 14, 2017                 [Page 1]
+Heitz, et al.            Expires April 15, 2017                 [Page 1]
 
 Internet-Draft            Large BGP Communities             October 2016
 
@@ -104,31 +104,30 @@ Table of Contents
    otherwise used by routing policies in other Autonomous Systems (ASes)
    on the Internet.
 
-   [RFC1997] BGP Communities Attributes are four-octet values split into
-   two individual two-octet words.  The most significant word is usually
+   [RFC1997] BGP Communities Attributes are 4-octet values split into
+   two 2-octet words.  The most significant word is usually interpreted
 
 
 
-Heitz, et al.            Expires April 14, 2017                 [Page 2]
+Heitz, et al.            Expires April 15, 2017                 [Page 2]
 
 Internet-Draft            Large BGP Communities             October 2016
 
 
-   interpreted as an Autonomous System Number (ASN) and the least
-   significant word is a locally defined value whose meaning is assigned
-   by the operator of the Autonomous System in the most significant
-   word.
+   as an Autonomous System Number (ASN) and the least significant word
+   is a locally defined value whose meaning is assigned by the operator
+   of the Autonomous System in the most significant word.
 
-   Since the adoption of four-octet ASNs [RFC6793], the BGP Communities
+   Since the adoption of 4-octet ASNs [RFC6793], the BGP Communities
    Attribute can no longer accommodate this encoding, as the
    specification in [RFC1997] contains only four octets.  This does not
    allow operators to specify any locally significant values.
 
    To address these shortcomings, this document defines a Large
    Community BGP Attribute encoded as one or more 12-octet values, each
-   consisting of a four-octet ASN and two four-octet operator-defined
-   values, each of which can be used to denote properties or actions
-   significant to that ASN.
+   consisting of a 4-octet ASN and two 4-octet operator-defined values,
+   each of which can be used to denote properties or actions significant
+   to that ASN.
 
 2.  Large BGP Communities Attribute
 
@@ -150,12 +149,12 @@ Internet-Draft            Large BGP Communities             October 2016
    |                       Local Data Part 2                       |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
-   Global Administrator:  A four-octet namespace identifier.  This
-      SHOULD be an Autonomous System Number.
+   Global Administrator:  A 4-octet namespace identifier.  This SHOULD
+      be an Autonomous System Number.
 
-   Local Data Part 1:  A four-octet operator-defined value.
+   Local Data Part 1:  A 4-octet operator-defined value.
 
-   Local Data Part 2:  A four-octet operator-defined value.
+   Local Data Part 2:  A 4-octet operator-defined value.
 
    The Global Administrator field is intended to allow different
    Autonomous Systems to define Large Communities without collision.
@@ -165,7 +164,8 @@ Internet-Draft            Large BGP Communities             October 2016
 
 
 
-Heitz, et al.            Expires April 14, 2017                 [Page 3]
+
+Heitz, et al.            Expires April 15, 2017                 [Page 3]
 
 Internet-Draft            Large BGP Communities             October 2016
 
@@ -189,13 +189,13 @@ Internet-Draft            Large BGP Communities             October 2016
 4.  Textual Representation
 
    BGP Communities [RFC1997] are usually represented in routing policy
-   languages as two individual two-octet unsigned integers separated by
-   a colon; for example, 64496:12345 [RFC1998].
+   languages as two 2-octet unsigned integers separated by a colon; for
+   example, 64496:12345 [RFC1998].
 
-   BGP Large Communities implementations MUST represent Large
+   BGP Large Communities implementations SHOULD represent Large
    Communities in a manner similar to their representation of BGP
    Communities [RFC1998].  Large Communities MUST be represented as
-   three separate four-octet unsigned integers in decimal format with no
+   three separate 4-octet unsigned integers in decimal format with no
    leading zeros.  These integers MUST NOT be omitted, even when zero.
    For example, 64496:4294967295:2 or 64496:0:0.
 
@@ -221,7 +221,7 @@ Internet-Draft            Large BGP Communities             October 2016
 
 
 
-Heitz, et al.            Expires April 14, 2017                 [Page 4]
+Heitz, et al.            Expires April 15, 2017                 [Page 4]
 
 Internet-Draft            Large BGP Communities             October 2016
 
@@ -277,7 +277,7 @@ Internet-Draft            Large BGP Communities             October 2016
 
 
 
-Heitz, et al.            Expires April 14, 2017                 [Page 5]
+Heitz, et al.            Expires April 15, 2017                 [Page 5]
 
 Internet-Draft            Large BGP Communities             October 2016
 
@@ -333,7 +333,7 @@ Internet-Draft            Large BGP Communities             October 2016
 
 
 
-Heitz, et al.            Expires April 14, 2017                 [Page 6]
+Heitz, et al.            Expires April 15, 2017                 [Page 6]
 
 Internet-Draft            Large BGP Communities             October 2016
 
@@ -389,7 +389,7 @@ Authors' Addresses
 
 
 
-Heitz, et al.            Expires April 14, 2017                 [Page 7]
+Heitz, et al.            Expires April 15, 2017                 [Page 7]
 
 Internet-Draft            Large BGP Communities             October 2016
 
@@ -445,4 +445,4 @@ Internet-Draft            Large BGP Communities             October 2016
 
 
 
-Heitz, et al.            Expires April 14, 2017                 [Page 8]
+Heitz, et al.            Expires April 15, 2017                 [Page 8]
