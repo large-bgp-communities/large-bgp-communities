@@ -211,7 +211,7 @@
             separated by a colon; for example, 64496:12345 <xref target="RFC1998"/>.
         </t>
         <t>
-            BGP Large Communities implementations MUST represent Large
+            BGP Large Communities implementations SHOULD represent Large
             Communities in a manner similar to their representation of BGP
             Communities <xref target="RFC1998"/>. Large Communities MUST be
             represented as three separate 4-octet unsigned integers in
