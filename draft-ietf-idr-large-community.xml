@@ -118,27 +118,26 @@
           </t>
           <t>
               <xref target="RFC1997"/> BGP Communities Attributes are
-              four-octet values split into two individual two-octet words.
-              The most significant word is usually interpreted as an
-              Autonomous System Number (ASN) and the least significant word
-              is a locally defined value whose meaning is assigned by
-              the operator of the Autonomous System in the most significant
-              word.
+              4-octet values split into two 2-octet words. The most
+              significant word is usually interpreted as an Autonomous System
+              Number (ASN) and the least significant word is a locally defined
+              value whose meaning is assigned by the operator of the Autonomous
+              System in the most significant word.
           </t>
           <t>
-              Since the adoption of four-octet ASNs <xref
-              target="RFC6793"/>, the BGP Communities Attribute can no
-              longer accommodate this encoding, as the specification in
-              <xref target="RFC1997"/> contains only four octets.  This does
-              not allow operators to specify any locally significant values.
+              Since the adoption of 4-octet ASNs <xref target="RFC6793"/>, the
+              BGP Communities Attribute can no longer accommodate this
+              encoding, as the specification in <xref target="RFC1997"/>
+              contains only four octets. This does not allow operators to
+              specify any locally significant values.
               <!-- NOTE: need to mention Extended Communities here  -->
           </t>
           <t>
               To address these shortcomings, this document defines a Large
               Community BGP Attribute encoded as one or more 12-octet values,
-              each consisting of a four-octet ASN and two four-octet
-              operator-defined values, each of which can be used to denote
-              properties or actions significant to that ASN.
+              each consisting of a 4-octet ASN and two 4-octet operator-defined
+              values, each of which can be used to denote properties or actions
+              significant to that ASN.
           </t>
     </section>
 
@@ -168,11 +167,11 @@
         <t>
             <list style="hanging">
                 <t hangText="Global Administrator:">
-                    A four-octet namespace identifier.  This SHOULD be an Autonomous
+                    A 4-octet namespace identifier.  This SHOULD be an Autonomous
                     System Number.
                 </t>
-                <t hangText="Local Data Part 1:">A four-octet operator-defined value.</t>
-                <t hangText="Local Data Part 2:">A four-octet operator-defined value.</t>
+                <t hangText="Local Data Part 1:">A 4-octet operator-defined value.</t>
+                <t hangText="Local Data Part 2:">A 4-octet operator-defined value.</t>
             </list>
         </t>
         <t>
@@ -208,15 +207,14 @@
 	<section title="Textual Representation">
         <t>
             BGP Communities <xref target="RFC1997"/> are usually represented in
-            routing policy languages as two individual two-octet unsigned
-            integers separated by a colon; for example, 64496:12345
-            <xref target="RFC1998"/>.
+            routing policy languages as two 2-octet unsigned integers
+            separated by a colon; for example, 64496:12345 <xref target="RFC1998"/>.
         </t>
         <t>
             BGP Large Communities implementations MUST represent Large
             Communities in a manner similar to their representation of BGP
             Communities <xref target="RFC1998"/>. Large Communities MUST be
-            represented as three separate four-octet unsigned integers in
+            represented as three separate 4-octet unsigned integers in
             decimal format with no leading zeros. These integers MUST NOT be
             omitted, even when zero. For example, 64496:4294967295:2 or
             64496:0:0.
