@@ -318,7 +318,8 @@
                <t>GoBGP</t>
                <t>BIRD</t>
                <t>OpenBGPD</t>
-            </list>
+               <t>pmacct.net</t>
+           </list>
        </t>
        <t>
            The latest implementation news is tracked at
