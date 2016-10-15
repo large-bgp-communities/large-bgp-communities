@@ -85,7 +85,7 @@
             This document describes the Large BGP Community attribute, an
             extension to BGP-4. This attribute provides a mechanism to
             signal opaque information within separate namespaces to aid in
-            routing management. The attribute is suitable for use in 4-octet
+            routing management. The attribute is suitable for use in four-octet
             ASNs.
         </t>
     </abstract>
@@ -118,27 +118,27 @@
           </t>
           <t>
               <xref target="RFC1997"/> BGP Communities Attributes are
-              4-octet values split into two 2-octet words. The most
+              four-octet values split into two two-octet words. The most
               significant word is usually interpreted as an Autonomous System
               Number (ASN) and the least significant word is a locally defined
               value whose meaning is assigned by the operator of the Autonomous
               System in the most significant word.
           </t>
           <t>
-              Since the adoption of 4-octet ASNs <xref target="RFC6793"/>, the
+              Since the adoption of four-octet ASNs <xref target="RFC6793"/>, the
               BGP Communities Attribute can no longer accommodate the above
-              encoding, as a 2-octet word cannot fit a 4-octet ASN.  The BGP
+              encoding, as a two-octet word cannot fit a four-octet ASN.  The BGP
               Extended Communities attribute <xref target="RFC4360"/> is also
               unsuitable, as the protocol limit of six octets cannot
-              accommodate both a 4-octet Global Administrator value and a
-              4-octet Local Administrator value, which precludes the common
+              accommodate both a four-octet Global Administrator value and a
+              four-octet Local Administrator value, which precludes the common
               operational practice of encoding a target ASN in the Local
               Administrator field.
           </t>
           <t>
               To address these shortcomings, this document defines a Large
-              Community BGP Attribute encoded as one or more 12-octet values,
-              each consisting of a 4-octet ASN and two 4-octet operator-defined
+              Community BGP Attribute encoded as one or more twelve-octet values,
+              each consisting of a four-octet ASN and two four-octet operator-defined
               values, each of which can be used to denote properties or actions
               significant to that ASN.
           </t>
@@ -152,8 +152,8 @@
             community specified in the attribute.
         </t>
         <t>
-            The attribute consists of one or more 12-octet values. Each
-            12-octet Large Communities value represents three 4-octet values, as
+            The attribute consists of one or more twelve-octet values. Each
+            twelve-octet Large Communities value represents three four-octet values, as
             follows:
 <figure align="center"><artwork><![CDATA[
  0                   1                   2                   3
@@ -170,11 +170,11 @@
         <t>
             <list style="hanging">
                 <t hangText="Global Administrator:">
-                    A 4-octet namespace identifier.  This SHOULD be an Autonomous
+                    A four-octet namespace identifier.  This SHOULD be an Autonomous
                     System Number.
                 </t>
-                <t hangText="Local Data Part 1:">A 4-octet operator-defined value.</t>
-                <t hangText="Local Data Part 2:">A 4-octet operator-defined value.</t>
+                <t hangText="Local Data Part 1:">A four-octet operator-defined value.</t>
+                <t hangText="Local Data Part 2:">A four-octet operator-defined value.</t>
             </list>
         </t>
         <t>
