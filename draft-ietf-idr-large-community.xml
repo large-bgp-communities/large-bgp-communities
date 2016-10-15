@@ -195,13 +195,10 @@
 
     <section title="Aggregation">
         <t>
-            If a range of routes is aggregated and the resulting aggregates
-            attribute section does not carry the ATOMIC_AGGREGATE attribute,
-            then the resulting aggregate should have a Large Communities path
-            attribute which contains all of the large communities from all of
-            the aggregated routes.
+            If a range of routes is aggregated, then the resulting aggregate
+            should have a Large BGP Communities path attribute which contains
+            all of the Large BGP Communities from all of the aggregated routes.
         </t>
-
     </section>
 
 	<section title="Canonical Representation">
