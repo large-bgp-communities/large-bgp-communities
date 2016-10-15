@@ -142,10 +142,12 @@
       <tr><td class="lineno" valign="top"></td><td class="lblock">   word.</td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td><a name="diff0009" /></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock">   Since the adoption of <span class="delete">four</span>-octet ASNs [RFC6793], the BGP Communities</td><td> </td><td class="rblock">   Since the adoption of <span class="insert">4</span>-octet ASNs [RFC6793], the BGP Communities</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">   Attribute can no longer accommodate this encoding, as the</td><td> </td><td class="right">   Attribute can no longer accommodate this encoding, as the</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">   specification in [RFC1997] contains only four octets.  This does not</td><td> </td><td class="right">   specification in [RFC1997] contains only four octets.  This does not</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">   allow operators to specify any locally significant values.</td><td> </td><td class="right">   allow operators to specify any locally significant values.</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock">   Since the adoption of <span class="delete">four-octet</span> ASNs [RFC6793], the BGP Communities</td><td> </td><td class="rblock">   Since the adoption of <span class="insert">4-octet</span> ASNs [RFC6793], the BGP Communities</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock">   Attribute can no longer accommodate <span class="delete">this</span> encoding, as the</td><td> </td><td class="rblock">   Attribute can no longer accommodate <span class="insert">the above</span> encoding, as <span class="insert">a 2-octet</span></td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock">   specification <span class="delete">in [RFC1997] contains only four octets.  This</span> does not</td><td> </td><td class="rblock"><span class="insert">   word cannot fit a 4-octet ASN.  The 4-Octet AS Specific BGP Extended</span></td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock">   <span class="delete">allow operators to specify any locally significant values.</span></td><td> </td><td class="rblock"><span class="insert">   Community [RFC5668] is not suitable either, as</span> the specification does</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock">   not <span class="insert">accomodate encoding a 4-octet ASN in the Local Administrator</span></td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   field.</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   To address these shortcomings, this document defines a Large</td><td> </td><td class="right">   To address these shortcomings, this document defines a Large</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   Community BGP Attribute encoded as one or more 12-octet values, each</td><td> </td><td class="right">   Community BGP Attribute encoded as one or more 12-octet values, each</td><td class="lineno" valign="top"></td></tr>
@@ -158,13 +160,13 @@
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   This document creates the Large Communities BGP path attribute as an</td><td> </td><td class="right">   This document creates the Large Communities BGP path attribute as an</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   optional transitive attribute of variable length.  All routes with</td><td> </td><td class="right">   optional transitive attribute of variable length.  All routes with</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">   the Large Communities attribute belong to the community specified in</td><td> </td><td class="right">   the Large Communities attribute belong to the community specified in</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">   the attribute.</td><td> </td><td class="right">   the attribute.</td><td class="lineno" valign="top"></td></tr>
+      <tr><td><a name="diff0011" /></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock">   the Large <span class="delete">Communities</span> attribute belong to the <span class="delete">community</span> specified in</td><td> </td><td class="rblock">   the Large <span class="insert">BGP Community</span> attribute belong to the <span class="insert">communities</span> specified</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock">   the attribute.</td><td> </td><td class="rblock">   in the attribute.</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   The attribute consists of one or more 12-octet values.  Each 12-octet</td><td> </td><td class="right">   The attribute consists of one or more 12-octet values.  Each 12-octet</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   Large Communities value represents three 4-octet values, as follows:</td><td> </td><td class="right">   Large Communities value represents three 4-octet values, as follows:</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
-      <tr bgcolor="gray" ><td></td><th><a name="part-l4" /><small>skipping to change at</small><em> page 3, line 40</em></th><th> </th><th><a name="part-r4" /><small>skipping to change at</small><em> page 3, line 39</em></th><td></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">    0                   1                   2                   3</td><td> </td><td class="right">    0                   1                   2                   3</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1</td><td> </td><td class="right">    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</td><td> </td><td class="right">   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</td><td class="lineno" valign="top"></td></tr>
@@ -175,14 +177,14 @@
       <tr><td class="lineno" valign="top"></td><td class="left">   |                       Local Data Part 2                       |</td><td> </td><td class="right">   |                       Local Data Part 2                       |</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</td><td> </td><td class="right">   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0011" /></td></tr>
+      <tr><td><a name="diff0012" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">   Global Administrator:  A <span class="delete">four-octet</span> namespace identifier.  This</td><td> </td><td class="rblock">   Global Administrator:  A <span class="insert">4-octet</span> namespace identifier.  This SHOULD</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">      SHOULD be an Autonomous System Number.</td><td> </td><td class="rblock">      be an Autonomous System Number.</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0012" /></td></tr>
+      <tr><td><a name="diff0013" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">   Local Data Part 1:  A <span class="delete">four</span>-octet operator-defined value.</td><td> </td><td class="rblock">   Local Data Part 1:  A <span class="insert">4</span>-octet operator-defined value.</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0013" /></td></tr>
+      <tr><td><a name="diff0014" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">   Local Data Part 2:  A <span class="delete">four</span>-octet operator-defined value.</td><td> </td><td class="rblock">   Local Data Part 2:  A <span class="insert">4</span>-octet operator-defined value.</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   The Global Administrator field is intended to allow different</td><td> </td><td class="right">   The Global Administrator field is intended to allow different</td><td class="lineno" valign="top"></td></tr>
@@ -200,10 +202,10 @@
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">3.  Aggregation</td><td> </td><td class="right">3.  Aggregation</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0014" /></td></tr>
+      <tr><td><a name="diff0015" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">   If a range of routes is <span class="delete">aggregated and the resulting aggregates</span></td><td> </td><td class="rblock">   If a range of routes is <span class="insert">aggregated,</span> then the resulting aggregate</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">   attribute section does not carry the ATOMIC_AGGREGATE attribute,</span> then</td><td> </td><td class="rblock">   should have a Large <span class="insert">BGP</span> Communities path attribute which contains all</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock">   the resulting aggregate should have a Large Communities path</td><td> </td><td class="rblock">   of the <span class="insert">Large BGP Communities</span> from all of the aggregated routes.</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">   attribute section does not carry the ATOMIC_AGGREGATE attribute,</span> then</td><td> </td><td class="rblock">   should have a Large <span class="insert">BGP Community</span> path attribute which contains all</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock">   the resulting aggregate should have a Large <span class="delete">Communities</span> path</td><td> </td><td class="rblock">   of the <span class="insert">Large BGP Communities</span> from all of the aggregated routes.</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">   attribute which contains all of the <span class="delete">large communities</span> from all of the</td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">   aggregated routes.</td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">                                                                         </td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
@@ -213,7 +215,7 @@
       <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">   languages as two individual two-octet unsigned integers separated by</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">   a colon; for example, 64496:12345.</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0015" /></td></tr>
+      <tr><td><a name="diff0016" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">   <span class="delete">BGP Large Communities implementations MUST represent Large</span></td><td> </td><td class="rblock"><span class="insert">4.  Canonical Representation</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">   Communities in a manner similar to their representation of BGP</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">   Communities [RFC1998].  Large Communities MUST be represented as</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
@@ -221,7 +223,7 @@
       <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">   leading zeros.  These integers MUST NOT be omitted, even when zero.</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">   For example, 64496:4294967295:2 or 64496:0:0.</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0016" /></td></tr>
+      <tr><td><a name="diff0017" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">   <span class="delete">Vendors MAY provide other textual representations.  For example, a</span></td><td> </td><td class="rblock">   Large <span class="insert">BGP</span> Communities MUST <span class="insert">be represented as three separate unsigned</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">   vendor's routing policy language may use a separator other than a</span></td><td> </td><td class="rblock">   decimal <span class="insert">numbers, without leading zeros,</span> in the following order:</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">   colon or may require keywords or characters prepending or postpending</span></td><td> </td><td class="rblock">   Global Administrator, Local Data 1, Local Data 2.  <span class="insert">Numbers MUST not</span></td><td class="lineno" valign="top"></td></tr>
@@ -240,7 +242,7 @@
       <tr><td class="lineno" valign="top"></td><td class="left">   4294967295:0:0 - 4294967295:4294967295:4294967295</td><td> </td><td class="right">   4294967295:0:0 - 4294967295:4294967295:4294967295</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
-      <tr bgcolor="gray" ><td></td><th><a name="part-l5" /><small>skipping to change at</small><em> page 6, line 20</em></th><th> </th><th><a name="part-r5" /><small>skipping to change at</small><em> page 5, line 51</em></th><td></td></tr>
+      <tr bgcolor="gray" ><td></td><th><a name="part-l4" /><small>skipping to change at</small><em> page 6, line 20</em></th><th> </th><th><a name="part-r4" /><small>skipping to change at</small><em> page 5, line 51</em></th><td></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   o  Cisco IOS XR</td><td> </td><td class="right">   o  Cisco IOS XR</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   o  ExaBGP</td><td> </td><td class="right">   o  ExaBGP</td><td class="lineno" valign="top"></td></tr>
@@ -251,7 +253,7 @@
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   o  OpenBGPD</td><td> </td><td class="right">   o  OpenBGPD</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0017" /></td></tr>
+      <tr><td><a name="diff0018" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   o  pmacct</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   The latest implementation news is tracked at</td><td> </td><td class="right">   The latest implementation news is tracked at</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   http://largebgpcommunities.net/ [1].</td><td> </td><td class="right">   http://largebgpcommunities.net/ [1].</td><td class="lineno" valign="top"></td></tr>
@@ -264,7 +266,7 @@
       <tr><td class="lineno" valign="top"></td><td class="left">   Permanent.</td><td> </td><td class="right">   Permanent.</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
-      <tr bgcolor="gray" ><td></td><th><a name="part-l6" /><small>skipping to change at</small><em> page 6, line 46</em></th><th> </th><th><a name="part-r6" /><small>skipping to change at</small><em> page 6, line 30</em></th><td></td></tr>
+      <tr bgcolor="gray" ><td></td><th><a name="part-l5" /><small>skipping to change at</small><em> page 6, line 46</em></th><th> </th><th><a name="part-r5" /><small>skipping to change at</small><em> page 6, line 30</em></th><td></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   Schmidt, Greg Hankins, Acee Lindem, Bertrand Duvivier, Barry</td><td> </td><td class="right">   Schmidt, Greg Hankins, Acee Lindem, Bertrand Duvivier, Barry</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   O'Donovan, Grzegorz Janoszka, Linda Dunbar, Marco Davids, Gaurab Raj</td><td> </td><td class="right">   O'Donovan, Grzegorz Janoszka, Linda Dunbar, Marco Davids, Gaurab Raj</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   Upadhaya, Jeff Tantsura, Teun Vink, Adam Davenport, Theodore Baschak,</td><td> </td><td class="right">   Upadhaya, Jeff Tantsura, Teun Vink, Adam Davenport, Theodore Baschak,</td><td class="lineno" valign="top"></td></tr>
@@ -275,7 +277,7 @@
       <tr><td class="lineno" valign="top"></td><td class="left">   Dreisbach, Martin Millnert, Christopher Morrow, Jay Borkenhagen,</td><td> </td><td class="right">   Dreisbach, Martin Millnert, Christopher Morrow, Jay Borkenhagen,</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   Arnold Nipper, Joe Provo, Niels Bakker, Bill Fenner, Tom Daly, Ben</td><td> </td><td class="right">   Arnold Nipper, Joe Provo, Niels Bakker, Bill Fenner, Tom Daly, Ben</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   Maddison, Alexander Azimov, Brian Dickson, Peter van Dijk, Julian</td><td> </td><td class="right">   Maddison, Alexander Azimov, Brian Dickson, Peter van Dijk, Julian</td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0018" /></td></tr>
+      <tr><td><a name="diff0019" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">   Seifert, Tom <span class="delete">Petch and</span> Tom <span class="delete">Scholl</span> for their support, insightful</td><td> </td><td class="rblock">   Seifert, Tom <span class="insert">Petch,</span> Tom <span class="insert">Scholl, Arjen Zonneveld, and Remco van Mook</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">   review and comments.</td><td> </td><td class="rblock">   for their support, insightful review and comments.</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
@@ -289,7 +291,7 @@
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate</td><td> </td><td class="right">   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
-      <tr bgcolor="gray" ><td></td><th><a name="part-l7" /><small>skipping to change at</small><em> page 7, line 30</em></th><th> </th><th><a name="part-r7" /><small>skipping to change at</small><em> page 7, line 12</em></th><td></td></tr>
+      <tr bgcolor="gray" ><td></td><th><a name="part-l6" /><small>skipping to change at</small><em> page 7, line 30</em></th><th> </th><th><a name="part-r6" /><small>skipping to change at</small><em> page 7, line 12</em></th><td></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">              DOI 10.17487/RFC6793, December 2012,</td><td> </td><td class="right">              DOI 10.17487/RFC6793, December 2012,</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">              &lt;http://www.rfc-editor.org/info/rfc6793&gt;.</td><td> </td><td class="right">              &lt;http://www.rfc-editor.org/info/rfc6793&gt;.</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
@@ -300,12 +302,12 @@
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">11.2.  Informative References</td><td> </td><td class="right">11.2.  Informative References</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0019" /></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock">   <span class="delete">[RFC1998]  Chen, E. and T. Bates, "An Application of the BGP</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">              Community Attribute in Multi-home Routing", RFC 1998,</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">              DOI 10.17487/RFC1998, August 1996,</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">              &lt;http://www.rfc-editor.org/info/rfc1998&gt;.</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock">                                                                         </td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
+      <tr><td><a name="diff0020" /></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock">   <span class="delete">[RFC1998]  Chen, E.</span> and <span class="delete">T. Bates, "An Application of the</span> BGP</td><td> </td><td class="rblock">   <span class="insert">[RFC5668]  Rekhter, Y., Sangli, S.,</span> and <span class="insert">D. Tappan, "4-Octet AS</span></td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock">              <span class="delete">Community Attribute in Multi-home Routing",</span> RFC <span class="delete">1998,</span></td><td> </td><td class="rblock"><span class="insert">              Specific</span> BGP <span class="insert">Extended Community",</span> RFC <span class="insert">5668,</span></td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock">              DOI <span class="delete">10.17487/RFC1998, August 1996,</span></td><td> </td><td class="rblock">              DOI <span class="insert">10.17487/RFC5668, October 2009,</span></td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">              &lt;http://www.rfc-editor.org/info/rfc1998&gt;.</span></td><td> </td><td class="rblock"><span class="insert">              &lt;http://www.rfc-editor.org/info/rfc5668&gt;.</span></td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   [RFC7454]  Durand, J., Pepelnjak, I., and G. Doering, "BGP Operations</td><td> </td><td class="right">   [RFC7454]  Durand, J., Pepelnjak, I., and G. Doering, "BGP Operations</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">              and Security", BCP 194, RFC 7454, DOI 10.17487/RFC7454,</td><td> </td><td class="right">              and Security", BCP 194, RFC 7454, DOI 10.17487/RFC7454,</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">              February 2015, &lt;http://www.rfc-editor.org/info/rfc7454&gt;.</td><td> </td><td class="right">              February 2015, &lt;http://www.rfc-editor.org/info/rfc7454&gt;.</td><td class="lineno" valign="top"></td></tr>
@@ -317,11 +319,11 @@
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">11.3.  URIs</td><td> </td><td class="right">11.3.  URIs</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0020" /></td></tr>
+      <tr><td><a name="diff0021" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">   [1] http<span class="delete">s</span>://largebgpcommunities.net</td><td> </td><td class="rblock">   [1] http://largebgpcommunities.net</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">Authors' Addresses</td><td> </td><td class="right">Authors' Addresses</td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0021" /></td></tr>
+      <tr><td><a name="diff0022" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">                                                                         </span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   Jakob Heitz</td><td> </td><td class="right">   Jakob Heitz</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   Cisco</td><td> </td><td class="right">   Cisco</td><td class="lineno" valign="top"></td></tr>
@@ -335,8 +337,8 @@
       <tr><td class="lineno" valign="top"></td><td class="left">   Arrcus, Inc</td><td> </td><td class="right">   Arrcus, Inc</td><td class="lineno" valign="top"></td></tr>
 
      <tr><td></td><td class="left"></td><td> </td><td class="right"></td><td></td></tr>
-     <tr bgcolor="gray"><th colspan="5" align="center"><a name="end">&nbsp;End of changes. 21 change blocks.&nbsp;</a></th></tr>
-     <tr class="stats"><td></td><th><i>54 lines changed or deleted</i></th><th><i> </i></th><th><i>35 lines changed or added</i></th><td></td></tr>
+     <tr bgcolor="gray"><th colspan="5" align="center"><a name="end">&nbsp;End of changes. 22 change blocks.&nbsp;</a></th></tr>
+     <tr class="stats"><td></td><th><i>58 lines changed or deleted</i></th><th><i> </i></th><th><i>46 lines changed or added</i></th><td></td></tr>
      <tr><td colspan="5" align="center" class="small"><br/>This html diff was produced by rfcdiff 1.41. The latest version is available from <a href="http://www.tools.ietf.org/tools/rfcdiff/" >http://tools.ietf.org/tools/rfcdiff/</a> </td></tr>
    </table>
    </body>

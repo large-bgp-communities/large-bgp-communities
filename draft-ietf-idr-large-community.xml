@@ -126,11 +126,11 @@
           </t>
           <t>
               Since the adoption of 4-octet ASNs <xref target="RFC6793"/>, the
-              BGP Communities Attribute can no longer accommodate this
-              encoding, as the specification in <xref target="RFC1997"/>
-              contains only four octets. This does not allow operators to
-              specify any locally significant values.
-              <!-- NOTE: need to mention Extended Communities here  -->
+              BGP Communities Attribute can no longer accommodate the above
+              encoding, as a 2-octet word cannot fit a 4-octet ASN. The 4-Octet
+              AS Specific BGP Extended Community <xref target="RFC5668"/> is
+              not suitable either, as the specification does not accomodate
+              encoding a 4-octet ASN in the Local Administrator field.
           </t>
           <t>
               To address these shortcomings, this document defines a Large
@@ -145,8 +145,8 @@
         <t>
             This document creates the Large Communities BGP path attribute
             as an optional transitive attribute of variable length.  All
-            routes with the Large Communities attribute belong to the
-            community specified in the attribute.
+            routes with the Large BGP Community attribute belong to the
+            communities specified in the attribute.
         </t>
         <t>
             The attribute consists of one or more 12-octet values. Each
@@ -196,8 +196,8 @@
     <section title="Aggregation">
         <t>
             If a range of routes is aggregated, then the resulting aggregate
-            should have a Large BGP Communities path attribute which contains
-            all of the Large BGP Communities from all of the aggregated routes.
+            should have a Large BGP Community path attribute which contains all
+            of the Large BGP Communities from all of the aggregated routes.
         </t>
     </section>
 
@@ -349,6 +349,7 @@
       <?rfc include="reference.RFC.7606"?>
     </references>
     <references title="Informative References">
+      <?rfc include="reference.RFC.5668"?>
       <?rfc include="reference.RFC.7454"?>
       <?rfc include="reference.RFC.7942"?>
     </references>

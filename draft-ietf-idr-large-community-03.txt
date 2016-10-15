@@ -119,9 +119,11 @@ Internet-Draft            Large BGP Communities             October 2016
    of the Autonomous System in the most significant word.
 
    Since the adoption of 4-octet ASNs [RFC6793], the BGP Communities
-   Attribute can no longer accommodate this encoding, as the
-   specification in [RFC1997] contains only four octets.  This does not
-   allow operators to specify any locally significant values.
+   Attribute can no longer accommodate the above encoding, as a 2-octet
+   word cannot fit a 4-octet ASN.  The 4-Octet AS Specific BGP Extended
+   Community [RFC5668] is not suitable either, as the specification does
+   not accomodate encoding a 4-octet ASN in the Local Administrator
+   field.
 
    To address these shortcomings, this document defines a Large
    Community BGP Attribute encoded as one or more 12-octet values, each
@@ -133,8 +135,8 @@ Internet-Draft            Large BGP Communities             October 2016
 
    This document creates the Large Communities BGP path attribute as an
    optional transitive attribute of variable length.  All routes with
-   the Large Communities attribute belong to the community specified in
-   the attribute.
+   the Large BGP Community attribute belong to the communities specified
+   in the attribute.
 
    The attribute consists of one or more 12-octet values.  Each 12-octet
    Large Communities value represents three 4-octet values, as follows:
@@ -163,8 +165,6 @@ Internet-Draft            Large BGP Communities             October 2016
 
 
 
-
-
 Heitz, et al.            Expires April 18, 2017                 [Page 3]
 
 Internet-Draft            Large BGP Communities             October 2016
@@ -181,7 +181,7 @@ Internet-Draft            Large BGP Communities             October 2016
 3.  Aggregation
 
    If a range of routes is aggregated, then the resulting aggregate
-   should have a Large BGP Communities path attribute which contains all
+   should have a Large BGP Community path attribute which contains all
    of the Large BGP Communities from all of the aggregated routes.
 
 4.  Canonical Representation
@@ -345,6 +345,11 @@ Internet-Draft            Large BGP Communities             October 2016
 
 11.2.  Informative References
 
+   [RFC5668]  Rekhter, Y., Sangli, S., and D. Tappan, "4-Octet AS
+              Specific BGP Extended Community", RFC 5668,
+              DOI 10.17487/RFC5668, October 2009,
+              <http://www.rfc-editor.org/info/rfc5668>.
+
    [RFC7454]  Durand, J., Pepelnjak, I., and G. Doering, "BGP Operations
               and Security", BCP 194, RFC 7454, DOI 10.17487/RFC7454,
               February 2015, <http://www.rfc-editor.org/info/rfc7454>.
@@ -375,13 +380,8 @@ Authors' Addresses
    Email: keyur@arrcus.com
 
 
-   Job Snijders
-   NTT Communications
-   Theodorus Majofskistraat 100
-   Amsterdam  1065 SZ
-   NL
 
-   Email: job@ntt.net
+
 
 
 
@@ -392,6 +392,15 @@ Authors' Addresses
 Heitz, et al.            Expires April 18, 2017                 [Page 7]
 
 Internet-Draft            Large BGP Communities             October 2016
+
+
+   Job Snijders
+   NTT Communications
+   Theodorus Majofskistraat 100
+   Amsterdam  1065 SZ
+   NL
+
+   Email: job@ntt.net
 
 
    Ignas Bagdonas
@@ -409,15 +418,6 @@ Internet-Draft            Large BGP Communities             October 2016
    Canada
 
    Email: adam.1.simpson@nokia.com
-
-
-
-
-
-
-
-
-
 
 
 
