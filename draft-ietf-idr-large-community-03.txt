@@ -284,7 +284,7 @@ Internet-Draft            Large BGP Communities             October 2016
 
    o  OpenBGPD
 
-   o  pmacct.net
+   o  pmacct
 
    The latest implementation news is tracked at
    http://largebgpcommunities.net/ [1].
