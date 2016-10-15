@@ -145,8 +145,8 @@
         <t>
             This document creates the Large Communities BGP path attribute
             as an optional transitive attribute of variable length.  All
-            routes with the Large BGP Community attribute belong to the
-            communities specified in the attribute.
+            routes with the Large BGP Communities attribute belong to the
+            community specified in the attribute.
         </t>
         <t>
             The attribute consists of one or more 12-octet values. Each
@@ -196,7 +196,7 @@
     <section title="Aggregation">
         <t>
             If a range of routes is aggregated, then the resulting aggregate
-            should have a Large BGP Community path attribute which contains all
+            should have a Large BGP Communities path attribute which contains all
             of the Large BGP Communities from all of the aggregated routes.
         </t>
     </section>
