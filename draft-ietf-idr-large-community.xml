@@ -127,10 +127,13 @@
           <t>
               Since the adoption of 4-octet ASNs <xref target="RFC6793"/>, the
               BGP Communities Attribute can no longer accommodate the above
-              encoding, as a 2-octet word cannot fit a 4-octet ASN. The BGP
-              Extended Communities attribute <xref target="RFC4360"/> is not
-              suitable either, as the specification does not accomodate
-              encoding a 4-octet ASN and a 4-octet value.
+              encoding, as a 2-octet word cannot fit a 4-octet ASN.  The BGP
+              Extended Communities attribute <xref target="RFC4360"/> is also
+              unsuitable, as the protocol limit of six octets cannot
+              accommodate both a 4-octet Global Administrator value and a
+              4-octet Local Administrator value, which precludes the common
+              operational practice of encoding a target ASN in the Local
+              Administrator field.
           </t>
           <t>
               To address these shortcomings, this document defines a Large
