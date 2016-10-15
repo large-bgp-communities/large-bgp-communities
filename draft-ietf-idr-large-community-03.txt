@@ -2,12 +2,12 @@
 
 
 
-IDR                                                             J. Heitz
+IDR                                                        J. Heitz, Ed.
 Internet-Draft                                                     Cisco
-Intended status: Standards Track                                K. Patel
-Expires: April 18, 2017                                           Arrcus
-                                                             J. Snijders
-                                                                     NTT
+Intended status: Standards Track                        J. Snijders, Ed.
+Expires: April 18, 2017                                              NTT
+                                                                K. Patel
+                                                                  Arrcus
                                                              I. Bagdonas
                                                                  Equinix
                                                               A. Simpson
@@ -374,7 +374,7 @@ Internet-Draft            Large BGP Communities             October 2016
 
 Authors' Addresses
 
-   Jakob Heitz
+   Jakob Heitz (editor)
    Cisco
    170 West Tasman Drive
    San Jose, CA  95054
@@ -394,19 +394,19 @@ Heitz, et al.            Expires April 18, 2017                 [Page 7]
 Internet-Draft            Large BGP Communities             October 2016
 
 
-   Keyur Patel
-   Arrcus, Inc
-
-   Email: keyur@arrcus.com
-
-
-   Job Snijders
+   Job Snijders (editor)
    NTT Communications
    Theodorus Majofskistraat 100
    Amsterdam  1065 SZ
    NL
 
    Email: job@ntt.net
+
+
+   Keyur Patel
+   Arrcus, Inc
+
+   Email: keyur@arrcus.com
 
 
    Ignas Bagdonas
