@@ -23,7 +23,7 @@ Abstract
    This document describes the Large BGP Community attribute, an
    extension to BGP-4.  This attribute provides a mechanism to signal
    opaque information within separate namespaces to aid in routing
-   management.  The attribute is suitable for use in 4-octet ASNs.
+   management.  The attribute is suitable for use in four-octet ASNs.
 
 Requirements Language
 
@@ -104,8 +104,8 @@ Table of Contents
    otherwise used by routing policies in other Autonomous Systems (ASes)
    on the Internet.
 
-   [RFC1997] BGP Communities Attributes are 4-octet values split into
-   two 2-octet words.  The most significant word is usually interpreted
+   [RFC1997] BGP Communities Attributes are four-octet values split into
+   two two-octet words.  The most significant word is usually
 
 
 
@@ -114,31 +114,36 @@ Heitz, et al.            Expires April 18, 2017                 [Page 2]
 Internet-Draft            Large BGP Communities             October 2016
 
 
-   as an Autonomous System Number (ASN) and the least significant word
-   is a locally defined value whose meaning is assigned by the operator
-   of the Autonomous System in the most significant word.
+   interpreted as an Autonomous System Number (ASN) and the least
+   significant word is a locally defined value whose meaning is assigned
+   by the operator of the Autonomous System in the most significant
+   word.
 
-   Since the adoption of 4-octet ASNs [RFC6793], the BGP Communities
-   Attribute can no longer accommodate the above encoding, as a 2-octet
-   word cannot fit a 4-octet ASN.  The BGP Extended Communities
-   attribute [RFC4360] is not suitable either, as the specification does
-   not accomodate encoding a 4-octet ASN and a 4-octet value.
+   Since the adoption of four-octet ASNs [RFC6793], the BGP Communities
+   Attribute can no longer accommodate the above encoding, as a two-
+   octet word cannot fit a four-octet ASN.  The BGP Extended Communities
+   attribute [RFC4360] is also unsuitable, as the protocol limit of six
+   octets cannot accommodate both a four-octet Global Administrator
+   value and a four-octet Local Administrator value, which precludes the
+   common operational practice of encoding a target ASN in the Local
+   Administrator field.
 
    To address these shortcomings, this document defines a Large
-   Community BGP Attribute encoded as one or more 12-octet values, each
-   consisting of a 4-octet ASN and two 4-octet operator-defined values,
-   each of which can be used to denote properties or actions significant
-   to that ASN.
+   Community BGP Attribute encoded as one or more twelve-octet values,
+   each consisting of a four-octet ASN and two four-octet operator-
+   defined values, each of which can be used to denote properties or
+   actions significant to that ASN.
 
 2.  Large BGP Communities Attribute
 
    This document creates the Large Communities BGP path attribute as an
    optional transitive attribute of variable length.  All routes with
-   the Large BGP Community attribute belong to the communities specified
+   the Large BGP Communities attribute belong to the community specified
    in the attribute.
 
-   The attribute consists of one or more 12-octet values.  Each 12-octet
-   Large Communities value represents three 4-octet values, as follows:
+   The attribute consists of one or more twelve-octet values.  Each
+   twelve-octet Large Communities value represents three four-octet
+   values, as follows:
 
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
@@ -150,17 +155,12 @@ Internet-Draft            Large BGP Communities             October 2016
    |                       Local Data Part 2                       |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
-   Global Administrator:  A 4-octet namespace identifier.  This SHOULD
-      be an Autonomous System Number.
+   Global Administrator:  A four-octet namespace identifier.  This
+      SHOULD be an Autonomous System Number.
 
-   Local Data Part 1:  A 4-octet operator-defined value.
+   Local Data Part 1:  A four-octet operator-defined value.
 
-   Local Data Part 2:  A 4-octet operator-defined value.
-
-   The Global Administrator field is intended to allow different
-   Autonomous Systems to define Large Communities without collision.
-   Implementations MUST allow the operator to specify any value for the
-   Global Administrator field.
+   Local Data Part 2:  A four-octet operator-defined value.
 
 
 
@@ -169,6 +169,11 @@ Heitz, et al.            Expires April 18, 2017                 [Page 3]
 
 Internet-Draft            Large BGP Communities             October 2016
 
+
+   The Global Administrator field is intended to allow different
+   Autonomous Systems to define Large Communities without collision.
+   Implementations MUST allow the operator to specify any value for the
+   Global Administrator field.
 
    There is no significance to the order in which Large Communities are
    encoded in a path attributes field and a receiving speaker MAY
@@ -181,8 +186,9 @@ Internet-Draft            Large BGP Communities             October 2016
 3.  Aggregation
 
    If a range of routes is aggregated, then the resulting aggregate
-   should have a Large BGP Community path attribute which contains all
-   of the Large BGP Communities from all of the aggregated routes.
+   should have a Large BGP Communities attribute which contains all of
+   the Large BGP Communities attributes from all of the aggregated
+   routes.
 
 4.  Canonical Representation
 
@@ -211,13 +217,7 @@ Internet-Draft            Large BGP Communities             October 2016
    o  A Large Communities attribute SHALL be considered malformed if its
       length is not a non-zero multiple of 12 bytes.
 
-   o  A BGP UPDATE message with a malformed Large Communities attribute
-      SHALL be handled using the approach of "treat-as-withdraw" as
-      described in section 2 [RFC7606].
 
-   The BGP Large Communities Global Administrator field may contain any
-   value, and a Large Communities attribute MUST NOT be considered
-   malformed if the Global Administrator field contains an unallocated,
 
 
 
@@ -226,6 +226,13 @@ Heitz, et al.            Expires April 18, 2017                 [Page 4]
 Internet-Draft            Large BGP Communities             October 2016
 
 
+   o  A BGP UPDATE message with a malformed Large Communities attribute
+      SHALL be handled using the approach of "treat-as-withdraw" as
+      described in section 2 [RFC7606].
+
+   The BGP Large Communities Global Administrator field may contain any
+   value, and a Large Communities attribute MUST NOT be considered
+   malformed if the Global Administrator field contains an unallocated,
    unassigned or reserved ASN or is set to one of the reserved Large BGP
    Community values defined in Section 5.
 
@@ -267,13 +274,6 @@ Internet-Draft            Large BGP Communities             October 2016
 
    o  ExaBGP
 
-   o  GoBGP
-
-   o  BIRD
-
-   o  OpenBGPD
-
-   o  pmacct
 
 
 
@@ -281,6 +281,14 @@ Heitz, et al.            Expires April 18, 2017                 [Page 5]
 
 Internet-Draft            Large BGP Communities             October 2016
 
+
+   o  GoBGP
+
+   o  BIRD
+
+   o  OpenBGPD
+
+   o  pmacct
 
    The latest implementation news is tracked at
    http://largebgpcommunities.net/ [1].
@@ -319,15 +327,7 @@ Internet-Draft            Large BGP Communities             October 2016
               Attribute", RFC 1997, DOI 10.17487/RFC1997, August 1996,
               <http://www.rfc-editor.org/info/rfc1997>.
 
-   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
-              Requirement Levels", BCP 14, RFC 2119,
-              DOI 10.17487/RFC2119, March 1997,
-              <http://www.rfc-editor.org/info/rfc2119>.
 
-   [RFC6793]  Vohra, Q. and E. Chen, "BGP Support for Four-Octet
-              Autonomous System (AS) Number Space", RFC 6793,
-              DOI 10.17487/RFC6793, December 2012,
-              <http://www.rfc-editor.org/info/rfc6793>.
 
 
 
@@ -337,6 +337,16 @@ Heitz, et al.            Expires April 18, 2017                 [Page 6]
 
 Internet-Draft            Large BGP Communities             October 2016
 
+
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119,
+              DOI 10.17487/RFC2119, March 1997,
+              <http://www.rfc-editor.org/info/rfc2119>.
+
+   [RFC6793]  Vohra, Q. and E. Chen, "BGP Support for Four-Octet
+              Autonomous System (AS) Number Space", RFC 6793,
+              DOI 10.17487/RFC6793, December 2012,
+              <http://www.rfc-editor.org/info/rfc6793>.
 
    [RFC7606]  Chen, E., Ed., Scudder, J., Ed., Mohapatra, P., and K.
               Patel, "Revised Error Handling for BGP UPDATE Messages",
@@ -373,6 +383,17 @@ Authors' Addresses
    Email: jheitz@cisco.com
 
 
+
+
+
+
+
+
+Heitz, et al.            Expires April 18, 2017                 [Page 7]
+
+Internet-Draft            Large BGP Communities             October 2016
+
+
    Keyur Patel
    Arrcus, Inc
 
@@ -386,12 +407,6 @@ Authors' Addresses
    NL
 
    Email: job@ntt.net
-
-
-
-Heitz, et al.            Expires April 18, 2017                 [Page 7]
-
-Internet-Draft            Large BGP Communities             October 2016
 
 
    Ignas Bagdonas
@@ -409,21 +424,6 @@ Internet-Draft            Large BGP Communities             October 2016
    Canada
 
    Email: adam.1.simpson@nokia.com
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
