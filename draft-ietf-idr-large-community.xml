@@ -204,29 +204,13 @@
 
     </section>
 
-	<section title="Textual Representation">
+	<section title="Canonical Representation">
         <t>
-            BGP Communities <xref target="RFC1997"/> are usually represented in
-            routing policy languages as two 2-octet unsigned integers
-            separated by a colon; for example, 64496:12345 <xref target="RFC1998"/>.
-        </t>
-        <t>
-            BGP Large Communities implementations SHOULD represent Large
-            Communities in a manner similar to their representation of BGP
-            Communities <xref target="RFC1998"/>. Large Communities MUST be
-            represented as three separate 4-octet unsigned integers in
-            decimal format with no leading zeros. These integers MUST NOT be
-            omitted, even when zero. For example, 64496:4294967295:2 or
-            64496:0:0.
-        </t>
-        <t>
-            Vendors MAY provide other textual representations. For example, a
-            vendor's routing policy language may use a separator other than a
-            colon or may require keywords or characters prepending or
-            postpending the Large Communities attribute. Such differences are
-            permitted. However, each implementation MUST make a representation
-            available that depicts the integers in decimal and in the following
-            order: Global Administrator, Local Data Part 1, Local Data Part 2.
+            Large BGP Communities MUST be represented as three separate
+            unsigned decimal numbers, without leading zeros, in the following
+            order: Global Administrator, Local Data 1, Local Data 2. Numbers
+            MUST not be omitted, even when zero.  For example:
+            64496:4294967295:2 or 64496:0:0 or (64496, 111, 222).
         </t>
     </section>
 
@@ -352,8 +336,9 @@
             Sander Steffann, Brad Dreisbach, Martin Millnert, Christopher
             Morrow, Jay Borkenhagen, Arnold Nipper, Joe Provo, Niels Bakker,
             Bill Fenner, Tom Daly, Ben Maddison, Alexander Azimov, Brian
-            Dickson, Peter van Dijk, Julian Seifert, Tom Petch, Tom Scholl, and
-            Arjen Zonneveld for their support, insightful review and comments.
+            Dickson, Peter van Dijk, Julian Seifert, Tom Petch, Tom Scholl,
+            Arjen Zonneveld, and Remco van Mook for their support, insightful
+            review and comments.
         </t>
     </section>
 
@@ -367,7 +352,6 @@
       <?rfc include="reference.RFC.7606"?>
     </references>
     <references title="Informative References">
-      <?rfc include="reference.RFC.1998"?>
       <?rfc include="reference.RFC.7454"?>
       <?rfc include="reference.RFC.7942"?>
     </references>
