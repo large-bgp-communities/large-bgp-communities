@@ -12,6 +12,8 @@ Expires: April 18, 2017                                           Arrcus
                                                                  Equinix
                                                               A. Simpson
                                                                    Nokia
+                                                             N. Hilliard
+                                                                    INEX
                                                         October 15, 2016
 
 
@@ -47,8 +49,6 @@ Status of This Memo
    material or to cite them other than as "work in progress."
 
    This Internet-Draft will expire on April 18, 2017.
-
-
 
 
 
@@ -426,13 +426,13 @@ Internet-Draft            Large BGP Communities             October 2016
    Email: adam.1.simpson@nokia.com
 
 
+   Nick Hilliard
+   INEX
+   4027 Kingswood Road
+   Dublin  24
+   IE
 
-
-
-
-
-
-
+   Email: nick@inex.ie
 
 
 
