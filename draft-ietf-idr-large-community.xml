@@ -82,7 +82,7 @@
 
     <abstract>
         <t>
-            This document describes the Large BGP Community attribute, an
+            This document describes the Large BGP Communities attribute, an
             extension to BGP-4. This attribute provides a mechanism to
             signal opaque information within separate namespaces to aid in
             routing management. The attribute is suitable for use in four-octet
@@ -117,7 +117,7 @@
               Internet.
           </t>
           <t>
-              <xref target="RFC1997"/> BGP Communities Attributes are
+              <xref target="RFC1997"/> BGP Communities attributes are
               four-octet values split into two two-octet words. The most
               significant word is usually interpreted as an Autonomous System
               Number (ASN) and the least significant word is a locally defined
@@ -126,7 +126,7 @@
           </t>
           <t>
               Since the adoption of four-octet ASNs <xref target="RFC6793"/>, the
-              BGP Communities Attribute can no longer accommodate the above
+              BGP Communities attribute can no longer accommodate the above
               encoding, as a two-octet word cannot fit a four-octet ASN.  The BGP
               Extended Communities attribute <xref target="RFC4360"/> is also
               unsuitable, as the protocol limit of six octets cannot
@@ -137,7 +137,7 @@
           </t>
           <t>
               To address these shortcomings, this document defines a Large
-              Community BGP Attribute encoded as one or more twelve-octet values,
+              BGP Communities attribute encoded as one or more twelve-octet values,
               each consisting of a four-octet ASN and two four-octet operator-defined
               values, each of which can be used to denote properties or actions
               significant to that ASN.
@@ -146,14 +146,14 @@
 
     <section title="Large BGP Communities Attribute">
         <t>
-            This document creates the Large Communities BGP path attribute
-            as an optional transitive attribute of variable length.  All
+            This document creates the Large BGP Communities attribute
+            as an optional transitive path attribute of variable length.  All
             routes with the Large BGP Communities attribute belong to the
             community specified in the attribute.
         </t>
         <t>
             The attribute consists of one or more twelve-octet values. Each
-            twelve-octet Large Communities value represents three four-octet values, as
+            twelve-octet Large BGP Communities value represents three four-octet values, as
             follows:
 <figure align="center"><artwork><![CDATA[
  0                   1                   2                   3
@@ -179,20 +179,20 @@
         </t>
         <t>
             The Global Administrator field is intended to allow different
-            Autonomous Systems to define Large Communities without collision.
+            Autonomous Systems to define Large BGP Communities without collision.
             Implementations MUST allow the operator to specify any value for
             the Global Administrator field.
         </t>
         <t>
-            There is no significance to the order in which Large Communities
+            There is no significance to the order in which Large BGP Communities
             are encoded in a path attributes field and a receiving speaker
             MAY retransmit them in an order different from which it received
             them.
         </t>
         <t>
-            Duplicate Large Communities SHOULD NOT be transmitted.  A
+            Duplicate Large BGP Communities SHOULD NOT be transmitted.  A
             receiving speaker SHOULD silently remove duplicate Large
-            Communities from a BGP UPDATE message.
+            BGP Communities from a BGP UPDATE message.
         </t>
     </section>
 
@@ -229,28 +229,28 @@
 
     <section title="Error Handling">
         <t>
-            The error handling of Large Communities is as follows:
+            The error handling of Large BGP Communities is as follows:
         </t>
         <t>
             <list style="symbols">
                 <t>
-                    A Large Communities BGP Path Attribute with a length of zero
+                    A Large BGP Communities attribute with a length of zero
                     MUST be ignored upon receipt and removed when sending.
                 </t>
                 <t>
-                    A Large Communities attribute SHALL be considered malformed
+                    A Large BGP Communities attribute SHALL be considered malformed
                     if its length is not a non-zero multiple of 12 bytes.
                 </t>
                 <t>
-                    A BGP UPDATE message with a malformed Large Communities
+                    A BGP UPDATE message with a malformed Large BGP Communities
                     attribute SHALL be handled using the approach of "treat-as-withdraw"
                     as described in <xref target="RFC7606">section 2</xref>.
                 </t>
             </list>
         </t>
         <t>
-            The BGP Large Communities Global Administrator field may contain
-            any value, and a Large Communities attribute MUST NOT be
+            The Large BGP Communities Global Administrator field may contain
+            any value, and a Large BGP Communities attribute MUST NOT be
             considered malformed if the Global Administrator field contains
             an unallocated, unassigned or reserved ASN or is set to one of
             the reserved Large BGP Community values defined in <xref
@@ -266,10 +266,10 @@
         <t>
             This document does not change any underlying security issues
             associated with any other BGP Communities mechanism.  Specifically,
-            an AS relying on the Large BGP Community attribute carried in BGP
+            an AS relying on the Large BGP Communities attribute carried in BGP
             must have trust in every other AS in the path, as any intermediate
             Autonomous System in the path may have added, deleted or altered
-            the Large BGP Community attribute. Specifying the mechanism to
+            the Large BGP Communities attribute. Specifying the mechanism to
             provide such trust is beyond the scope of this document.
         </t>
         <t>
@@ -296,7 +296,7 @@
        </t>
        <t>
            As of today these vendors have produced an implementation of Large
-           BGP Community:
+           BGP Communities:
            <list style="symbols">
                <t>Cisco IOS XR</t>
                <t>ExaBGP</t>
