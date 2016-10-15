@@ -14,7 +14,7 @@
   <front>
     <title abbrev="Large BGP Communities">Large BGP Communities</title>
 
-    <author fullname="Jakob Heitz" initials="J." surname="Heitz">
+    <author fullname="Jakob Heitz" initials="J." surname="Heitz" role="editor">
         <organization>Cisco</organization>
         <address>
             <postal>
@@ -28,14 +28,7 @@
         </address>
     </author>
 
-    <author fullname="Keyur Patel" initials="K." surname="Patel">
-        <organization abbrev="Arrcus">Arrcus, Inc</organization>
-        <address>
-            <email>keyur@arrcus.com</email>
-        </address>
-    </author>
-
-    <author fullname="Job Snijders" initials="J." surname="Snijders">
+    <author fullname="Job Snijders" initials="J." surname="Snijders" role="editor">
         <organization abbrev="NTT">NTT Communications</organization>
         <address>
             <postal>
@@ -45,6 +38,14 @@
                 <country>NL</country>
             </postal>
             <email>job@ntt.net</email>
+        </address>
+    </author>
+
+
+    <author fullname="Keyur Patel" initials="K." surname="Patel">
+        <organization abbrev="Arrcus">Arrcus, Inc</organization>
+        <address>
+            <email>keyur@arrcus.com</email>
         </address>
     </author>
 
