@@ -199,7 +199,7 @@
         </t>
         <t>
             There is no significance to the order in which Large BGP Communities
-            are encoded in a path attributes field and a receiving speaker
+            are encoded in the BGP path attribute payload and a receiving speaker
             MAY retransmit them in an order different from which it received
             them.
         </t>
