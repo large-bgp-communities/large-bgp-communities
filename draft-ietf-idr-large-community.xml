@@ -35,7 +35,7 @@
                 <street>Theodorus Majofskistraat 100</street>
                 <code>1065 SZ</code>
                 <city>Amsterdam</city>
-                <country>NL</country>
+                <country>The Netherlands</country>
             </postal>
             <email>job@ntt.net</email>
         </address>
@@ -133,9 +133,9 @@
           <t>
               <xref target="RFC1997"/> BGP Communities attributes are
               four-octet values split into two two-octet words. The most
-              significant word is usually interpreted as an Autonomous System
-              Number (ASN) and the least significant word is a locally defined
-              value whose meaning is assigned by the operator of the Autonomous
+              significant word is interpreted as an Autonomous System Number
+              (ASN) and the least significant word is a locally defined value
+              whose meaning is assigned by the operator of the Autonomous
               System in the most significant word.
           </t>
           <t>
