@@ -231,14 +231,17 @@
 
     <section title="Reserved Large BGP Community values" anchor="reserved_vals">
         <t>
-            The Large BGP Community attribute values in the following ranges
-            are reserved:
-<figure align="center"><artwork><![CDATA[
-         0:0:0 -          0:4294967295:4294967295
-     65535:0:0 -      65535:4294967295:4294967295
-4294967295:0:0 - 4294967295:4294967295:4294967295
-]]></artwork></figure>
+            Although this document does not prescribe any Special Use Large BGP
+            Communities at the time of publication, if there is a future need
+            for Special Use Large BGP Communities, the following reserved
+            values could be a valid candidate for such purpose.
         </t>
+        <t>
+            The following Global Administrator values are reserved: 0
+            <xref target="RFC7607">, 65535 and 4294967295 <xref target="RFC7300">.
+            Operators SHOULD NOT use these Global Administrator values.
+        </t>
+        <t>
     </section>
 
     <section title="Error Handling">
@@ -367,6 +370,8 @@
     </references>
     <references title="Informative References">
       <?rfc include="reference.RFC.4360"?>
+      <?rfc include="reference.RFC.7300"?>
+      <?rfc include="reference.RFC.7607"?>
       <?rfc include="reference.RFC.7454"?>
       <?rfc include="reference.RFC.7942"?>
     </references>
