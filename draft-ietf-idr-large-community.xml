@@ -192,13 +192,10 @@
             </list>
         </t>
         <t>
-            A Large Community that is intended to be sent to multiple ASes
-            SHOULD contain an ASN in the Global Administrator field. The ASN
-            SHOULD be one that is assigned to the entity that defines the
-            meaning of the rest of the Large Community.  This allows a route to
-            carry multiple Large Communities, the meaning of each being defined
-            by different independent entities. Implementations MUST allow the
-            operator to specify any value for the Global Administrator field.
+            The Global Administrator field is intended to allow different
+            Autonomous Systems to define Large BGP Communities without
+            collision. Implementations MUST allow the operator to specify any
+            value for the Global Administrator field.
         </t>
         <t>
             There is no significance to the order in which Large BGP Communities
