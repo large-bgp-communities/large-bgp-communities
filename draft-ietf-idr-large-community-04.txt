@@ -176,9 +176,8 @@ Internet-Draft            Large BGP Communities             October 2016
    Global Administrator field.
 
    There is no significance to the order in which Large BGP Communities
-   are encoded in the BGP path attribute payload and a receiving speaker
-   MAY retransmit them in an order different from which it received
-   them.
+   are encoded in the BGP path attribute payload.  A BGP speaker can
+   transmit them in any order.
 
    Duplicate Large BGP Communities SHOULD NOT be transmitted.  A
    receiving speaker SHOULD silently remove duplicate Large BGP
@@ -194,10 +193,10 @@ Internet-Draft            Large BGP Communities             October 2016
 4.  Canonical Representation
 
    Large BGP Communities MUST be represented as three separate unsigned
-   decimal numbers, without leading zeros, in the following order:
-   Global Administrator, Local Data 1, Local Data 2.  Numbers MUST not
-   be omitted, even when zero.  For example: 64496:4294967295:2 or
-   64496:0:0 or (64496, 111, 222).
+   integers in decimal notation, without leading zeros, in the following
+   order: Global Administrator, Local Data 1, Local Data 2.  Numbers
+   MUST not be omitted, even when zero.  For example: 64496:4294967295:2
+   or 64496:0:0 or (64496, 111, 222).
 
 5.  Reserved Large BGP Community values
 
@@ -217,7 +216,8 @@ Internet-Draft            Large BGP Communities             October 2016
    o  A Large BGP Communities attribute with a length of zero MUST be
       ignored upon receipt and removed when sending.
 
-
+   o  A Large BGP Communities attribute SHALL be considered malformed if
+      its length is not a non-zero multiple of 12.
 
 
 
@@ -225,9 +225,6 @@ Heitz, et al.            Expires April 25, 2017                 [Page 4]
 
 Internet-Draft            Large BGP Communities             October 2016
 
-
-   o  A Large BGP Communities attribute SHALL be considered malformed if
-      its length is not a non-zero multiple of 12.
 
    o  A BGP UPDATE message with a malformed Large BGP Communities
       attribute SHALL be handled using the approach of "treat-as-
@@ -275,14 +272,15 @@ Internet-Draft            Large BGP Communities             October 2016
 
    o  Cisco IOS XR
 
+   o  ExaBGP
+
+
 
 
 Heitz, et al.            Expires April 25, 2017                 [Page 5]
 
 Internet-Draft            Large BGP Communities             October 2016
 
-
-   o  ExaBGP
 
    o  GoBGP
 
@@ -318,8 +316,8 @@ Internet-Draft            Large BGP Communities             October 2016
    Jay Borkenhagen, Arnold Nipper, Joe Provo, Niels Bakker, Bill Fenner,
    Tom Daly, Ben Maddison, Alexander Azimov, Brian Dickson, Peter van
    Dijk, Julian Seifert, Tom Petch, Tom Scholl, Arjen Zonneveld, Remco
-   van Mook, and Adam Chappell their support, insightful review and
-   comments.
+   van Mook, Adam Chappell, Jussi Peltola, Kristian Larsson, and Markus
+   Hauschild for their support, insightful review and comments.
 
 11.  References
 
@@ -328,6 +326,8 @@ Internet-Draft            Large BGP Communities             October 2016
    [RFC1997]  Chandra, R., Traina, P., and T. Li, "BGP Communities
               Attribute", RFC 1997, DOI 10.17487/RFC1997, August 1996,
               <http://www.rfc-editor.org/info/rfc1997>.
+
+
 
 
 

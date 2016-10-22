@@ -152,9 +152,8 @@
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   There is no significance to the order in which Large BGP Communities</td><td> </td><td class="right">   There is no significance to the order in which Large BGP Communities</td><td class="lineno" valign="top"></td></tr>
       <tr><td><a name="diff0007" /></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock">   are encoded in <span class="delete">a</span> path <span class="delete">attributes field</span> and a receiving speaker MAY</td><td> </td><td class="rblock">   are encoded in <span class="insert">the BGP</span> path <span class="insert">attribute payload</span> and a receiving speaker</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock">   retransmit them in an order different from which it received them.</td><td> </td><td class="rblock">   MAY retransmit them in an order different from which it received</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock">   them.</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock">   are encoded in <span class="delete">a</span> path <span class="delete">attributes field and a receiving</span> speaker <span class="delete">MAY</span></td><td> </td><td class="rblock">   are encoded in <span class="insert">the BGP</span> path <span class="insert">attribute payload.  A BGP</span> speaker <span class="insert">can</span></td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">   retransmit</span> them in <span class="delete">an order different from which it received them.</span></td><td> </td><td class="rblock"><span class="insert">   transmit</span> them in <span class="insert">any order.</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   Duplicate Large BGP Communities SHOULD NOT be transmitted.  A</td><td> </td><td class="right">   Duplicate Large BGP Communities SHOULD NOT be transmitted.  A</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   receiving speaker SHOULD silently remove duplicate Large BGP</td><td> </td><td class="right">   receiving speaker SHOULD silently remove duplicate Large BGP</td><td class="lineno" valign="top"></td></tr>
@@ -165,25 +164,26 @@
       <tr><td class="lineno" valign="top"></td><td class="left">   If a range of routes is aggregated, then the resulting aggregate</td><td> </td><td class="right">   If a range of routes is aggregated, then the resulting aggregate</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   should have a Large BGP Communities attribute which contains all of</td><td> </td><td class="right">   should have a Large BGP Communities attribute which contains all of</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   the Large BGP Communities attributes from all of the aggregated</td><td> </td><td class="right">   the Large BGP Communities attributes from all of the aggregated</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
-      <tr bgcolor="gray" ><td></td><th><a name="part-l5" /><small>skipping to change at</small><em> page 4, line 35</em></th><th> </th><th><a name="part-r5" /><small>skipping to change at</small><em> page 4, line 36</em></th><td></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">   routes.</td><td> </td><td class="right">   routes.</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">4.  Canonical Representation</td><td> </td><td class="right">4.  Canonical Representation</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   Large BGP Communities MUST be represented as three separate unsigned</td><td> </td><td class="right">   Large BGP Communities MUST be represented as three separate unsigned</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">   decimal numbers, without leading zeros, in the following order:</td><td> </td><td class="right">   decimal numbers, without leading zeros, in the following order:</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">   Global Administrator, Local Data 1, Local Data 2.  Numbers MUST not</td><td> </td><td class="right">   Global Administrator, Local Data 1, Local Data 2.  Numbers MUST not</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">   be omitted, even when zero.  For example: 64496:4294967295:2 or</td><td> </td><td class="right">   be omitted, even when zero.  For example: 64496:4294967295:2 or</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">   64496:0:0 or (64496, 111, 222).</td><td> </td><td class="right">   64496:0:0 or (64496, 111, 222).</td><td class="lineno" valign="top"></td></tr>
+      <tr><td><a name="diff0008" /></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock">   decimal <span class="delete">numbers,</span> without leading zeros, in the following order:</td><td> </td><td class="rblock">   <span class="insert">integers in</span> decimal <span class="insert">notation,</span> without leading zeros, in the following</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock">   Global Administrator, Local Data 1, Local Data 2.  Numbers MUST not</td><td> </td><td class="rblock">   order: Global Administrator, Local Data 1, Local Data 2.  Numbers</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock">   be omitted, even when zero.  For example: 64496:4294967295:2 or</td><td> </td><td class="rblock">   MUST not be omitted, even when zero.  For example: 64496:4294967295:2</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock">   64496:0:0 or (64496, 111, 222).</td><td> </td><td class="rblock">   or 64496:0:0 or (64496, 111, 222).</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">5.  Reserved Large BGP Community values</td><td> </td><td class="right">5.  Reserved Large BGP Community values</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0008" /></td></tr>
+      <tr><td><a name="diff0009" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">   The <span class="delete">Large BGP Community attribute values in the</span> following <span class="delete">ranges</span> are</td><td> </td><td class="rblock">   The following <span class="insert">Global Administrator values</span> are reserved: <span class="insert">0 (the first</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">   reserved:</td><td> </td><td class="rblock"><span class="insert">   ASN) [RFC7607], 65535 (UINT_MAX) and 4294967295 (the last ASN)</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   [RFC7300].  Operators SHOULD NOT use these Global Administrator</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   values.</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0009" /></td></tr>
+      <tr><td><a name="diff0010" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">            <span class="delete">0:0:0 -          0:4294967295:4294967295</span></td><td> </td><td class="rblock">   <span class="insert">Although this document does not define any Special-Use Large BGP</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">        65535:0:0 -      65535:4294967295:4294967295</span></td><td> </td><td class="rblock"><span class="insert">   Communities, the Global Administrator values specified above could be</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">   4294967295:0:0 - 4294967295:4294967295:4294967295</span></td><td> </td><td class="rblock"><span class="insert">   used if there is a future need for them.</span></td><td class="lineno" valign="top"></td></tr>
@@ -196,7 +196,7 @@
       <tr><td class="lineno" valign="top"></td><td class="left">      ignored upon receipt and removed when sending.</td><td> </td><td class="right">      ignored upon receipt and removed when sending.</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   o  A Large BGP Communities attribute SHALL be considered malformed if</td><td> </td><td class="right">   o  A Large BGP Communities attribute SHALL be considered malformed if</td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0010" /></td></tr>
+      <tr><td><a name="diff0011" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">      its length is not a non-zero multiple of 12<span class="delete"> bytes</span>.</td><td> </td><td class="rblock">      its length is not a non-zero multiple of 12.</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   o  A BGP UPDATE message with a malformed Large BGP Communities</td><td> </td><td class="right">   o  A BGP UPDATE message with a malformed Large BGP Communities</td><td class="lineno" valign="top"></td></tr>
@@ -209,7 +209,7 @@
       <tr><td class="lineno" valign="top"></td><td class="left">   unassigned or reserved ASN or is set to one of the reserved Large BGP</td><td> </td><td class="right">   unassigned or reserved ASN or is set to one of the reserved Large BGP</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   Community values defined in Section 5.</td><td> </td><td class="right">   Community values defined in Section 5.</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
-      <tr bgcolor="gray" ><td></td><th><a name="part-l6" /><small>skipping to change at</small><em> page 6, line 28</em></th><th> </th><th><a name="part-r6" /><small>skipping to change at</small><em> page 6, line 30</em></th><td></td></tr>
+      <tr bgcolor="gray" ><td></td><th><a name="part-l5" /><small>skipping to change at</small><em> page 6, line 28</em></th><th> </th><th><a name="part-r5" /><small>skipping to change at</small><em> page 6, line 28</em></th><td></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   in the "BGP Path Attributes" registry under the "Border Gateway</td><td> </td><td class="right">   in the "BGP Path Attributes" registry under the "Border Gateway</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   Protocol (BGP) Parameters" group and is now asked to make that</td><td> </td><td class="right">   Protocol (BGP) Parameters" group and is now asked to make that</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   Permanent.</td><td> </td><td class="right">   Permanent.</td><td class="lineno" valign="top"></td></tr>
@@ -220,7 +220,7 @@
       <tr><td class="lineno" valign="top"></td><td class="left">   Lindem, Shyam Sethuram, Jared Mauch, Joel M.  Halpern, Jeffrey Haas,</td><td> </td><td class="right">   Lindem, Shyam Sethuram, Jared Mauch, Joel M.  Halpern, Jeffrey Haas,</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   John Heasley, Gunter van de Velde, Marco Marzetti, Eduardo Ascenco</td><td> </td><td class="right">   John Heasley, Gunter van de Velde, Marco Marzetti, Eduardo Ascenco</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   Reis, Mark Schouten, Paul Hoogsteder, Martijn Schmidt, Greg Hankins,</td><td> </td><td class="right">   Reis, Mark Schouten, Paul Hoogsteder, Martijn Schmidt, Greg Hankins,</td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0011" /></td></tr>
+      <tr><td><a name="diff0012" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">   <span class="delete">Acee Lindem,</span> Bertrand Duvivier, Barry O'Donovan, Grzegorz Janoszka,</td><td> </td><td class="rblock">   Bertrand Duvivier, Barry O'Donovan, Grzegorz Janoszka, Linda Dunbar,</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">   Linda Dunbar, Marco Davids, Gaurab Raj Upadhaya, Jeff Tantsura, Teun</td><td> </td><td class="rblock">   Marco Davids, Gaurab Raj Upadhaya, Jeff Tantsura, Teun Vink, Adam</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">   Vink, Adam Davenport, Theodore Baschak, Pier Carlo Chiodi, Nabeel</td><td> </td><td class="rblock">   Davenport, Theodore Baschak, Pier Carlo Chiodi, Nabeel Cocker, Ian</td><td class="lineno" valign="top"></td></tr>
@@ -231,8 +231,8 @@
       <tr><td class="lineno" valign="top"></td><td class="lblock">   Christopher Morrow, Jay Borkenhagen, Arnold Nipper, Joe Provo, Niels</td><td> </td><td class="rblock">   Jay Borkenhagen, Arnold Nipper, Joe Provo, Niels Bakker, Bill Fenner,</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">   Bakker, Bill Fenner, Tom Daly, Ben Maddison, Alexander Azimov, Brian</td><td> </td><td class="rblock">   Tom Daly, Ben Maddison, Alexander Azimov, Brian Dickson, Peter van</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">   Dickson, Peter van Dijk, Julian Seifert, Tom Petch, Tom Scholl, Arjen</td><td> </td><td class="rblock">   Dijk, Julian Seifert, Tom Petch, Tom Scholl, Arjen Zonneveld, Remco</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock">   Zonneveld, <span class="delete">and</span> Remco van <span class="delete">Mook for</span> their support, insightful review</td><td> </td><td class="rblock">   van <span class="insert">Mook, and Adam Chappell</span> their support, insightful review and</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock">   and comments.</td><td> </td><td class="rblock">   comments.</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock">   Zonneveld, <span class="delete">and</span> Remco van <span class="delete">Mook</span> for their support, insightful review</td><td> </td><td class="rblock">   van <span class="insert">Mook, Adam Chappell, Jussi Peltola, Kristian Larsson, and Markus</span></td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock">   and comments.</td><td> </td><td class="rblock"><span class="insert">   Hauschild</span> for their support, insightful review and comments.</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">11.  References</td><td> </td><td class="right">11.  References</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
@@ -244,7 +244,7 @@
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate</td><td> </td><td class="right">   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
-      <tr bgcolor="gray" ><td></td><th><a name="part-l7" /><small>skipping to change at</small><em> page 7, line 26</em></th><th> </th><th><a name="part-r7" /><small>skipping to change at</small><em> page 7, line 26</em></th><td></td></tr>
+      <tr bgcolor="gray" ><td></td><th><a name="part-l6" /><small>skipping to change at</small><em> page 7, line 26</em></th><th> </th><th><a name="part-r6" /><small>skipping to change at</small><em> page 7, line 26</em></th><td></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">              Patel, "Revised Error Handling for BGP UPDATE Messages",</td><td> </td><td class="right">              Patel, "Revised Error Handling for BGP UPDATE Messages",</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">              RFC 7606, DOI 10.17487/RFC7606, August 2015,</td><td> </td><td class="right">              RFC 7606, DOI 10.17487/RFC7606, August 2015,</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">              &lt;http://www.rfc-editor.org/info/rfc7606&gt;.</td><td> </td><td class="right">              &lt;http://www.rfc-editor.org/info/rfc7606&gt;.</td><td class="lineno" valign="top"></td></tr>
@@ -255,7 +255,7 @@
       <tr><td class="lineno" valign="top"></td><td class="left">              Communities Attribute", RFC 4360, DOI 10.17487/RFC4360,</td><td> </td><td class="right">              Communities Attribute", RFC 4360, DOI 10.17487/RFC4360,</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">              February 2006, &lt;http://www.rfc-editor.org/info/rfc4360&gt;.</td><td> </td><td class="right">              February 2006, &lt;http://www.rfc-editor.org/info/rfc4360&gt;.</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0012" /></td></tr>
+      <tr><td><a name="diff0013" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock">   <span class="insert">[RFC7300]  Haas, J. and J. Mitchell, "Reservation of Last Autonomous</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">              System (AS) Numbers", BCP 6, RFC 7300,</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">              DOI 10.17487/RFC7300, July 2014,</span></td><td class="lineno" valign="top"></td></tr>
@@ -265,7 +265,7 @@
       <tr><td class="lineno" valign="top"></td><td class="left">              and Security", BCP 194, RFC 7454, DOI 10.17487/RFC7454,</td><td> </td><td class="right">              and Security", BCP 194, RFC 7454, DOI 10.17487/RFC7454,</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">              February 2015, &lt;http://www.rfc-editor.org/info/rfc7454&gt;.</td><td> </td><td class="right">              February 2015, &lt;http://www.rfc-editor.org/info/rfc7454&gt;.</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0013" /></td></tr>
+      <tr><td><a name="diff0014" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock">   <span class="insert">[RFC7607]  Kumari, W., Bush, R., Schiller, H., and K. Patel,</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">              "Codification of AS 0 Processing", RFC 7607,</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">              DOI 10.17487/RFC7607, August 2015,</span></td><td class="lineno" valign="top"></td></tr>
@@ -282,7 +282,7 @@
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">Authors' Addresses</td><td> </td><td class="right">Authors' Addresses</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
-      <tr bgcolor="gray" ><td></td><th><a name="part-l8" /><small>skipping to change at</small><em> page 8, line 4</em></th><th> </th><th><a name="part-r8" /><small>skipping to change at</small><em> page 8, line 14</em></th><td></td></tr>
+      <tr bgcolor="gray" ><td></td><th><a name="part-l7" /><small>skipping to change at</small><em> page 8, line 4</em></th><th> </th><th><a name="part-r7" /><small>skipping to change at</small><em> page 8, line 14</em></th><td></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">Authors' Addresses</td><td> </td><td class="right">Authors' Addresses</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
@@ -293,13 +293,13 @@
       <tr><td class="lineno" valign="top"></td><td class="left">   USA</td><td> </td><td class="right">   USA</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   Email: jheitz@cisco.com</td><td> </td><td class="right">   Email: jheitz@cisco.com</td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0014" /></td></tr>
+      <tr><td><a name="diff0015" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">                                                                         </span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   Job Snijders (editor)</td><td> </td><td class="right">   Job Snijders (editor)</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   NTT Communications</td><td> </td><td class="right">   NTT Communications</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   Theodorus Majofskistraat 100</td><td> </td><td class="right">   Theodorus Majofskistraat 100</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   Amsterdam  1065 SZ</td><td> </td><td class="right">   Amsterdam  1065 SZ</td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0015" /></td></tr>
+      <tr><td><a name="diff0016" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">   <span class="delete">NL</span></td><td> </td><td class="rblock">   <span class="insert">The Netherlands</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   Email: job@ntt.net</td><td> </td><td class="right">   Email: job@ntt.net</td><td class="lineno" valign="top"></td></tr>
@@ -313,8 +313,8 @@
       <tr><td class="lineno" valign="top"></td><td class="left">   Equinix</td><td> </td><td class="right">   Equinix</td><td class="lineno" valign="top"></td></tr>
 
      <tr><td></td><td class="left"></td><td> </td><td class="right"></td><td></td></tr>
-     <tr bgcolor="gray"><th colspan="5" align="center"><a name="end">&nbsp;End of changes. 15 change blocks.&nbsp;</a></th></tr>
-     <tr class="stats"><td></td><th><i>31 lines changed or deleted</i></th><th><i> </i></th><th><i>44 lines changed or added</i></th><td></td></tr>
+     <tr bgcolor="gray"><th colspan="5" align="center"><a name="end">&nbsp;End of changes. 16 change blocks.&nbsp;</a></th></tr>
+     <tr class="stats"><td></td><th><i>35 lines changed or deleted</i></th><th><i> </i></th><th><i>47 lines changed or added</i></th><td></td></tr>
      <tr><td colspan="5" align="center" class="small"><br/>This html diff was produced by rfcdiff 1.41. The latest version is available from <a href="http://www.tools.ietf.org/tools/rfcdiff/" >http://tools.ietf.org/tools/rfcdiff/</a> </td></tr>
    </table>
    </body>

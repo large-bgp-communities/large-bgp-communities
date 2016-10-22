@@ -198,10 +198,9 @@
             value for the Global Administrator field.
         </t>
         <t>
-            There is no significance to the order in which Large BGP Communities
-            are encoded in the BGP path attribute payload and a receiving speaker
-            MAY retransmit them in an order different from which it received
-            them.
+            There is no significance to the order in which Large BGP
+            Communities are encoded in the BGP path attribute payload. A BGP
+            speaker can transmit them in any order.
         </t>
         <t>
             Duplicate Large BGP Communities SHOULD NOT be transmitted.  A
@@ -222,9 +221,9 @@
 	<section title="Canonical Representation">
         <t>
             Large BGP Communities MUST be represented as three separate
-            unsigned decimal numbers, without leading zeros, in the following
-            order: Global Administrator, Local Data 1, Local Data 2. Numbers
-            MUST not be omitted, even when zero.  For example:
+            unsigned integers in decimal notation, without leading zeros, in
+            the following order: Global Administrator, Local Data 1, Local Data
+            2. Numbers MUST not be omitted, even when zero.  For example:
             64496:4294967295:2 or 64496:0:0 or (64496, 111, 222).
         </t>
     </section>
@@ -354,7 +353,8 @@
             Nipper, Joe Provo, Niels Bakker, Bill Fenner, Tom Daly, Ben
             Maddison, Alexander Azimov, Brian Dickson, Peter van Dijk, Julian
             Seifert, Tom Petch, Tom Scholl, Arjen Zonneveld, Remco van Mook,
-            and Adam Chappell their support, insightful review and comments.
+            Adam Chappell, Jussi Peltola, Kristian Larsson, and Markus Hauschild
+            for their support, insightful review and comments.
         </t>
     </section>
 
