@@ -231,7 +231,7 @@
     <section title="Reserved Large BGP Community values" anchor="reserved_vals">
         <t>
             The following Global Administrator values are reserved: 0 (the
-            first ASN) <xref target="RFC7607"/>, 65535 (UINT_MAX) and
+            first ASN) <xref target="RFC7607"/>, 65535 (UINT16_MAX) and
             4294967295 (the last ASN) <xref target="RFC7300"/>.  Operators
             SHOULD NOT use these Global Administrator values.
         </t>

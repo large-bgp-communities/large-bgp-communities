@@ -5,7 +5,7 @@
 IDR                                                        J. Heitz, Ed.
 Internet-Draft                                                     Cisco
 Intended status: Standards Track                        J. Snijders, Ed.
-Expires: April 25, 2017                                              NTT
+Expires: April 27, 2017                                              NTT
                                                                 K. Patel
                                                                   Arrcus
                                                              I. Bagdonas
@@ -14,7 +14,7 @@ Expires: April 25, 2017                                              NTT
                                                                    Nokia
                                                              N. Hilliard
                                                                     INEX
-                                                        October 22, 2016
+                                                        October 24, 2016
 
 
                          Large BGP Communities
@@ -48,12 +48,12 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on April 25, 2017.
+   This Internet-Draft will expire on April 27, 2017.
 
 
 
 
-Heitz, et al.            Expires April 25, 2017                 [Page 1]
+Heitz, et al.            Expires April 27, 2017                 [Page 1]
 
 Internet-Draft            Large BGP Communities             October 2016
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Heitz, et al.            Expires April 25, 2017                 [Page 2]
+Heitz, et al.            Expires April 27, 2017                 [Page 2]
 
 Internet-Draft            Large BGP Communities             October 2016
 
@@ -165,7 +165,7 @@ Internet-Draft            Large BGP Communities             October 2016
 
 
 
-Heitz, et al.            Expires April 25, 2017                 [Page 3]
+Heitz, et al.            Expires April 27, 2017                 [Page 3]
 
 Internet-Draft            Large BGP Communities             October 2016
 
@@ -221,7 +221,7 @@ Internet-Draft            Large BGP Communities             October 2016
 
 
 
-Heitz, et al.            Expires April 25, 2017                 [Page 4]
+Heitz, et al.            Expires April 27, 2017                 [Page 4]
 
 Internet-Draft            Large BGP Communities             October 2016
 
@@ -277,7 +277,7 @@ Internet-Draft            Large BGP Communities             October 2016
 
 
 
-Heitz, et al.            Expires April 25, 2017                 [Page 5]
+Heitz, et al.            Expires April 27, 2017                 [Page 5]
 
 Internet-Draft            Large BGP Communities             October 2016
 
@@ -333,7 +333,7 @@ Internet-Draft            Large BGP Communities             October 2016
 
 
 
-Heitz, et al.            Expires April 25, 2017                 [Page 6]
+Heitz, et al.            Expires April 27, 2017                 [Page 6]
 
 Internet-Draft            Large BGP Communities             October 2016
 
@@ -389,7 +389,7 @@ Internet-Draft            Large BGP Communities             October 2016
 
 
 
-Heitz, et al.            Expires April 25, 2017                 [Page 7]
+Heitz, et al.            Expires April 27, 2017                 [Page 7]
 
 Internet-Draft            Large BGP Communities             October 2016
 
@@ -445,7 +445,7 @@ Authors' Addresses
 
 
 
-Heitz, et al.            Expires April 25, 2017                 [Page 8]
+Heitz, et al.            Expires April 27, 2017                 [Page 8]
 
 Internet-Draft            Large BGP Communities             October 2016
 
@@ -501,4 +501,4 @@ Internet-Draft            Large BGP Communities             October 2016
 
 
 
-Heitz, et al.            Expires April 25, 2017                 [Page 9]
+Heitz, et al.            Expires April 27, 2017                 [Page 9]
