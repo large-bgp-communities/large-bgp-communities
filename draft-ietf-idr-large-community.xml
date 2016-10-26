@@ -249,10 +249,6 @@
         <t>
             <list style="symbols">
                 <t>
-                    A Large BGP Communities attribute with a length of zero
-                    MUST be ignored upon receipt and removed when sending.
-                </t>
-                <t>
                     A Large BGP Communities attribute SHALL be considered
                     malformed if its length is not a non-zero multiple of 12.
                 </t>
@@ -353,8 +349,8 @@
             Nipper, Joe Provo, Niels Bakker, Bill Fenner, Tom Daly, Ben
             Maddison, Alexander Azimov, Brian Dickson, Peter van Dijk, Julian
             Seifert, Tom Petch, Tom Scholl, Arjen Zonneveld, Remco van Mook,
-            Adam Chappell, Jussi Peltola, Kristian Larsson, and Markus Hauschild
-            for their support, insightful review and comments.
+            Adam Chappell, Jussi Peltola, Kristian Larsson, Markus Hauschild,
+            and David Freedman for their support, insightful review and comments.
         </t>
     </section>
 
