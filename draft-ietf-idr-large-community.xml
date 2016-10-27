@@ -221,10 +221,11 @@
 	<section title="Canonical Representation">
         <t>
             Large BGP Communities MUST be represented as three separate
-            unsigned integers in decimal notation, without leading zeros, in
-            the following order: Global Administrator, Local Data 1, Local Data
-            2. Numbers MUST not be omitted, even when zero.  For example:
-            64496:4294967295:2 or 64496:0:0 or (64496, 111, 222).
+            unsigned integers in decimal notation in the following order:
+            Global Administrator, Local Data 1, Local Data 2.  Numbers MUST NOT
+            contain leading zeros; a zero value MUST be represented with a
+            single zero. For example: 64496:4294967295:2, 64496:0:0, or
+            (64496, 111, 222).
         </t>
     </section>
 
@@ -250,7 +251,7 @@
             <list style="symbols">
                 <t>
                     A Large BGP Communities attribute SHALL be considered
-                    malformed if its length is not a non-zero multiple of 12.
+                    malformed if its length is not a multiple of 12.
                 </t>
                 <t>
                     A BGP UPDATE message with a malformed Large BGP Communities
@@ -279,7 +280,7 @@
             associated with any other BGP Communities mechanism.  Specifically,
             an AS relying on the Large BGP Communities attribute carried in BGP
             must have trust in every other AS in the path, as any intermediate
-            Autonomous System in the path may have added, deleted or altered
+            Autonomous System in the path may have added, deleted, or altered
             the Large BGP Communities attribute. Specifying the mechanism to
             provide such trust is beyond the scope of this document.
         </t>
