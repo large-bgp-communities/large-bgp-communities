@@ -151,10 +151,12 @@
           </t>
           <t>
               To address these shortcomings, this document defines a Large
-              BGP Communities attribute encoded as one or more twelve-octet values,
-              each consisting of a four-octet ASN and two four-octet operator-defined
-              values, each of which can be used to denote properties or actions
-              significant to that ASN.
+              BGP Communities attribute encoded as one or more twelve-octet
+              values, each consisting of a four-octet Global Administrator
+              field and two four-octet operator-defined fields, each of
+              which can be used to denote properties or actions significant
+              to the operator of the Autonomous System assigning the
+              values.
           </t>
     </section>
 
