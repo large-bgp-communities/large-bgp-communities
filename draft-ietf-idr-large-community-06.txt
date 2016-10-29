@@ -309,9 +309,8 @@ Internet-Draft            Large BGP Communities             October 2016
 
    John Heasley
    NTT Communications
-   United States of America
 
-   EMail: heas@shrubbery.net
+   Email: heas@shrubbery.net
 
 11.  Acknowledgments
 
@@ -330,6 +329,7 @@ Internet-Draft            Large BGP Communities             October 2016
    Tom Daly, Ben Maddison, Alexander Azimov, Brian Dickson, Peter van
    Dijk, Julian Seifert, Tom Petch, Tom Scholl, Arjen Zonneveld, Remco
    van Mook, Adam Chappell, Jussi Peltola, Kristian Larsson, Markus
+
 
 
 
