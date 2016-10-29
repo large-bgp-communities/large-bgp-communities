@@ -318,6 +318,7 @@
                <t>BIRD</t>
                <t>OpenBGPD</t>
                <t>pmacct</t>
+               <t>Quagga</t>
            </list>
        </t>
        <t>
