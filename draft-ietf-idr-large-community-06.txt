@@ -5,7 +5,7 @@
 IDR                                                        J. Heitz, Ed.
 Internet-Draft                                                     Cisco
 Intended status: Standards Track                        J. Snijders, Ed.
-Expires: April 30, 2017                                              NTT
+Expires: May 2, 2017                                                 NTT
                                                                 K. Patel
                                                                   Arrcus
                                                              I. Bagdonas
@@ -14,7 +14,7 @@ Expires: April 30, 2017                                              NTT
                                                                    Nokia
                                                              N. Hilliard
                                                                     INEX
-                                                        October 27, 2016
+                                                        October 29, 2016
 
 
                          Large BGP Communities
@@ -48,12 +48,12 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on April 30, 2017.
+   This Internet-Draft will expire on May 2, 2017.
 
 
 
 
-Heitz, et al.            Expires April 30, 2017                 [Page 1]
+Heitz, et al.              Expires May 2, 2017                  [Page 1]
 
 Internet-Draft            Large BGP Communities             October 2016
 
@@ -84,11 +84,12 @@ Table of Contents
    7.  Security Considerations . . . . . . . . . . . . . . . . . . .   5
    8.  Implementation status - RFC EDITOR: REMOVE BEFORE PUBLICATION   5
    9.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   6
-   10. Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .   6
-   11. References  . . . . . . . . . . . . . . . . . . . . . . . . .   6
-     11.1.  Normative References . . . . . . . . . . . . . . . . . .   6
-     11.2.  Informative References . . . . . . . . . . . . . . . . .   7
-     11.3.  URIs . . . . . . . . . . . . . . . . . . . . . . . . . .   7
+   10. Contributors  . . . . . . . . . . . . . . . . . . . . . . . .   6
+   11. Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .   6
+   12. References  . . . . . . . . . . . . . . . . . . . . . . . . .   7
+     12.1.  Normative References . . . . . . . . . . . . . . . . . .   7
+     12.2.  Informative References . . . . . . . . . . . . . . . . .   7
+     12.3.  URIs . . . . . . . . . . . . . . . . . . . . . . . . . .   8
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   8
 
 1.  Introduction
@@ -104,16 +105,17 @@ Table of Contents
    otherwise used by routing policies in other Autonomous Systems (ASes)
    on the Internet.
 
-   [RFC1997] BGP Communities attributes are four-octet values split into
-   two two-octet words.  The most significant word is interpreted as an
 
 
 
-Heitz, et al.            Expires April 30, 2017                 [Page 2]
+
+Heitz, et al.              Expires May 2, 2017                  [Page 2]
 
 Internet-Draft            Large BGP Communities             October 2016
 
 
+   [RFC1997] BGP Communities attributes are four-octet values split into
+   two two-octet words.  The most significant word is interpreted as an
    Autonomous System Number (ASN) and the least significant word is a
    locally defined value whose meaning is assigned by the operator of
    the Autonomous System in the most significant word.
@@ -129,9 +131,10 @@ Internet-Draft            Large BGP Communities             October 2016
 
    To address these shortcomings, this document defines a Large BGP
    Communities attribute encoded as one or more twelve-octet values,
-   each consisting of a four-octet ASN and two four-octet operator-
-   defined values, each of which can be used to denote properties or
-   actions significant to that ASN.
+   each consisting of a four-octet Global Administrator field and two
+   four-octet operator-defined fields, each of which can be used to
+   denote properties or actions significant to the operator of the
+   Autonomous System assigning the values.
 
 2.  Large BGP Communities Attribute
 
@@ -159,16 +162,15 @@ Internet-Draft            Large BGP Communities             October 2016
 
    Local Data Part 1:  A four-octet operator-defined value.
 
-   Local Data Part 2:  A four-octet operator-defined value.
 
 
 
-
-
-Heitz, et al.            Expires April 30, 2017                 [Page 3]
+Heitz, et al.              Expires May 2, 2017                  [Page 3]
 
 Internet-Draft            Large BGP Communities             October 2016
 
+
+   Local Data Part 2:  A four-octet operator-defined value.
 
    The Global Administrator field is intended to allow different
    Autonomous Systems to define Large BGP Communities without collision.
@@ -219,9 +221,7 @@ Internet-Draft            Large BGP Communities             October 2016
 
 
 
-
-
-Heitz, et al.            Expires April 30, 2017                 [Page 4]
+Heitz, et al.              Expires May 2, 2017                  [Page 4]
 
 Internet-Draft            Large BGP Communities             October 2016
 
@@ -277,7 +277,7 @@ Internet-Draft            Large BGP Communities             October 2016
 
 
 
-Heitz, et al.            Expires April 30, 2017                 [Page 5]
+Heitz, et al.              Expires May 2, 2017                  [Page 5]
 
 Internet-Draft            Large BGP Communities             October 2016
 
@@ -300,14 +300,25 @@ Internet-Draft            Large BGP Communities             October 2016
    Protocol (BGP) Parameters" group and is now asked to make that
    Permanent.
 
-10.  Acknowledgments
+10.  Contributors
+
+   The following people contributed significantly to the content of the
+   document:
+
+   John Heasley
+   NTT Communications
+   United States of America
+
+   EMail: heas@shrubbery.net
+
+11.  Acknowledgments
 
    The authors would like to thank Ruediger Volk, Russ White, Acee
    Lindem, Shyam Sethuram, Jared Mauch, Joel M.  Halpern, Jeffrey Haas,
-   John Heasley, Gunter van de Velde, Marco Marzetti, Eduardo Ascenco
-   Reis, Mark Schouten, Paul Hoogsteder, Martijn Schmidt, Greg Hankins,
-   Bertrand Duvivier, Barry O'Donovan, Grzegorz Janoszka, Linda Dunbar,
-   Marco Davids, Gaurab Raj Upadhaya, Jeff Tantsura, Teun Vink, Adam
+   Gunter van de Velde, Marco Marzetti, Eduardo Ascenco Reis, Mark
+   Schouten, Paul Hoogsteder, Martijn Schmidt, Greg Hankins, Bertrand
+   Duvivier, Barry O'Donovan, Grzegorz Janoszka, Linda Dunbar, Marco
+   Davids, Gaurab Raj Upadhaya, Jeff Tantsura, Teun Vink, Adam
    Davenport, Theodore Baschak, Pier Carlo Chiodi, Nabeel Cocker, Ian
    Dickinson, Jan Baggen, Duncan Lockwood, David Farmer, Randy Bush, Wim
    Henderickx, Stefan Plug, Kay Rechthien, Rob Shakir, Warren Kumari,
@@ -320,23 +331,20 @@ Internet-Draft            Large BGP Communities             October 2016
    Hauschild, Richard Steenbergen, David Freedman, Richard Hartmann for
    their support, insightful review and comments.
 
-11.  References
 
-11.1.  Normative References
+
+Heitz, et al.              Expires May 2, 2017                  [Page 6]
+
+Internet-Draft            Large BGP Communities             October 2016
+
+
+12.  References
+
+12.1.  Normative References
 
    [RFC1997]  Chandra, R., Traina, P., and T. Li, "BGP Communities
               Attribute", RFC 1997, DOI 10.17487/RFC1997, August 1996,
               <http://www.rfc-editor.org/info/rfc1997>.
-
-
-
-
-
-
-Heitz, et al.            Expires April 30, 2017                 [Page 6]
-
-Internet-Draft            Large BGP Communities             October 2016
-
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -353,7 +361,7 @@ Internet-Draft            Large BGP Communities             October 2016
               RFC 7606, DOI 10.17487/RFC7606, August 2015,
               <http://www.rfc-editor.org/info/rfc7606>.
 
-11.2.  Informative References
+12.2.  Informative References
 
    [RFC4360]  Sangli, S., Tappan, D., and Y. Rekhter, "BGP Extended
               Communities Attribute", RFC 4360, DOI 10.17487/RFC4360,
@@ -378,21 +386,17 @@ Internet-Draft            Large BGP Communities             October 2016
               RFC 7942, DOI 10.17487/RFC7942, July 2016,
               <http://www.rfc-editor.org/info/rfc7942>.
 
-11.3.  URIs
-
-   [1] http://largebgpcommunities.net
 
 
 
-
-
-
-
-
-Heitz, et al.            Expires April 30, 2017                 [Page 7]
+Heitz, et al.              Expires May 2, 2017                  [Page 7]
 
 Internet-Draft            Large BGP Communities             October 2016
 
+
+12.3.  URIs
+
+   [1] http://largebgpcommunities.net
 
 Authors' Addresses
 
@@ -441,11 +445,7 @@ Authors' Addresses
 
 
 
-
-
-
-
-Heitz, et al.            Expires April 30, 2017                 [Page 8]
+Heitz, et al.              Expires May 2, 2017                  [Page 8]
 
 Internet-Draft            Large BGP Communities             October 2016
 
@@ -501,4 +501,4 @@ Internet-Draft            Large BGP Communities             October 2016
 
 
 
-Heitz, et al.            Expires April 30, 2017                 [Page 9]
+Heitz, et al.              Expires May 2, 2017                  [Page 9]
