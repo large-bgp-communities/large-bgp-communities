@@ -335,26 +335,44 @@
         </t>
     </section>
 
+    <section title="Contributors">
+        <t>
+            The following people contributed significantly to the content of
+            the document:
+        </t>
+        <figure>
+            <preamble></preamble>
+            <artwork>
+John Heasley
+NTT Communications
+United States of America
+
+EMail: heas@shrubbery.net
+</artwork>
+<postamble></postamble>
+</figure>
+</section>
+
     <section title="Acknowledgments">
         <t>
             The authors would like to thank Ruediger Volk, Russ White, Acee
             Lindem, Shyam Sethuram, Jared Mauch, Joel M. Halpern, Jeffrey Haas,
-            John Heasley, Gunter van de Velde, Marco Marzetti, Eduardo Ascenco
-            Reis, Mark Schouten, Paul Hoogsteder, Martijn Schmidt, Greg
-            Hankins, Bertrand Duvivier, Barry O'Donovan, Grzegorz Janoszka,
-            Linda Dunbar, Marco Davids, Gaurab Raj Upadhaya, Jeff Tantsura,
-            Teun Vink, Adam Davenport, Theodore Baschak, Pier Carlo Chiodi,
-            Nabeel Cocker, Ian Dickinson, Jan Baggen, Duncan Lockwood, David
-            Farmer, Randy Bush, Wim Henderickx, Stefan Plug, Kay Rechthien, Rob
-            Shakir, Warren Kumari, Gert Doering, Thomas King, Mikael
-            Abrahamsson, Wesley Steehouwer, Sander Steffann, Brad Dreisbach,
-            Martin Millnert, Christopher Morrow, Jay Borkenhagen, Arnold
-            Nipper, Joe Provo, Niels Bakker, Bill Fenner, Tom Daly, Ben
-            Maddison, Alexander Azimov, Brian Dickson, Peter van Dijk, Julian
-            Seifert, Tom Petch, Tom Scholl, Arjen Zonneveld, Remco van Mook,
-            Adam Chappell, Jussi Peltola, Kristian Larsson, Markus Hauschild,
-            Richard Steenbergen, David Freedman, Richard Hartmann for their
-            support, insightful review and comments.
+            Gunter van de Velde, Marco Marzetti, Eduardo Ascenco Reis, Mark
+            Schouten, Paul Hoogsteder, Martijn Schmidt, Greg Hankins, Bertrand
+            Duvivier, Barry O'Donovan, Grzegorz Janoszka, Linda Dunbar, Marco
+            Davids, Gaurab Raj Upadhaya, Jeff Tantsura, Teun Vink, Adam
+            Davenport, Theodore Baschak, Pier Carlo Chiodi, Nabeel Cocker, Ian
+            Dickinson, Jan Baggen, Duncan Lockwood, David Farmer, Randy Bush,
+            Wim Henderickx, Stefan Plug, Kay Rechthien, Rob Shakir, Warren
+            Kumari, Gert Doering, Thomas King, Mikael Abrahamsson, Wesley
+            Steehouwer, Sander Steffann, Brad Dreisbach, Martin Millnert,
+            Christopher Morrow, Jay Borkenhagen, Arnold Nipper, Joe Provo,
+            Niels Bakker, Bill Fenner, Tom Daly, Ben Maddison, Alexander
+            Azimov, Brian Dickson, Peter van Dijk, Julian Seifert, Tom Petch,
+            Tom Scholl, Arjen Zonneveld, Remco van Mook, Adam Chappell, Jussi
+            Peltola, Kristian Larsson, Markus Hauschild, Richard Steenbergen,
+            David Freedman, Richard Hartmann for their support, insightful
+            review and comments.
         </t>
     </section>
 
