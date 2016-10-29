@@ -290,6 +290,8 @@ Internet-Draft            Large BGP Communities             October 2016
 
    o  pmacct
 
+   o  Quagga
+
    The latest implementation news is tracked at
    http://largebgpcommunities.net/ [1].
 
@@ -328,8 +330,6 @@ Internet-Draft            Large BGP Communities             October 2016
    Tom Daly, Ben Maddison, Alexander Azimov, Brian Dickson, Peter van
    Dijk, Julian Seifert, Tom Petch, Tom Scholl, Arjen Zonneveld, Remco
    van Mook, Adam Chappell, Jussi Peltola, Kristian Larsson, Markus
-   Hauschild, Richard Steenbergen, David Freedman, Richard Hartmann for
-   their support, insightful review and comments.
 
 
 
@@ -337,6 +337,9 @@ Heitz, et al.              Expires May 2, 2017                  [Page 6]
 
 Internet-Draft            Large BGP Communities             October 2016
 
+
+   Hauschild, Richard Steenbergen, David Freedman, Richard Hartmann for
+   their support, insightful review and comments.
 
 12.  References
 
@@ -381,10 +384,7 @@ Internet-Draft            Large BGP Communities             October 2016
               DOI 10.17487/RFC7607, August 2015,
               <http://www.rfc-editor.org/info/rfc7607>.
 
-   [RFC7942]  Sheffer, Y. and A. Farrel, "Improving Awareness of Running
-              Code: The Implementation Status Section", BCP 205,
-              RFC 7942, DOI 10.17487/RFC7942, July 2016,
-              <http://www.rfc-editor.org/info/rfc7942>.
+
 
 
 
@@ -393,6 +393,11 @@ Heitz, et al.              Expires May 2, 2017                  [Page 7]
 
 Internet-Draft            Large BGP Communities             October 2016
 
+
+   [RFC7942]  Sheffer, Y. and A. Farrel, "Improving Awareness of Running
+              Code: The Implementation Status Section", BCP 205,
+              RFC 7942, DOI 10.17487/RFC7942, July 2016,
+              <http://www.rfc-editor.org/info/rfc7942>.
 
 12.3.  URIs
 
@@ -432,13 +437,8 @@ Authors' Addresses
    Email: ibagdona.ietf@gmail.com
 
 
-   Adam Simpson
-   Nokia
-   600 March Road
-   Ottawa  Ontario K2K 2E6
-   Canada
 
-   Email: adam.1.simpson@nokia.com
+
 
 
 
@@ -450,6 +450,15 @@ Heitz, et al.              Expires May 2, 2017                  [Page 8]
 Internet-Draft            Large BGP Communities             October 2016
 
 
+   Adam Simpson
+   Nokia
+   600 March Road
+   Ottawa  Ontario K2K 2E6
+   Canada
+
+   Email: adam.1.simpson@nokia.com
+
+
    Nick Hilliard
    INEX
    4027 Kingswood Road
@@ -457,15 +466,6 @@ Internet-Draft            Large BGP Communities             October 2016
    IE
 
    Email: nick@inex.ie
-
-
-
-
-
-
-
-
-
 
 
 
