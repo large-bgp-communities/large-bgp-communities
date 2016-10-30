@@ -253,7 +253,7 @@
             <list style="symbols">
                 <t>
                     A Large BGP Communities attribute SHALL be considered
-                    malformed if its length is not a multiple of 12.
+                    malformed if its length is not a non-zero multiple of 12.
                 </t>
                 <t>
                     A BGP UPDATE message with a malformed Large BGP Communities
