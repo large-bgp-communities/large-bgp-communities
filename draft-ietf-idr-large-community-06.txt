@@ -216,7 +216,7 @@ Internet-Draft            Large BGP Communities             October 2016
    The error handling of Large BGP Communities is as follows:
 
    o  A Large BGP Communities attribute SHALL be considered malformed if
-      its length is not a multiple of 12.
+      its length is not a non-zero multiple of 12.
 
 
 
