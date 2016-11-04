@@ -153,9 +153,9 @@
     <section title="BGP Large Communities Attribute">
         <t>
             This document creates the BGP Large Communities attribute
-            as an optional transitive path attribute of variable length.  All
+            as an optional transitive path attribute of variable length. All
             routes with the BGP Large Communities attribute belong to the
-            community specified in the attribute.
+            communities specified in the attribute.
         </t>
         <t>
             The attribute consists of one or more twelve-octet values. Each
