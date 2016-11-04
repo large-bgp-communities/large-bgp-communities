@@ -119,34 +119,34 @@
               Internet.
           </t>
           <t>
-              BGP Communities attributes are
-              four-octet values <xref target="RFC1997"/>. Common use of
-              this attribute type splits this single 32-bit value field into two 16-bit values.
-              The most
-              significant word is interpreted as an Autonomous System Number
-              (ASN) and the least significant word is a locally defined value
-              whose meaning is assigned by the operator of the Autonomous
-              System in the most significant word.
+              BGP Communities attributes are a variable length attribute
+              consisting of a set of one or more four-octet values, each of
+              which specify a community <xref target="RFC1997"/>.  Common use
+              of the individual values of this attribute type split this single
+              32-bit value into two 16-bit values. The most significant word is
+              interpreted as an Autonomous System Number (ASN) and the least
+              significant word is a locally defined value whose meaning is
+              assigned by the operator of the Autonomous System in the most
+              significant word.
           </t>
           <t>
               Since the adoption of four-octet ASNs <xref target="RFC6793"/>, the
               BGP Communities attribute can no longer accommodate the above
               encoding, as a two-octet word cannot fit a four-octet ASN.
-              The BGP Extended Communities attribute <xref target="RFC4360"/> is also unsuitable, as
-              the protocol limit of six octets for each community value cannot
-              accommodate both a four-octet Global Administrator value and a four-octet
-              Local Administrator value. This limitation precludes the common
-              operational practice of encoding a target ASN in the Local Administrator
-              field.
+              The BGP Extended Communities attribute <xref target="RFC4360"/>
+              is also unsuitable. The six-octet length of the Extended
+              Community value precludes the common operational practise of
+              encoding four-octet ASNs in both the Global Administrator and the
+              Local Administrator sub-fields.
           </t>
           <t>
               To address these shortcomings, this document defines a BGP Large
-              Communities attribute encoded as one or more twelve-octet
-              values, each consisting of a four-octet Global Administrator
-              field and two four-octet operator-defined fields, each of
-              which can be used to denote properties or actions significant
-              to the operator of the Autonomous System assigning the
-              values.
+              Communities attribute encoded as an unordered set of one or more
+              twelve-octet values, each consisting of a four-octet Global
+              Administrator field and two four-octet operator-defined fields,
+              each of which can be used to denote properties or actions
+              significant to the operator of the Autonomous System assigning
+              the values.
           </t>
     </section>
 
@@ -158,9 +158,8 @@
             communities specified in the attribute.
         </t>
         <t>
-            The attribute consists of one or more twelve-octet values. Each
-            twelve-octet BGP Large Communities value represents three four-octet values, as
-            follows:
+            Each BGP Large Community value is encoded as a 12-octet quantity,
+            as follows:
 <figure align="center"><artwork><![CDATA[
  0                   1                   2                   3
  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
@@ -186,24 +185,24 @@
             The Global Administrator field is intended to allow different
             Autonomous Systems to define BGP Large Communities without
             collision.
-            This field MUST be either one of the reserved values as defined below,
+            This field SHOULD be either one of the reserved values as defined below,
             or an Autonomous System Number (ASN). If it is a reserved value, then
             the Local Data Parts are as defined by the reserved value.
             If it is an ASN then the Local Data Parts are to be interpreted
             as defined by the owner of the ASN.
-            When used in small closed environments, the values MAY be any values.
-            Thus, implementations MUST allow the operator to specify any
-            value for any of the fields.
         </t>
         <t>
-            There is no significance to the order in which BGP Large
-            Communities are encoded in the BGP path attribute payload. A BGP
-            speaker can transmit them in any order.
+            There is no significance to the order in which twelve-octet Large
+            Community values are encoded in a Large Communities attribute, nor
+            in the order of the BGP Large Communities attributes if two or more
+            such attributes are encoded in the BGP path attribute payload of a
+            single BGP Update message. A BGP speaker can transmit them in any
+            order.
         </t>
         <t>
-            Duplicate BGP Large Communities SHOULD NOT be transmitted.  A
+            Duplicate BGP Large Community values SHOULD NOT be transmitted. A
             receiving speaker SHOULD silently remove duplicate BGP Large
-            Communities from a BGP UPDATE message.
+            Community values from a BGP UPDATE message.
         </t>
     </section>
 
@@ -216,23 +215,26 @@
         </t>
     </section>
 
-	<section title="Representation">
+	<section title="Canonical Representation">
         <t>
-            Large BGP Communities MUST be represented as three separate
-            unsigned integers in decimal notation in the following order:
-            Global Administrator, Local Data 1, Local Data 2. Numbers MUST NOT
-            contain leading zeros; a zero value MUST be represented with a
-            single zero. For example: 64496:4294967295:2, 64496:0:0, or
-            (64496, 111, 222).
+            The canonical representation of BGP Large Communities is three
+            separate unsigned integers in decimal notation in the following
+            order: Global Administrator, Local Data 1, Local Data 2. Numbers
+            MUST NOT contain leading zeros; a zero value MUST be represented
+            with a single zero. Each number is separated from the next by a
+            single colon. For example: 64496:4294967295:2, 64496:0:0.
+        </t>
+        <t>
+            BGP Large Communities SHOULD be represented in the canonical
+            representation.
         </t>
     </section>
 
     <section title="Reserved BGP Large Community values" anchor="reserved_vals">
         <t>
-            The following Global Administrator values are reserved: 0 (the
-            first ASN) <xref target="RFC7607"/>, 65535 (UINT16_MAX) and
-            4294967295 (the last ASN) <xref target="RFC7300"/>.  Operators
-            SHOULD NOT use these Global Administrator values.
+            The following Global Administrator values are reserved: 0, 65535,
+            and 4294967295. Operators SHOULD NOT use these Global Administrator
+            values.
         </t>
         <t>
             Although this document does not define any Special-Use BGP Large
@@ -260,7 +262,7 @@
             </list>
         </t>
         <t>
-            The BGP Large Communities Global Administrator field may contain
+            The BGP Large Communities Global Administrator field MAY contain
             any value, and a BGP Large Communities attribute MUST NOT be
             considered malformed if the Global Administrator field contains
             an unallocated, unassigned or reserved ASN or is set to one of
@@ -282,6 +284,15 @@
             Autonomous System in the path may have added, deleted, or altered
             the BGP Large Communities attribute. Specifying the mechanism to
             provide such trust is beyond the scope of this document.
+        </t>
+        <t>
+            BGP Large Communities do not protect the integrity of each
+            community value. Operators should be aware that it is possible for
+            a BGP speaker to alter BGP Large Community values in a BGP Update
+            Message. Protecting the integrity of the transitive handling of BGP
+            Large Community attributes in a manner consistent with the intent
+            of expressed BGP routing policies falls within the broader scope of
+            securing BGP, and is not specifically addressed here.
         </t>
         <t>
             Network administrators should note the recommendations in
@@ -391,8 +402,6 @@ Email: adam.1.simpson@nokia.com
     </references>
     <references title="Informative References">
       <?rfc include="reference.RFC.4360"?>
-      <?rfc include="reference.RFC.7300"?>
-      <?rfc include="reference.RFC.7607"?>
       <?rfc include="reference.RFC.7454"?>
       <?rfc include="reference.RFC.7942"?>
     </references>
