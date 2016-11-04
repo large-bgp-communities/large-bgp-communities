@@ -181,14 +181,12 @@ Internet-Draft            BGP Large Communities            November 2016
    interpreted as defined by the owner of the ASN.
 
    There is no significance to the order in which twelve-octet Large
-   Community values are encoded in a Large Communities attribute, nor in
-   the order of the BGP Large Communities attributes if two or more such
-   attributes are encoded in the BGP path attribute payload of a single
-   BGP Update message.  A BGP speaker can transmit them in any order.
+   Community Attribute values are encoded in a Large Communities
+   attribute, A BGP speaker can transmit them in any order.
 
    Duplicate BGP Large Community values SHOULD NOT be transmitted.  A
-   receiving speaker SHOULD silently remove duplicate BGP Large
-   Community values from a BGP UPDATE message.
+   receiving speaker SHOULD ignore duplicate BGP Large Community values
+   from a BGP UPDATE message.
 
 3.  Aggregation
 
@@ -221,6 +219,8 @@ Internet-Draft            BGP Large Communities            November 2016
 
 
 
+
+
 Heitz, et al.              Expires May 8, 2017                  [Page 4]
 
 Internet-Draft            BGP Large Communities            November 2016
@@ -231,8 +231,8 @@ Internet-Draft            BGP Large Communities            November 2016
    The error handling of BGP Large Communities is as follows:
 
    o  A BGP Large Communities attribute SHALL be considered malformed if
-      the length of the BGP Large Communities value, expressed in
-      octets, is not a non-zero multiple of 12.
+      the length of the BGP Large Communities Attribute value, expressed
+      in octets, is not a non-zero multiple of 12.
 
    o  A BGP UPDATE message with a malformed BGP Large Communities
       attribute SHALL be handled using the approach of "treat-as-
@@ -259,9 +259,9 @@ Internet-Draft            BGP Large Communities            November 2016
 
    BGP Large Communities do not protect the integrity of each community
    value.  Operators should be aware that it is possible for a BGP
-   speaker to alter BGP Large Community values in a BGP Update Message.
-   Protecting the integrity of the transitive handling of BGP Large
-   Community attributes in a manner consistent with the intent of
+   speaker to alter BGP Large Community Attribute values in a BGP Update
+   Message.  Protecting the integrity of the transitive handling of BGP
+   Large Community attributes in a manner consistent with the intent of
    expressed BGP routing policies falls within the broader scope of
    securing BGP, and is not specifically addressed here.
 
