@@ -185,8 +185,8 @@ Internet-Draft            BGP Large Communities            November 2016
    attribute, A BGP speaker can transmit them in any order.
 
    Duplicate BGP Large Community values SHOULD NOT be transmitted.  A
-   receiving speaker SHOULD ignore duplicate BGP Large Community values
-   from a BGP UPDATE message.
+   receiving speaker SHOULD silently remove duplicate BGP Large
+   Community values from a BGP Large Community attribute.
 
 3.  Aggregation
 
