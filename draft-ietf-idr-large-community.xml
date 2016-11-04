@@ -61,19 +61,6 @@
         </address>
     </author>
 
-    <author fullname="Adam Simpson" initials="A." surname="Simpson">
-        <organization>Nokia</organization>
-        <address>
-            <postal>
-                <street>600 March Road</street>
-                <city>Ottawa</city>
-                <code>Ontario K2K 2E6</code>
-                <country>Canada</country>
-            </postal>
-            <email>adam.1.simpson@nokia.com</email>
-        </address>
-    </author>
-
     <author initials="N" surname="Hilliard" fullname="Nick Hilliard">
       <organization>INEX</organization>
       <address>
@@ -356,15 +343,23 @@
             The following people contributed significantly to the content of
             the document:
         </t>
-        <figure>
+            <figure>
             <preamble></preamble>
             <artwork>
-John Heasley
 NTT Communications
 
 Email: heas@shrubbery.net
 </artwork>
-<postamble></postamble>
+</figure>
+
+        <figure>
+            <preamble></preamble>
+            <artwork>
+Adam Simpson
+Nokia
+
+Email: adam.1.simpson@nokia.com
+</artwork>
 </figure>
 </section>
 
