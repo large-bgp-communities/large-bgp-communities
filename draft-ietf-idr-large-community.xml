@@ -267,9 +267,8 @@
             <list style="symbols">
                 <t>
                     A BGP Large Communities attribute SHALL be considered
-                    malformed if the
-                    length of the BGP Large Communities value, expressed in octets, 
-                    is not a non-zero multiple of 12.
+                    malformed if the length of the BGP Large Communities value,
+                    expressed in octets, is not a non-zero multiple of 12.
                 </t>
                 <t>
                     A BGP UPDATE message with a malformed BGP Large Communities
