@@ -231,12 +231,17 @@
 
 	<section title="Canonical Representation">
         <t>
-            Large BGP Communities MUST be represented as three separate
+            The canonical representation of BGP Large Communities is three separate
             unsigned integers in decimal notation in the following order:
             Global Administrator, Local Data 1, Local Data 2.  Numbers MUST NOT
             contain leading zeros; a zero value MUST be represented with a
-            single zero. For example: 64496:4294967295:2, 64496:0:0, or
-            (64496, 111, 222).
+            single zero. Each number is separated from the next by a single colon.
+            For example: 64496:4294967295:2, 64496:0:0.
+        </t>
+        <t>
+            BGP Large Communities MUST be represented in the canonical representation.
+            A routing policy language MAY use separators other than colons.
+            A routing policy language MAY use prefixes and postfixes before and after a Large Community.
         </t>
     </section>
 
