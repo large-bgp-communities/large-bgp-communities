@@ -10,9 +10,9 @@
 <?rfc inline="yes"?>
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
-<rfc category="std" docName="draft-ietf-idr-large-community-06" ipr="trust200902">
+<rfc category="std" docName="draft-ietf-idr-large-community-07" ipr="trust200902">
   <front>
-    <title abbrev="Large BGP Communities">Large BGP Communities</title>
+    <title abbrev="BGP Large Communities">BGP Large Communities</title>
 
     <author fullname="Jakob Heitz" initials="J." surname="Heitz" role="editor">
         <organization>Cisco</organization>
@@ -96,11 +96,11 @@
 
     <abstract>
         <t>
-            This document describes the Large BGP Communities attribute, an
+            This document describes the BGP Large Communities attribute, an
             extension to BGP-4. This attribute provides a mechanism to
             signal opaque information within separate namespaces to aid in
             routing management. The attribute is suitable for use with
-            four-octet ASNs.
+            four-octet Autonomous System Numbers. 
         </t>
     </abstract>
 
@@ -120,19 +120,22 @@
           <t>
               BGP implementations typically support a routing policy language
               to control the distribution of routing information.  Network
-              operators attach BGP communities to routes to identify intrinsic
-              properties of these routes.  These properties may include
+              operators attach BGP communities to routes to associate particular
+              properties with these routes.  These properties may include
               information such as the route origin location, or specification
               of a routing policy action to be taken, or one that has been
-              taken, and may apply to an individual route or to a group of
-              routes. Because BGP communities are optional transitive BGP
+              taken, and is applied to all routes contained in a BGP Update Message where
+              the Communities Attribute is included.
+              Because BGP communities are optional transitive BGP
               attributes, BGP communities may be acted upon or otherwise used
               by routing policies in other Autonomous Systems (ASes) on the
               Internet.
           </t>
           <t>
-              <xref target="RFC1997"/> BGP Communities attributes are
-              four-octet values split into two two-octet words. The most
+              BGP Communities attributes are
+              four-octet values <xref target="RFC1997"/>. Common use of
+              this attribute type splits this single 32-bit value field into two 16-bit values.
+              The most
               significant word is interpreted as an Autonomous System Number
               (ASN) and the least significant word is a locally defined value
               whose meaning is assigned by the operator of the Autonomous
@@ -141,17 +144,17 @@
           <t>
               Since the adoption of four-octet ASNs <xref target="RFC6793"/>, the
               BGP Communities attribute can no longer accommodate the above
-              encoding, as a two-octet word cannot fit a four-octet ASN.  The BGP
-              Extended Communities attribute <xref target="RFC4360"/> is also
-              unsuitable, as the protocol limit of six octets cannot
-              accommodate both a four-octet Global Administrator value and a
-              four-octet Local Administrator value, which precludes the common
-              operational practice of encoding a target ASN in the Local
-              Administrator field.
+              encoding, as a two-octet word cannot fit a four-octet ASN.
+              The BGP Extended Communities attribute <xref target="RFC4360"/> is also unsuitable, as
+              the protocol limit of six octets for each community value cannot
+              accommodate both a four-octet Global Administrator value and a four-octet
+              Local Administrator value. This limitation precludes the common
+              operational practice of encoding a target ASN in the Local Administrator
+              field.
           </t>
           <t>
-              To address these shortcomings, this document defines a Large
-              BGP Communities attribute encoded as one or more twelve-octet
+              To address these shortcomings, this document defines a BGP Large
+              Communities attribute encoded as one or more twelve-octet
               values, each consisting of a four-octet Global Administrator
               field and two four-octet operator-defined fields, each of
               which can be used to denote properties or actions significant
@@ -160,16 +163,16 @@
           </t>
     </section>
 
-    <section title="Large BGP Communities Attribute">
+    <section title="BGP Large Communities Attribute">
         <t>
-            This document creates the Large BGP Communities attribute
+            This document creates the BGP Large Communities attribute
             as an optional transitive path attribute of variable length.  All
-            routes with the Large BGP Communities attribute belong to the
+            routes with the BGP Large Communities attribute belong to the
             community specified in the attribute.
         </t>
         <t>
             The attribute consists of one or more twelve-octet values. Each
-            twelve-octet Large BGP Communities value represents three four-octet values, as
+            twelve-octet BGP Large Communities value represents three four-octet values, as
             follows:
 <figure align="center"><artwork><![CDATA[
  0                   1                   2                   3
@@ -186,8 +189,7 @@
         <t>
             <list style="hanging">
                 <t hangText="Global Administrator:">
-                    A four-octet namespace identifier.  This SHOULD be an Autonomous
-                    System Number.
+                    A four-octet namespace identifier.
                 </t>
                 <t hangText="Local Data Part 1:">A four-octet operator-defined value.</t>
                 <t hangText="Local Data Part 2:">A four-octet operator-defined value.</t>
@@ -195,27 +197,34 @@
         </t>
         <t>
             The Global Administrator field is intended to allow different
-            Autonomous Systems to define Large BGP Communities without
-            collision. Implementations MUST allow the operator to specify any
-            value for the Global Administrator field.
+            Autonomous Systems to define BGP Large Communities without
+            collision.
+            This field MUST be either one of the reserved values as defined below,
+            or an Autonomous System Number (ASN). If it is a reserved value, then
+            the Local Data Parts are as defined by the reserved value.
+            If it is an ASN then the Local Data Parts are to be interpreted
+            as defined by the owner of the ASN.
+            When used in small closed environments, the values MAY be any values.
+            Thus, implementations MUST allow the operator to specify any
+            value for any of the fields.
         </t>
         <t>
-            There is no significance to the order in which Large BGP
+            There is no significance to the order in which BGP Large
             Communities are encoded in the BGP path attribute payload. A BGP
             speaker can transmit them in any order.
         </t>
         <t>
-            Duplicate Large BGP Communities SHOULD NOT be transmitted.  A
-            receiving speaker SHOULD silently remove duplicate Large
-            BGP Communities from a BGP UPDATE message.
+            Duplicate BGP Large Communities SHOULD NOT be transmitted.  A
+            receiving speaker SHOULD silently remove duplicate BGP Large
+            Communities from a BGP UPDATE message.
         </t>
     </section>
 
     <section title="Aggregation">
         <t>
             If a range of routes is aggregated, then the resulting aggregate
-            should have a Large BGP Communities attribute which contains all
-            of the Large BGP Communities attributes from all of the
+            should have a BGP Large Communities attribute which contains all
+            of the BGP Large Communities attributes from all of the
             aggregated routes.
         </t>
     </section>
@@ -231,7 +240,7 @@
         </t>
     </section>
 
-    <section title="Reserved Large BGP Community values" anchor="reserved_vals">
+    <section title="Reserved BGP Large Community values" anchor="reserved_vals">
         <t>
             The following Global Administrator values are reserved: 0 (the
             first ASN) <xref target="RFC7607"/>, 65535 (UINT16_MAX) and
@@ -239,7 +248,7 @@
             SHOULD NOT use these Global Administrator values.
         </t>
         <t>
-            Although this document does not define any Special-Use Large BGP
+            Although this document does not define any Special-Use BGP Large
             Communities, the Global Administrator values specified above could
             be used if there is a future need for them.
         </t>
@@ -247,27 +256,29 @@
 
     <section title="Error Handling">
         <t>
-            The error handling of Large BGP Communities is as follows:
+            The error handling of BGP Large Communities is as follows:
         </t>
         <t>
             <list style="symbols">
                 <t>
-                    A Large BGP Communities attribute SHALL be considered
-                    malformed if its length is not a non-zero multiple of 12.
+                    A BGP Large Communities attribute SHALL be considered
+                    malformed if the
+                    length of the BGP Large Communities value, expressed in octets, 
+                    is not a non-zero multiple of 12.
                 </t>
                 <t>
-                    A BGP UPDATE message with a malformed Large BGP Communities
+                    A BGP UPDATE message with a malformed BGP Large Communities
                     attribute SHALL be handled using the approach of "treat-as-withdraw"
                     as described in <xref target="RFC7606">section 2</xref>.
                 </t>
             </list>
         </t>
         <t>
-            The Large BGP Communities Global Administrator field may contain
-            any value, and a Large BGP Communities attribute MUST NOT be
+            The BGP Large Communities Global Administrator field may contain
+            any value, and a BGP Large Communities attribute MUST NOT be
             considered malformed if the Global Administrator field contains
             an unallocated, unassigned or reserved ASN or is set to one of
-            the reserved Large BGP Community values defined in <xref
+            the reserved BGP Large Community values defined in <xref
             target="reserved_vals" />.
         </t>
     </section>
@@ -280,10 +291,10 @@
         <t>
             This document does not change any underlying security issues
             associated with any other BGP Communities mechanism.  Specifically,
-            an AS relying on the Large BGP Communities attribute carried in BGP
+            an AS relying on the BGP Large Communities attribute carried in BGP
             must have trust in every other AS in the path, as any intermediate
             Autonomous System in the path may have added, deleted, or altered
-            the Large BGP Communities attribute. Specifying the mechanism to
+            the BGP Large Communities attribute. Specifying the mechanism to
             provide such trust is beyond the scope of this document.
         </t>
         <t>
@@ -309,8 +320,8 @@
            to note that other implementations may exist.
        </t>
        <t>
-           As of today these vendors have produced an implementation of Large
-           BGP Communities:
+           As of today these vendors have produced an implementation of BGP Large
+           Communities:
            <list style="symbols">
                <t>Cisco IOS XR</t>
                <t>ExaBGP</t>
@@ -371,8 +382,8 @@ Email: heas@shrubbery.net
             Azimov, Brian Dickson, Peter van Dijk, Julian Seifert, Tom Petch,
             Tom Scholl, Arjen Zonneveld, Remco van Mook, Adam Chappell, Jussi
             Peltola, Kristian Larsson, Markus Hauschild, Richard Steenbergen,
-            David Freedman, Richard Hartmann for their support, insightful
-            review and comments.
+            David Freedman, Richard Hartmann and Geoff Huston for their
+            support, insightful review and comments.
         </t>
     </section>
 
