@@ -78,14 +78,14 @@ Table of Contents
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
    2.  BGP Large Communities Attribute . . . . . . . . . . . . . . .   3
    3.  Aggregation . . . . . . . . . . . . . . . . . . . . . . . . .   4
-   4.  Canonical Representation  . . . . . . . . . . . . . . . . . .   4
+   4.  Representation  . . . . . . . . . . . . . . . . . . . . . . .   4
    5.  Reserved BGP Large Community values . . . . . . . . . . . . .   4
    6.  Error Handling  . . . . . . . . . . . . . . . . . . . . . . .   5
    7.  Security Considerations . . . . . . . . . . . . . . . . . . .   5
    8.  Implementation status - RFC EDITOR: REMOVE BEFORE PUBLICATION   5
    9.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   6
    10. Contributors  . . . . . . . . . . . . . . . . . . . . . . . .   6
-   11. Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .   7
+   11. Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .   6
    12. References  . . . . . . . . . . . . . . . . . . . . . . . . .   7
      12.1.  Normative References . . . . . . . . . . . . . . . . . .   7
      12.2.  Informative References . . . . . . . . . . . . . . . . .   7
@@ -198,19 +198,13 @@ Internet-Draft            BGP Large Communities            November 2016
    the BGP Large Communities attributes from all of the aggregated
    routes.
 
-4.  Canonical Representation
+4.  Representation
 
-   The canonical representation of BGP Large Communities is three
-   separate unsigned integers in decimal notation in the following
-   order: Global Administrator, Local Data 1, Local Data 2.  Numbers
-   MUST NOT contain leading zeros; a zero value MUST be represented with
-   a single zero.  Each number is separated from the next by a single
-   colon.  For example: 64496:4294967295:2, 64496:0:0.
-
-   BGP Large Communities MUST be represented in the canonical
-   representation.  A routing policy language MAY use separators other
-   than colons.  A routing policy language MAY use prefixes and
-   postfixes before and after a Large Community.
+   Large BGP Communities MUST be represented as three separate unsigned
+   integers in decimal notation in the following order: Global
+   Administrator, Local Data 1, Local Data 2.  Numbers MUST NOT contain
+   leading zeros; a zero value MUST be represented with a single zero.
+   For example: 64496:4294967295:2, 64496:0:0, or (64496, 111, 222).
 
 5.  Reserved BGP Large Community values
 
@@ -219,16 +213,18 @@ Internet-Draft            BGP Large Communities            November 2016
    [RFC7300].  Operators SHOULD NOT use these Global Administrator
    values.
 
+   Although this document does not define any Special-Use BGP Large
+   Communities, the Global Administrator values specified above could be
+   used if there is a future need for them.
+
+
+
 
 
 Heitz, et al.              Expires May 8, 2017                  [Page 4]
 
 Internet-Draft            BGP Large Communities            November 2016
 
-
-   Although this document does not define any Special-Use BGP Large
-   Communities, the Global Administrator values specified above could be
-   used if there is a future need for them.
 
 6.  Error Handling
 
@@ -274,6 +270,10 @@ Internet-Draft            BGP Large Communities            November 2016
    RFCs.  Please note that the listing of any individual implementation
    here does not imply endorsement by the IETF.  Furthermore, no effort
    has been spent to verify the information presented here that was
+   supplied by IETF contributors.  This is not intended as, and must not
+   be construed to be, a catalog of available implementations or their
+   features.  Readers are advised to note that other implementations may
+   exist.
 
 
 
@@ -281,11 +281,6 @@ Heitz, et al.              Expires May 8, 2017                  [Page 5]
 
 Internet-Draft            BGP Large Communities            November 2016
 
-
-   supplied by IETF contributors.  This is not intended as, and must not
-   be construed to be, a catalog of available implementations or their
-   features.  Readers are advised to note that other implementations may
-   exist.
 
    As of today these vendors have produced an implementation of BGP
    Large Communities:
@@ -327,17 +322,6 @@ Internet-Draft            BGP Large Communities            November 2016
    Nokia
    Email: adam.1.simpson@nokia.com
 
-
-
-
-
-
-
-Heitz, et al.              Expires May 8, 2017                  [Page 6]
-
-Internet-Draft            BGP Large Communities            November 2016
-
-
 11.  Acknowledgments
 
    The authors would like to thank Ruediger Volk, Russ White, Acee
@@ -346,6 +330,14 @@ Internet-Draft            BGP Large Communities            November 2016
    Schouten, Paul Hoogsteder, Martijn Schmidt, Greg Hankins, Bertrand
    Duvivier, Barry O'Donovan, Grzegorz Janoszka, Linda Dunbar, Marco
    Davids, Gaurab Raj Upadhaya, Jeff Tantsura, Teun Vink, Adam
+
+
+
+Heitz, et al.              Expires May 8, 2017                  [Page 6]
+
+Internet-Draft            BGP Large Communities            November 2016
+
+
    Davenport, Theodore Baschak, Pier Carlo Chiodi, Nabeel Cocker, Ian
    Dickinson, Jan Baggen, Duncan Lockwood, David Farmer, Randy Bush, Wim
    Henderickx, Stefan Plug, Kay Rechthien, Rob Shakir, Warren Kumari,
@@ -387,17 +379,20 @@ Internet-Draft            BGP Large Communities            November 2016
               Communities Attribute", RFC 4360, DOI 10.17487/RFC4360,
               February 2006, <http://www.rfc-editor.org/info/rfc4360>.
 
+   [RFC7300]  Haas, J. and J. Mitchell, "Reservation of Last Autonomous
+              System (AS) Numbers", BCP 6, RFC 7300,
+              DOI 10.17487/RFC7300, July 2014,
+              <http://www.rfc-editor.org/info/rfc7300>.
+
+
+
+
 
 
 Heitz, et al.              Expires May 8, 2017                  [Page 7]
 
 Internet-Draft            BGP Large Communities            November 2016
 
-
-   [RFC7300]  Haas, J. and J. Mitchell, "Reservation of Last Autonomous
-              System (AS) Numbers", BCP 6, RFC 7300,
-              DOI 10.17487/RFC7300, July 2014,
-              <http://www.rfc-editor.org/info/rfc7300>.
 
    [RFC7454]  Durand, J., Pepelnjak, I., and G. Doering, "BGP Operations
               and Security", BCP 194, RFC 7454, DOI 10.17487/RFC7454,
@@ -441,6 +436,11 @@ Authors' Addresses
    Arrcus, Inc
 
    Email: keyur@arrcus.com
+
+
+
+
+
 
 
 
