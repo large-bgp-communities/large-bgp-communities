@@ -141,7 +141,7 @@ Internet-Draft            BGP Large Communities            November 2016
 
    This document creates the BGP Large Communities attribute as an
    optional transitive path attribute of variable length.  All routes
-   with the BGP Large Communities attribute belong to the community
+   with the BGP Large Communities attribute belong to the communities
    specified in the attribute.
 
    The attribute consists of one or more twelve-octet values.  Each
