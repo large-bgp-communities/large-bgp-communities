@@ -152,7 +152,7 @@
 
     <section title="BGP Large Communities Attribute">
         <t>
-            This document creates the BGP Large Communities attribute
+            This document defines the BGP Large Communities attribute
             as an optional transitive path attribute of variable length. All
             routes with the BGP Large Communities attribute belong to the
             communities specified in the attribute.
@@ -385,8 +385,8 @@ Email: adam.1.simpson@nokia.com
             Azimov, Brian Dickson, Peter van Dijk, Julian Seifert, Tom Petch,
             Tom Scholl, Arjen Zonneveld, Remco van Mook, Adam Chappell, Jussi
             Peltola, Kristian Larsson, Markus Hauschild, Richard Steenbergen,
-            David Freedman, Richard Hartmann and Geoff Huston for their
-            support, insightful review and comments.
+            David Freedman, Richard Hartmann, Geoff Huston and Mach Chen for
+            their support, insightful review and comments.
         </t>
     </section>
 
