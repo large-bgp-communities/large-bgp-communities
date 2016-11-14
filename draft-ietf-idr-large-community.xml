@@ -184,12 +184,11 @@
         <t>
             The Global Administrator field is intended to allow different
             Autonomous Systems to define BGP Large Communities without
-            collision.
-            This field SHOULD be either one of the reserved values as defined below,
-            or an Autonomous System Number (ASN). If it is a reserved value, then
-            the Local Data Parts are as defined by the reserved value.
-            If it is an ASN then the Local Data Parts are to be interpreted
-            as defined by the owner of the ASN.
+            collision. This field SHOULD either be one of the reserved values
+            as defined below, or an Autonomous System Number (ASN).  If it is a
+            reserved value, then the Local Data Parts are as defined by the
+            reserved value.  If it is an ASN then the Local Data Parts are to
+            be interpreted as defined by the owner of the ASN.
         </t>
         <t>
             There is no significance to the order in which twelve-octet Large
