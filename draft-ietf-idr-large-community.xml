@@ -10,7 +10,7 @@
 <?rfc inline="yes"?>
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
-<rfc category="std" docName="draft-ietf-idr-large-community-07" ipr="trust200902">
+<rfc category="std" docName="draft-ietf-idr-large-community-08" ipr="trust200902">
   <front>
     <title abbrev="BGP Large Communities">BGP Large Communities</title>
 
@@ -196,8 +196,8 @@
             attribute,  A BGP speaker can transmit them in any order.
         </t>
         <t>
-            Duplicate BGP Large Community values SHOULD NOT be transmitted. A
-            receiving speaker SHOULD silently remove duplicate BGP Large
+            Duplicate BGP Large Community values MUST NOT be transmitted. A
+            receiving speaker MUST silently remove duplicate BGP Large
             Community values from a BGP Large Community attribute.
         </t>
     </section>
