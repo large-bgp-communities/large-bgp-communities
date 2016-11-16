@@ -252,6 +252,12 @@
                     multiple of 12.
                 </t>
                 <t>
+                    A BGP Large Communities attribute SHALL NOT be considered
+                    malformed due solely to presence of duplicate community
+                    values. Such duplicates MUST be handled by removing them as
+                    specified in Section 2.
+                </t>
+                <t>
                     A BGP UPDATE message with a malformed BGP Large Communities
                     attribute SHALL be handled using the approach of "treat-as-withdraw"
                     as described in <xref target="RFC7606">section 2</xref>.
