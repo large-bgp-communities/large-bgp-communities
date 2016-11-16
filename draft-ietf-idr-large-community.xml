@@ -150,7 +150,7 @@
           </t>
     </section>
 
-    <section title="BGP Large Communities Attribute">
+    <section anchor="attribute" title="BGP Large Communities Attribute">
         <t>
             This document defines the BGP Large Communities attribute
             as an optional transitive path attribute of variable length. All
@@ -255,7 +255,7 @@
                     A BGP Large Communities attribute SHALL NOT be considered
                     malformed due solely to presence of duplicate community
                     values. Such duplicates MUST be handled by removing them as
-                    specified in Section 2.
+                    specified in <xref target="attribute" />.
                 </t>
                 <t>
                     A BGP UPDATE message with a malformed BGP Large Communities
