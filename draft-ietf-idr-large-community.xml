@@ -254,8 +254,7 @@
                 <t>
                     A BGP Large Communities attribute SHALL NOT be considered
                     malformed due solely to presence of duplicate community
-                    values. Such duplicates MUST be handled by removing them as
-                    specified in <xref target="attribute" />.
+                    values.
                 </t>
                 <t>
                     A BGP UPDATE message with a malformed BGP Large Communities
