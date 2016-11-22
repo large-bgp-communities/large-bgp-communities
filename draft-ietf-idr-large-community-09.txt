@@ -236,8 +236,6 @@ Internet-Draft            BGP Large Communities            November 2016
 
    o  A BGP Large Communities attribute SHALL NOT be considered
       malformed due solely to presence of duplicate community values.
-      Such duplicates MUST be handled by removing them as specified in
-      Section 2.
 
    o  A BGP UPDATE message with a malformed BGP Large Communities
       attribute SHALL be handled using the approach of "treat-as-
@@ -272,6 +270,8 @@ Internet-Draft            BGP Large Communities            November 2016
 
    Network administrators should note the recommendations in Section 11
    of BGP Operations and Security [RFC7454].
+
+
 
 
 
