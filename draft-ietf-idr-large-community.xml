@@ -53,9 +53,10 @@
         <organization>Equinix</organization>
         <address>
             <postal>
-                <street></street>
+                <street>80 Cheapside</street>
+                <code>EC2V 6EE</code>
                 <city>London</city>
-                <country>UK</country>
+                <country>United Kingdom</country>
             </postal>
             <email>ibagdona.ietf@gmail.com</email>
         </address>
@@ -105,18 +106,16 @@
   <middle>
       <section title="Introduction">
           <t>
-              BGP implementations typically support a routing policy language
-              to control the distribution of routing information.  Network
-              operators attach BGP communities to routes to associate particular
-              properties with these routes.  These properties may include
-              information such as the route origin location, or specification
-              of a routing policy action to be taken, or one that has been
-              taken, and is applied to all routes contained in a BGP Update Message where
-              the Communities Attribute is included.
-              Because BGP communities are optional transitive BGP
-              attributes, BGP communities may be acted upon or otherwise used
-              by routing policies in other Autonomous Systems (ASes) on the
-              Internet.
+              BGP <xref target="RFC4271" /> implementations typically support a routing
+              policy language to control the distribution of routing information. Network
+              operators attach BGP communities to routes to associate particular properties
+              with these routes. These properties may include information such as the route
+              origin location, or specification of a routing policy action to be taken, or
+              one that has been taken, and is applied to all routes contained in a BGP
+              Update Message where the Communities Attribute is included. Because BGP
+              communities are optional transitive BGP attributes, BGP communities may be
+              acted upon or otherwise used by routing policies in other Autonomous Systems
+              (ASes) on the Internet.
           </t>
           <t>
               BGP Communities attributes are a variable length attribute
@@ -228,9 +227,10 @@
 
     <section title="Reserved BGP Large Community values" anchor="reserved_vals">
         <t>
-            The following Global Administrator values are reserved: 0, 65535,
-            and 4294967295. Operators SHOULD NOT use these Global Administrator
-            values.
+            The following Global Administrator values are reserved:
+            0 <xref target="RFC7607" />, 65535 <xref target="RFC7300" />, and
+            4294967295 <xref target="RFC7300" />. Operators SHOULD NOT use
+            these Global Administrator values.
         </t>
         <t>
             Although this document does not define any Special-Use BGP Large
@@ -264,12 +264,12 @@
             </list>
         </t>
         <t>
-            The BGP Large Communities Global Administrator field MAY contain
+            The BGP Large Communities Global Administrator field may contain
             any value, and a BGP Large Communities attribute MUST NOT be
-            considered malformed if the Global Administrator field contains
-            an unallocated, unassigned or reserved ASN or is set to one of
-            the reserved BGP Large Community values defined in <xref
-            target="reserved_vals" />.
+            considered malformed if the Global Administrator field contains an
+            unallocated, unassigned or reserved ASN or is set to one of the
+            reserved BGP Large Community values defined in
+            <xref target="reserved_vals"/>.
         </t>
     </section>
 
@@ -389,26 +389,28 @@ Email: adam.1.simpson@nokia.com
             Azimov, Brian Dickson, Peter van Dijk, Julian Seifert, Tom Petch,
             Tom Scholl, Arjen Zonneveld, Remco van Mook, Adam Chappell, Jussi
             Peltola, Kristian Larsson, Markus Hauschild, Richard Steenbergen,
-            David Freedman, Richard Hartmann, Geoff Huston and Mach Chen for
-            their support, insightful review and comments.
+            David Freedman, Richard Hartmann, Geoff Huston, Mach Chen, and
+            Alvaro Retana for their support, insightful review and comments.
         </t>
     </section>
 
   </middle>
 
   <back>
-    <references title="Normative References">
-      <?rfc include="reference.RFC.1997"?>
-      <?rfc include="reference.RFC.2119"?>
-      <?rfc include="reference.RFC.6793"?>
-      <?rfc include="reference.RFC.7606"?>
-    </references>
-    <references title="Informative References">
-      <?rfc include="reference.RFC.4360"?>
-      <?rfc include="reference.RFC.7454"?>
-      <?rfc include="reference.RFC.7942"?>
-    </references>
+      <references title="Normative References">
 
-
+          <?rfc include="reference.RFC.2119"?>
+          <?rfc include="reference.RFC.4271"?>
+          <?rfc include="reference.RFC.7606"?>
+      </references>
+      <references title="Informative References">
+          <?rfc include="reference.RFC.1997"?>
+          <?rfc include="reference.RFC.4360"?>
+          <?rfc include="reference.RFC.6793"?>
+          <?rfc include="reference.RFC.7300"?>
+          <?rfc include="reference.RFC.7454"?>
+          <?rfc include="reference.RFC.7607"?>
+          <?rfc include="reference.RFC.7942"?>
+      </references>
   </back>
 </rfc>
