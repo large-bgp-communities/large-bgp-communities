@@ -10,7 +10,7 @@
 <?rfc inline="yes"?>
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
-<rfc category="std" docName="draft-ietf-idr-large-community-10" ipr="trust200902">
+<rfc category="std" docName="draft-ietf-idr-large-community-11" ipr="trust200902">
   <front>
     <title abbrev="BGP Large Communities">BGP Large Communities</title>
 
@@ -183,9 +183,10 @@
         <t>
             The Global Administrator field is intended to allow different
             Autonomous Systems to define BGP Large Communities without
-            collision. This field SHOULD be an Autonomous System Number (ASN).
-            The use of Reserved ASNs (0 <xref target="RFC7607" />, 65535 and
-            4294967295 <xref target="RFC7300" />) is NOT RECOMMENDED.
+            collision. This field SHOULD be an Autonomous System Number (ASN),
+            in which case the Local Data Parts are to be interpreted as defined
+            by the owner of the ASN. The use of Reserved ASNs (0 <xref target="RFC7607" />,
+            65535 and 4294967295 <xref target="RFC7300" />) is NOT RECOMMENDED.
         </t>
         <t>
             There is no significance to the order in which twelve-octet Large
