@@ -183,11 +183,9 @@
         <t>
             The Global Administrator field is intended to allow different
             Autonomous Systems to define BGP Large Communities without
-            collision. This field SHOULD either be one of the reserved values
-            as defined below, or an Autonomous System Number (ASN).  If it is a
-            reserved value, then the Local Data Parts are as defined by the
-            reserved value.  If it is an ASN then the Local Data Parts are to
-            be interpreted as defined by the owner of the ASN.
+            collision. This field SHOULD be an Autonomous System Number (ASN).
+            The use of Reserved ASNs (0 <xref target="RFC7607" />, 65535 and
+            4294967295 <xref target="RFC7300" />) is NOT RECOMMENDED.
         </t>
         <t>
             There is no significance to the order in which twelve-octet Large
@@ -225,20 +223,6 @@
         </t>
     </section>
 
-    <section title="Reserved BGP Large Community values" anchor="reserved_vals">
-        <t>
-            The following Global Administrator values are reserved:
-            0 <xref target="RFC7607" />, 65535 <xref target="RFC7300" />, and
-            4294967295 <xref target="RFC7300" />. Operators SHOULD NOT use
-            these Global Administrator values.
-        </t>
-        <t>
-            Although this document does not define any Special-Use BGP Large
-            Communities, the Global Administrator values specified above could
-            be used if there is a future need for them.
-        </t>
-    </section>
-
     <section title="Error Handling">
         <t>
             The error handling of BGP Large Communities is as follows:
@@ -267,9 +251,7 @@
             The BGP Large Communities Global Administrator field may contain
             any value, and a BGP Large Communities attribute MUST NOT be
             considered malformed if the Global Administrator field contains an
-            unallocated, unassigned or reserved ASN or is set to one of the
-            reserved BGP Large Community values defined in
-            <xref target="reserved_vals"/>.
+            unallocated, unassigned or reserved ASN.
         </t>
     </section>
 

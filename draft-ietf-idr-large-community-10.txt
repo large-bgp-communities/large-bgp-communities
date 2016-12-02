@@ -79,17 +79,16 @@ Table of Contents
    2.  BGP Large Communities Attribute . . . . . . . . . . . . . . .   3
    3.  Aggregation . . . . . . . . . . . . . . . . . . . . . . . . .   4
    4.  Canonical Representation  . . . . . . . . . . . . . . . . . .   4
-   5.  Reserved BGP Large Community values . . . . . . . . . . . . .   4
-   6.  Error Handling  . . . . . . . . . . . . . . . . . . . . . . .   5
-   7.  Security Considerations . . . . . . . . . . . . . . . . . . .   5
-   8.  Implementation status - RFC EDITOR: REMOVE BEFORE PUBLICATION   6
-   9.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   6
-   10. Contributors  . . . . . . . . . . . . . . . . . . . . . . . .   6
-   11. Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .   7
-   12. References  . . . . . . . . . . . . . . . . . . . . . . . . .   7
-     12.1.  Normative References . . . . . . . . . . . . . . . . . .   7
-     12.2.  Informative References . . . . . . . . . . . . . . . . .   8
-     12.3.  URIs . . . . . . . . . . . . . . . . . . . . . . . . . .   8
+   5.  Error Handling  . . . . . . . . . . . . . . . . . . . . . . .   4
+   6.  Security Considerations . . . . . . . . . . . . . . . . . . .   5
+   7.  Implementation status - RFC EDITOR: REMOVE BEFORE PUBLICATION   5
+   8.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   6
+   9.  Contributors  . . . . . . . . . . . . . . . . . . . . . . . .   6
+   10. Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .   6
+   11. References  . . . . . . . . . . . . . . . . . . . . . . . . .   7
+     11.1.  Normative References . . . . . . . . . . . . . . . . . .   7
+     11.2.  Informative References . . . . . . . . . . . . . . . . .   7
+     11.3.  URIs . . . . . . . . . . . . . . . . . . . . . . . . . .   8
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   8
 
 1.  Introduction
@@ -105,6 +104,7 @@ Table of Contents
    optional transitive BGP attributes, BGP communities may be acted upon
    or otherwise used by routing policies in other Autonomous Systems
    (ASes) on the Internet.
+
 
 
 
@@ -174,18 +174,16 @@ Internet-Draft            BGP Large Communities            December 2016
 
    The Global Administrator field is intended to allow different
    Autonomous Systems to define BGP Large Communities without collision.
-   This field SHOULD either be one of the reserved values as defined
-   below, or an Autonomous System Number (ASN).  If it is a reserved
-   value, then the Local Data Parts are as defined by the reserved
-   value.  If it is an ASN then the Local Data Parts are to be
-   interpreted as defined by the owner of the ASN.
+   This field SHOULD be an Autonomous System Number (ASN).  The use of
+   Reserved ASNs (0 [RFC7607], 65535 and 4294967295 [RFC7300]) is NOT
+   RECOMMENDED.
 
    There is no significance to the order in which twelve-octet Large
    Community Attribute values are encoded in a Large Communities
    attribute, A BGP speaker can transmit them in any order.
 
    Duplicate BGP Large Community values MUST NOT be transmitted.  A
-   receiving speaker MUST silently remove duplicate BGP Large Community
+   receiving speaker MUST silently remove redundant BGP Large Community
    values from a BGP Large Community attribute.
 
 3.  Aggregation
@@ -207,26 +205,7 @@ Internet-Draft            BGP Large Communities            December 2016
    BGP Large Communities SHOULD be represented in the canonical
    representation.
 
-5.  Reserved BGP Large Community values
-
-   The following Global Administrator values are reserved: 0 [RFC7607],
-   65535 [RFC7300], and 4294967295 [RFC7300].  Operators SHOULD NOT use
-   these Global Administrator values.
-
-   Although this document does not define any Special-Use BGP Large
-   Communities, the Global Administrator values specified above could be
-   used if there is a future need for them.
-
-
-
-
-
-Heitz, et al.             Expires June 5, 2017                  [Page 4]
-
-Internet-Draft            BGP Large Communities            December 2016
-
-
-6.  Error Handling
+5.  Error Handling
 
    The error handling of BGP Large Communities is as follows:
 
@@ -237,6 +216,16 @@ Internet-Draft            BGP Large Communities            December 2016
    o  A BGP Large Communities attribute SHALL NOT be considered
       malformed due solely to presence of duplicate community values.
 
+
+
+
+
+
+Heitz, et al.             Expires June 5, 2017                  [Page 4]
+
+Internet-Draft            BGP Large Communities            December 2016
+
+
    o  A BGP UPDATE message with a malformed BGP Large Communities
       attribute SHALL be handled using the approach of "treat-as-
       withdraw" as described in section 2 [RFC7606].
@@ -244,10 +233,9 @@ Internet-Draft            BGP Large Communities            December 2016
    The BGP Large Communities Global Administrator field may contain any
    value, and a BGP Large Communities attribute MUST NOT be considered
    malformed if the Global Administrator field contains an unallocated,
-   unassigned or reserved ASN or is set to one of the reserved BGP Large
-   Community values defined in Section 5.
+   unassigned or reserved ASN.
 
-7.  Security Considerations
+6.  Security Considerations
 
    This extension to BGP has similar security implications as BGP
    Communities [RFC1997].
@@ -271,18 +259,7 @@ Internet-Draft            BGP Large Communities            December 2016
    Network administrators should note the recommendations in Section 11
    of BGP Operations and Security [RFC7454].
 
-
-
-
-
-
-
-Heitz, et al.             Expires June 5, 2017                  [Page 5]
-
-Internet-Draft            BGP Large Communities            December 2016
-
-
-8.  Implementation status - RFC EDITOR: REMOVE BEFORE PUBLICATION
+7.  Implementation status - RFC EDITOR: REMOVE BEFORE PUBLICATION
 
    This section records the status of known implementations of the
    protocol defined by this specification at the time of posting of this
@@ -296,6 +273,14 @@ Internet-Draft            BGP Large Communities            December 2016
    be construed to be, a catalog of available implementations or their
    features.  Readers are advised to note that other implementations may
    exist.
+
+
+
+
+Heitz, et al.             Expires June 5, 2017                  [Page 5]
+
+Internet-Draft            BGP Large Communities            December 2016
+
 
    As of today these vendors have produced an implementation of BGP
    Large Communities:
@@ -317,26 +302,17 @@ Internet-Draft            BGP Large Communities            December 2016
    The latest implementation news is tracked at
    http://largebgpcommunities.net/ [1].
 
-9.  IANA Considerations
+8.  IANA Considerations
 
    IANA has made an Early Allocation of the value 32 (LARGE_COMMUNITY)
    in the "BGP Path Attributes" registry under the "Border Gateway
    Protocol (BGP) Parameters" group and is now asked to make that
    Permanent.
 
-10.  Contributors
+9.  Contributors
 
    The following people contributed significantly to the content of the
    document:
-
-
-
-
-
-Heitz, et al.             Expires June 5, 2017                  [Page 6]
-
-Internet-Draft            BGP Large Communities            December 2016
-
 
    John Heasley
    NTT Communications
@@ -346,7 +322,7 @@ Internet-Draft            BGP Large Communities            December 2016
    Nokia
    Email: adam.1.simpson@nokia.com
 
-11.  Acknowledgments
+10.  Acknowledgments
 
    The authors would like to thank Ruediger Volk, Russ White, Acee
    Lindem, Shyam Sethuram, Jared Mauch, Joel M.  Halpern, Jeffrey Haas,
@@ -354,6 +330,14 @@ Internet-Draft            BGP Large Communities            December 2016
    Schouten, Paul Hoogsteder, Martijn Schmidt, Greg Hankins, Bertrand
    Duvivier, Barry O'Donovan, Grzegorz Janoszka, Linda Dunbar, Marco
    Davids, Gaurab Raj Upadhaya, Jeff Tantsura, Teun Vink, Adam
+
+
+
+Heitz, et al.             Expires June 5, 2017                  [Page 6]
+
+Internet-Draft            BGP Large Communities            December 2016
+
+
    Davenport, Theodore Baschak, Pier Carlo Chiodi, Nabeel Cocker, Ian
    Dickinson, Jan Baggen, Duncan Lockwood, David Farmer, Randy Bush, Wim
    Henderickx, Stefan Plug, Kay Rechthien, Rob Shakir, Warren Kumari,
@@ -367,9 +351,9 @@ Internet-Draft            BGP Large Communities            December 2016
    Geoff Huston, Mach Chen, and Alvaro Retana for their support,
    insightful review and comments.
 
-12.  References
+11.  References
 
-12.1.  Normative References
+11.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -386,15 +370,7 @@ Internet-Draft            BGP Large Communities            December 2016
               RFC 7606, DOI 10.17487/RFC7606, August 2015,
               <http://www.rfc-editor.org/info/rfc7606>.
 
-
-
-
-Heitz, et al.             Expires June 5, 2017                  [Page 7]
-
-Internet-Draft            BGP Large Communities            December 2016
-
-
-12.2.  Informative References
+11.2.  Informative References
 
    [RFC1997]  Chandra, R., Traina, P., and T. Li, "BGP Communities
               Attribute", RFC 1997, DOI 10.17487/RFC1997, August 1996,
@@ -408,6 +384,15 @@ Internet-Draft            BGP Large Communities            December 2016
               Autonomous System (AS) Number Space", RFC 6793,
               DOI 10.17487/RFC6793, December 2012,
               <http://www.rfc-editor.org/info/rfc6793>.
+
+
+
+
+
+Heitz, et al.             Expires June 5, 2017                  [Page 7]
+
+Internet-Draft            BGP Large Communities            December 2016
+
 
    [RFC7300]  Haas, J. and J. Mitchell, "Reservation of Last Autonomous
               System (AS) Numbers", BCP 6, RFC 7300,
@@ -428,7 +413,7 @@ Internet-Draft            BGP Large Communities            December 2016
               RFC 7942, DOI 10.17487/RFC7942, July 2016,
               <http://www.rfc-editor.org/info/rfc7942>.
 
-12.3.  URIs
+11.3.  URIs
 
    [1] http://largebgpcommunities.net
 
@@ -441,13 +426,6 @@ Authors' Addresses
    USA
 
    Email: jheitz@cisco.com
-
-
-
-
-Heitz, et al.             Expires June 5, 2017                  [Page 8]
-
-Internet-Draft            BGP Large Communities            December 2016
 
 
    Job Snijders (editor)
@@ -463,6 +441,13 @@ Internet-Draft            BGP Large Communities            December 2016
    Arrcus, Inc
 
    Email: keyur@arrcus.com
+
+
+
+
+Heitz, et al.             Expires June 5, 2017                  [Page 8]
+
+Internet-Draft            BGP Large Communities            December 2016
 
 
    Ignas Bagdonas
@@ -481,6 +466,21 @@ Internet-Draft            BGP Large Communities            December 2016
    IE
 
    Email: nick@inex.ie
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
