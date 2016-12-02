@@ -196,7 +196,7 @@
         </t>
         <t>
             Duplicate BGP Large Community values MUST NOT be transmitted. A
-            receiving speaker MUST silently remove duplicate BGP Large
+            receiving speaker MUST silently remove redundant BGP Large
             Community values from a BGP Large Community attribute.
         </t>
     </section>
