@@ -259,10 +259,6 @@
 
     <section title="Security Considerations">
         <t>
-            This extension to BGP has similar security implications as BGP
-            Communities <xref target="RFC1997"/>.
-        </t>
-        <t>
             This document does not change any underlying security issues
             associated with any other BGP Communities mechanism.  Specifically,
             an AS relying on the BGP Large Communities attribute carried in BGP

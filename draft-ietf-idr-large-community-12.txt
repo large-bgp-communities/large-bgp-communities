@@ -237,9 +237,6 @@ Internet-Draft            BGP Large Communities             January 2017
 
 6.  Security Considerations
 
-   This extension to BGP has similar security implications as BGP
-   Communities [RFC1997].
-
    This document does not change any underlying security issues
    associated with any other BGP Communities mechanism.  Specifically,
    an AS relying on the BGP Large Communities attribute carried in BGP
@@ -274,6 +271,9 @@ Internet-Draft            BGP Large Communities             January 2017
    features.  Readers are advised to note that other implementations may
    exist.
 
+   As of today these vendors have produced an implementation of BGP
+   Large Communities:
+
 
 
 
@@ -281,9 +281,6 @@ Heitz, et al.             Expires July 9, 2017                  [Page 5]
 
 Internet-Draft            BGP Large Communities             January 2017
 
-
-   As of today these vendors have produced an implementation of BGP
-   Large Communities:
 
    o  Cisco IOS XR
 
@@ -330,6 +327,9 @@ Internet-Draft            BGP Large Communities             January 2017
    Schouten, Paul Hoogsteder, Martijn Schmidt, Greg Hankins, Bertrand
    Duvivier, Barry O'Donovan, Grzegorz Janoszka, Linda Dunbar, Marco
    Davids, Gaurab Raj Upadhaya, Jeff Tantsura, Teun Vink, Adam
+   Davenport, Theodore Baschak, Pier Carlo Chiodi, Nabeel Cocker, Ian
+   Dickinson, Jan Baggen, Duncan Lockwood, David Farmer, Randy Bush, Wim
+   Henderickx, Stefan Plug, Kay Rechthien, Rob Shakir, Warren Kumari,
 
 
 
@@ -338,9 +338,6 @@ Heitz, et al.             Expires July 9, 2017                  [Page 6]
 Internet-Draft            BGP Large Communities             January 2017
 
 
-   Davenport, Theodore Baschak, Pier Carlo Chiodi, Nabeel Cocker, Ian
-   Dickinson, Jan Baggen, Duncan Lockwood, David Farmer, Randy Bush, Wim
-   Henderickx, Stefan Plug, Kay Rechthien, Rob Shakir, Warren Kumari,
    Gert Doering, Thomas King, Mikael Abrahamsson, Wesley Steehouwer,
    Sander Steffann, Brad Dreisbach, Martin Millnert, Christopher Morrow,
    Jay Borkenhagen, Arnold Nipper, Joe Provo, Niels Bakker, Bill Fenner,
@@ -385,7 +382,10 @@ Internet-Draft            BGP Large Communities             January 2017
               DOI 10.17487/RFC6793, December 2012,
               <http://www.rfc-editor.org/info/rfc6793>.
 
-
+   [RFC7300]  Haas, J. and J. Mitchell, "Reservation of Last Autonomous
+              System (AS) Numbers", BCP 6, RFC 7300,
+              DOI 10.17487/RFC7300, July 2014,
+              <http://www.rfc-editor.org/info/rfc7300>.
 
 
 
@@ -393,11 +393,6 @@ Heitz, et al.             Expires July 9, 2017                  [Page 7]
 
 Internet-Draft            BGP Large Communities             January 2017
 
-
-   [RFC7300]  Haas, J. and J. Mitchell, "Reservation of Last Autonomous
-              System (AS) Numbers", BCP 6, RFC 7300,
-              DOI 10.17487/RFC7300, July 2014,
-              <http://www.rfc-editor.org/info/rfc7300>.
 
    [RFC7454]  Durand, J., Pepelnjak, I., and G. Doering, "BGP Operations
               and Security", BCP 194, RFC 7454, DOI 10.17487/RFC7454,
@@ -438,8 +433,13 @@ Authors' Addresses
    Email: keyur@arrcus.com
 
 
+   Ignas Bagdonas
+   Equinix
+   80 Cheapside
+   London  EC2V 6EE
+   United Kingdom
 
-
+   Email: ibagdona.ietf@gmail.com
 
 
 
@@ -450,15 +450,6 @@ Heitz, et al.             Expires July 9, 2017                  [Page 8]
 Internet-Draft            BGP Large Communities             January 2017
 
 
-   Ignas Bagdonas
-   Equinix
-   80 Cheapside
-   London  EC2V 6EE
-   United Kingdom
-
-   Email: ibagdona.ietf@gmail.com
-
-
    Nick Hilliard
    INEX
    4027 Kingswood Road
@@ -466,6 +457,15 @@ Internet-Draft            BGP Large Communities             January 2017
    IE
 
    Email: nick@inex.ie
+
+
+
+
+
+
+
+
+
 
 
 
