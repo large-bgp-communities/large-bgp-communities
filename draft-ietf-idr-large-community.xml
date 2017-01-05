@@ -87,8 +87,9 @@
             This document describes the BGP Large Communities attribute, an
             extension to BGP-4. This attribute provides a mechanism to
             signal opaque information within separate namespaces to aid in
-            routing management. The attribute is suitable for use with
-            four-octet Autonomous System Numbers. 
+            routing management. The attribute is suitable for use with all
+            Autonomous System Numbers including four-octet Autonomous System
+            Numbers.
         </t>
     </abstract>
 

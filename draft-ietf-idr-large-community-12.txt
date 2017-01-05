@@ -5,14 +5,14 @@
 IDR                                                        J. Heitz, Ed.
 Internet-Draft                                                     Cisco
 Intended status: Standards Track                        J. Snijders, Ed.
-Expires: June 15, 2017                                               NTT
+Expires: July 9, 2017                                                NTT
                                                                 K. Patel
                                                                   Arrcus
                                                              I. Bagdonas
                                                                  Equinix
                                                              N. Hilliard
                                                                     INEX
-                                                       December 12, 2016
+                                                         January 5, 2017
 
 
                          BGP Large Communities
@@ -23,8 +23,8 @@ Abstract
    This document describes the BGP Large Communities attribute, an
    extension to BGP-4.  This attribute provides a mechanism to signal
    opaque information within separate namespaces to aid in routing
-   management.  The attribute is suitable for use with four-octet
-   Autonomous System Numbers.
+   management.  The attribute is suitable for use with all Autonomous
+   System Numbers including four-octet Autonomous System Numbers.
 
 Requirements Language
 
@@ -47,20 +47,20 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on June 15, 2017.
+   This Internet-Draft will expire on July 9, 2017.
 
 
 
 
 
-Heitz, et al.             Expires June 15, 2017                 [Page 1]
+Heitz, et al.             Expires July 9, 2017                  [Page 1]
 
-Internet-Draft            BGP Large Communities            December 2016
+Internet-Draft            BGP Large Communities             January 2017
 
 
 Copyright Notice
 
-   Copyright (c) 2016 IETF Trust and the persons identified as the
+   Copyright (c) 2017 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Heitz, et al.             Expires June 15, 2017                 [Page 2]
+Heitz, et al.             Expires July 9, 2017                  [Page 2]
 
-Internet-Draft            BGP Large Communities            December 2016
+Internet-Draft            BGP Large Communities             January 2017
 
 
    BGP Communities attributes are a variable length attribute consisting
@@ -165,9 +165,9 @@ Internet-Draft            BGP Large Communities            December 2016
 
 
 
-Heitz, et al.             Expires June 15, 2017                 [Page 3]
+Heitz, et al.             Expires July 9, 2017                  [Page 3]
 
-Internet-Draft            BGP Large Communities            December 2016
+Internet-Draft            BGP Large Communities             January 2017
 
 
    Local Data Part 2:  A four-octet operator-defined value.
@@ -221,9 +221,9 @@ Internet-Draft            BGP Large Communities            December 2016
 
 
 
-Heitz, et al.             Expires June 15, 2017                 [Page 4]
+Heitz, et al.             Expires July 9, 2017                  [Page 4]
 
-Internet-Draft            BGP Large Communities            December 2016
+Internet-Draft            BGP Large Communities             January 2017
 
 
    o  A BGP UPDATE message with a malformed BGP Large Communities
@@ -277,9 +277,9 @@ Internet-Draft            BGP Large Communities            December 2016
 
 
 
-Heitz, et al.             Expires June 15, 2017                 [Page 5]
+Heitz, et al.             Expires July 9, 2017                  [Page 5]
 
-Internet-Draft            BGP Large Communities            December 2016
+Internet-Draft            BGP Large Communities             January 2017
 
 
    As of today these vendors have produced an implementation of BGP
@@ -333,9 +333,9 @@ Internet-Draft            BGP Large Communities            December 2016
 
 
 
-Heitz, et al.             Expires June 15, 2017                 [Page 6]
+Heitz, et al.             Expires July 9, 2017                  [Page 6]
 
-Internet-Draft            BGP Large Communities            December 2016
+Internet-Draft            BGP Large Communities             January 2017
 
 
    Davenport, Theodore Baschak, Pier Carlo Chiodi, Nabeel Cocker, Ian
@@ -389,9 +389,9 @@ Internet-Draft            BGP Large Communities            December 2016
 
 
 
-Heitz, et al.             Expires June 15, 2017                 [Page 7]
+Heitz, et al.             Expires July 9, 2017                  [Page 7]
 
-Internet-Draft            BGP Large Communities            December 2016
+Internet-Draft            BGP Large Communities             January 2017
 
 
    [RFC7300]  Haas, J. and J. Mitchell, "Reservation of Last Autonomous
@@ -445,9 +445,9 @@ Authors' Addresses
 
 
 
-Heitz, et al.             Expires June 15, 2017                 [Page 8]
+Heitz, et al.             Expires July 9, 2017                  [Page 8]
 
-Internet-Draft            BGP Large Communities            December 2016
+Internet-Draft            BGP Large Communities             January 2017
 
 
    Ignas Bagdonas
@@ -501,4 +501,4 @@ Internet-Draft            BGP Large Communities            December 2016
 
 
 
-Heitz, et al.             Expires June 15, 2017                 [Page 9]
+Heitz, et al.             Expires July 9, 2017                  [Page 9]
